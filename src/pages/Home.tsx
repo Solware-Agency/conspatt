@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import CountUp from '../components/CountUp';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -146,20 +147,56 @@ const Home = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
               <div className="transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold mb-2">250</div>
-                <div className="text-white/90">clínicas trabajadas</div>
+                <CountUp
+                  from={0}
+                  to={250}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="text-4xl font-bold mb-2"
+                  onStart={() => console.log('CountUp started')}
+                  onEnd={() => console.log('CountUp ended')}
+                />
+                <div className="text-white/90">Clínicas trabajadas</div>
               </div>
               <div className="transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold mb-2">768</div>
-                <div className="text-white/90">doctores satisfechos</div>
+                <CountUp
+                  from={0}
+                  to={768}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="text-4xl font-bold mb-2"
+                  onStart={() => console.log('CountUp started')}
+                  onEnd={() => console.log('CountUp ended')}
+                />
+                <div className="text-white/90">Doctores satisfechos</div>
               </div>
               <div className="transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold mb-2">62079</div>
-                <div className="text-white/90">Clientes Satisfechos</div>
+                <CountUp
+                  from={0}
+                  to={62079}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="text-4xl font-bold mb-2"
+                  onStart={() => console.log('CountUp started')}
+                  onEnd={() => console.log('CountUp ended')}
+                />
+                <div className="text-white/90">Clientes atendidos</div>
               </div>
               <div className="transform hover:scale-105 transition-transform duration-300">
-                <div className="text-4xl font-bold mb-2">24</div>
-                <div className="text-white/90">Años de Experiencia</div>
+                <CountUp
+                  from={0}
+                  to={24}
+                  separator=","
+                  direction="up"
+                  duration={1}
+                  className="text-4xl font-bold mb-2"
+                  onStart={() => console.log('CountUp started')}
+                  onEnd={() => console.log('CountUp ended')}
+                />
+                <div className="text-white/90">Años de experiencia</div>
               </div>
             </div>
           </div>
