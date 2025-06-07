@@ -30,10 +30,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <div className="text-2xl font-bold text-gray-900">
-              <span className="text-black">C</span>
-              <span className="text-[#cf1dc9]">ONSPAT</span>
-            </div>
+            <img src="/logo.png" alt="Logo" className="w-24 h-auto" />
           </Link>
           
           {/* Desktop Navigation */}

@@ -16,6 +16,11 @@ import {
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CountUp from '../components/CountUp';
+import SplitText from '../components/SplitText';
+import ScrollFloat from '../components/ScrollFloat';
+import RotatingText from '../components/RotatingText';
+import TiltedCard from "../components/TiltedCard";
+import FadeContent from '../components/FadeContent';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -109,7 +114,20 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                Tu <span className="text-[#cf1dc9]">salud</span> es nuestra prioridad
+                <span className="text-gray-900">Tu </span>
+                <RotatingText
+                  texts={['salud', 'vida']}
+                  mainClassName="inline-flex items-center justify-center w-40 h-16 bg-cyan-300 text-black overflow-hidden rounded-lg"
+                  staggerFrom={"last"}
+                  initial={{ y: "100%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-120%", opacity: 0 }}
+                  staggerDuration={0.025}
+                  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={3000}
+                />
+                <span className="text-gray-900"> es nuestra prioridad</span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed">
                 En Conspat, proporcionamos diagnósticos patológicos precisos y oportunos, 
@@ -207,9 +225,19 @@ const Home = () => {
       <section id="nosotros" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Somos Laboratorio <span className="text-[#cf1dc9]">Conspat</span>
-            </h2>
+            <SplitText
+              text="Somos Laboratorio Conspat"
+              className="text-4xl font-bold text-gray-900 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Conoce más de nuestra historia y equipo técnico especializado.
@@ -218,7 +246,7 @@ const Home = () => {
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <h3 className="text-3xl font-bold text-gray-900 mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-6">
                 Expertos en resultados patológicos
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
@@ -250,7 +278,18 @@ const Home = () => {
                   <div className="bg-[#cf1dc9] w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <Heart className="w-12 h-12 text-white" />
                   </div>
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Nuestra Misión</h4>
+                  <h4 className="text-5xl font-bold text-gray-900 mb-4">
+                    <ScrollFloat
+                      animationDuration={1}
+                      ease='back.inOut(2)'
+                      scrollStart='center bottom+=50%'
+                      scrollEnd='bottom bottom-=40%'
+                      stagger={0.03}
+                      fontSize="text-5xl"
+                    >
+                      Nuestra Misión
+                    </ScrollFloat>
+                  </h4>
                   <p className="text-gray-600 leading-relaxed">
                     Proporcionar diagnósticos patológicos que marquen la diferencia en la vida 
                     de nuestros pacientes, con precisión, rapidez y el más alto nivel de profesionalismo.
@@ -266,32 +305,42 @@ const Home = () => {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              El Rol Del <span className="text-[#cf1dc9]">Patólogo</span> En Tu Tratamiento
-            </h2>
+            <SplitText
+              text="El Rol Del Patólogo En Tu Tratamiento"
+              className="text-4xl font-bold text-gray-900 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              El patólogo es clave en la detección, diagnóstico de enfermedades, da 
-              el pronto de los resultados y asistente para el cirujano médico en su procedimiento.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+              <TiltedCard
+                key={index}
+                containerHeight="300px"
+                containerWidth="300px"
+                scaleOnHover={1.2}
+                rotateAmplitude={12}
+                showMobileWarning={false}
+                showTooltip={true}
+                displayOverlayContent={true}
+              >
+                <div className="text-center">
                   <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
                     {step.icon}
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-1/2 transform -translate-y-1/2 left-full w-8">
-                    <ChevronRight className="w-6 h-6 text-[#cf1dc9] mx-auto" />
-                  </div>
-                )}
-              </div>
+              </TiltedCard>
             ))}
           </div>
         </div>
@@ -301,24 +350,46 @@ const Home = () => {
       <section id="servicios" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Nosotros Ofrecemos Distintos Tipos De <span className="text-[#cf1dc9]">Procesamientos</span>
-            </h2>
+            <SplitText
+              text="Nosotros Ofrecemos Distintos Tipos De Procesamientos"
+              className="text-4xl font-bold text-gray-900 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Te ofrecemos distintos tipos de servicios para mejorar tu salud.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 group">
-                <div className="text-[#cf1dc9] mb-6 group-hover:scale-110 transition-transform duration-300">
+              <FadeContent key={index} blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+                <TiltedCard
+                  containerHeight="300px"
+                  containerWidth="300px"
+                  scaleOnHover={1.2}
+                  rotateAmplitude={12}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={true}
+                >
+                  <div className="text-center">
+                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
                   {service.icon}
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
               </div>
+                </TiltedCard>
+              </FadeContent>
             ))}
           </div>
         </div>
@@ -328,10 +399,20 @@ const Home = () => {
       <section id="contactanos" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Estamos Siempre Listos Para <span className="text-[#cf1dc9]">Ayudarte</span>.
-              <br />Contáctanos
-            </h2>
+            <SplitText
+              text="Estamos Siempre Listos Para Ayudarte. 
+              Contactanos"
+              className="text-4xl font-bold text-gray-900 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Ponte en contacto con Laboratorios Conspat. Contamos con la mejor 
               precisión y rapidez del mundo patológico.
