@@ -214,36 +214,6 @@ const Ubicanos = () => {
                         </div>
                       </div>
 
-                      {/* Services */}
-                      <div>
-                        <p className="font-semibold text-gray-900 mb-3">Servicios Disponibles</p>
-                        <div className="grid grid-cols-1 gap-2">
-                          {location.services.map((service, serviceIndex) => (
-                            <div key={serviceIndex} className="flex items-center space-x-2">
-                              <div className="w-2 h-2 bg-[#cf1dc9] rounded-full"></div>
-                              <span className="text-gray-600 text-sm">{service}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Features */}
-                      <div>
-                        <p className="font-semibold text-gray-900 mb-3">Características</p>
-                        <div className="space-y-2">
-                          {location.features && location.features.length > 0 ? (
-                            location.features.map((feature, featureIndex) => (
-                              <div key={featureIndex} className="flex items-center space-x-3">
-                                <div className="text-[#cf1dc9]">{feature.icon}</div>
-                                <span className="text-gray-600 text-sm">{feature.text}</span>
-                              </div>
-                            ))
-                          ) : (
-                            <p>No hay características disponibles.</p>
-                          )}
-                        </div>
-                      </div>
-
                       {/* Action Buttons */}
                       <div className="flex flex-col sm:flex-row gap-3 pt-4">
                         <a

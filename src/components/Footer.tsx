@@ -8,13 +8,12 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] text-white py-16">
+    <footer className="bg-[#cf1dc9] text-white py-0 mt-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <Link to="/" className="text-3xl font-bold mb-4 inline-block">
-              <span className="text-white">C</span>
-              <span className="text-white/90">ONSPAT</span>
+              <img src="/logo.png" alt="Logo de Conspat" className="h-16" />
             </Link>
             <p className="text-white/90 mb-6 leading-relaxed">
               Mantente al día con nuestras novedades y eventos especiales. ¡Síguenos!
@@ -47,17 +46,15 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6">Sedes</h3>
             <div className="space-y-4">
               <div>
-                <p className="font-semibold text-white">Policlínica Méndez Gimón</p>
-                <p className="text-white/90 text-sm">Torre Centro Clínica Santana</p>
-                <p className="text-white/90 text-sm">Maracay</p>
+                <p className="font-semibold text-white">Centro Policlínico Caracas</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-12 pt-8 text-center">
+        <div className="border-t border-white/20 mt-0 pt-0 text-left">
           <p className="text-white/90">
-            © Conspat 2024 | Todos los derechos reservados por Conspat.com
+            Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="underline">Solware.agency</a>
           </p>
         </div>
       </div>
