@@ -52,9 +52,9 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/20 mt-0 pt-0 text-center">
+        <div className="border-t border-white/20 mt-0 pt-0 text-left">
           <p className="text-white/90">
-            Desarrollado por Solware.agency
+            Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="underline">Solware.agency</a>
           </p>
         </div>
       </div>

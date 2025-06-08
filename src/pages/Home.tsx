@@ -11,13 +11,15 @@ import {
   CheckCircle,
   Star,
   Award,
-  Heart
+  Heart,
+  Target,
+  Lightbulb,
+  UserCheck
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CountUp from '../components/CountUp';
 import SplitText from '../components/SplitText';
-import ScrollFloat from '../components/ScrollFloat';
 import RotatingText from '../components/RotatingText';
 import TiltedCard from "../components/TiltedCard";
 import FadeContent from '../components/FadeContent';
@@ -102,6 +104,47 @@ const Home = () => {
       icon: <CheckCircle className="w-6 h-6" />,
       title: "Elaboración del informe",
       description: "El patólogo recoge y analiza todos los resultados para emitir un informe final detallado."
+    }
+  ];
+
+  const galleryImages = [
+    {
+      src: "/Whisk_a1c12feb90.jpg",
+      alt: "Laboratorio de patología - Análisis microscópico",
+      title: "Análisis Microscópico"
+    },
+    {
+      src: "/Whisk_3efea70758.jpg",
+      alt: "Equipo de laboratorio especializado",
+      title: "Tecnología Avanzada"
+    },
+    {
+      src: "/Whisk_d6377a6764.jpg",
+      alt: "Profesionales trabajando en laboratorio",
+      title: "Equipo Especializado"
+    },
+    {
+      src: "/Whisk_7c8e7c40cd.jpg",
+      alt: "Instalaciones modernas del laboratorio",
+      title: "Instalaciones Modernas"
+    }
+  ];
+
+  const missionValues = [
+    {
+      icon: <Target className="w-8 h-8" />,
+      title: "Nuestra Misión",
+      description: "Proporcionar diagnósticos patológicos que marquen la diferencia en la vida de nuestros pacientes, con precisión, rapidez y el más alto nivel de profesionalismo."
+    },
+    {
+      icon: <Lightbulb className="w-8 h-8" />,
+      title: "Innovación Constante",
+      description: "Invertimos en la última tecnología y equipos de diagnóstico para ofrecer análisis con la mayor eficiencia y confiabilidad."
+    },
+    {
+      icon: <UserCheck className="w-8 h-8" />,
+      title: "Compromiso Social",
+      description: "Inspirados por el deseo de investigar y ayudar a la comunidad médica, siendo un referente en patología desde 2004."
     }
   ];
 
@@ -299,28 +342,33 @@ const Home = () => {
               </div>
             </div>
 
+            {/* Gallery Section */}
             <div className="relative">
               <div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 rounded-3xl p-8">
-                <div className="bg-white rounded-2xl shadow-xl p-8 text-center">
-                  <div className="bg-[#cf1dc9] w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Heart className="w-12 h-12 text-white" />
-                  </div>
-                  <h4 className="text-5xl font-bold text-gray-900 mb-4">
-                    <ScrollFloat
-                      animationDuration={1}
-                      ease='back.inOut(2)'
-                      scrollStart='center bottom+=50%'
-                      scrollEnd='bottom bottom-=40%'
-                      stagger={0.03}
-                      fontSize="text-5xl"
-                    >
-                      Nuestra Misión
-                    </ScrollFloat>
-                  </h4>
-                  <p className="text-gray-600 leading-relaxed">
-                    Proporcionar diagnósticos patológicos que marquen la diferencia en la vida 
-                    de nuestros pacientes, con precisión, rapidez y el más alto nivel de profesionalismo.
+                <div className="text-center mb-8">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-4">Nuestras Instalaciones</h4>
+                  <p className="text-gray-600">
+                    Tecnología de vanguardia y personal especializado trabajando para tu salud
                   </p>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4">
+                  {galleryImages.map((image, index) => (
+                    <FadeContent key={index} blur={true} duration={800} delay={index * 200}>
+                      <div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                        <img
+                          src={image.src}
+                          alt={image.alt}
+                          className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-2 left-2 right-2">
+                            <p className="text-white text-sm font-semibold">{image.title}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </FadeContent>
+                  ))}
                 </div>
               </div>
             </div>
@@ -328,8 +376,70 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Process Section */}
+      {/* Mission and Values Section */}
       <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <SplitText
+              text="Nuestra Misión y Valores"
+              className="text-4xl font-bold text-gray-900 mb-4"
+              delay={100}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+            />
+            <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la comunidad.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {missionValues.map((item, index) => (
+              <FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
+                <div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full">
+                  <div className="text-center">
+                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                  </div>
+                </div>
+              </FadeContent>
+            ))}
+          </div>
+
+          {/* Core Values Grid */}
+          <div className="mt-16">
+            <div className="text-center mb-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Nuestros Valores Fundamentales</h3>
+              <p className="text-gray-600">Los pilares que sostienen nuestro compromiso con la excelencia</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              {values.map((value, index) => (
+                <FadeContent key={index} duration={800} delay={index * 100}>
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#cf1dc9]">
+                    <div className="flex items-center space-x-3">
+                      <CheckCircle className="w-6 h-6 text-[#cf1dc9] flex-shrink-0" />
+                      <span className="text-gray-800 font-medium">{value}</span>
+                    </div>
+                  </div>
+                </FadeContent>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <SplitText
@@ -375,7 +485,7 @@ const Home = () => {
       </section>
 
       {/* Services Section */}
-      <section id="servicios" className="py-20 bg-white">
+      <section id="servicios" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <SplitText
