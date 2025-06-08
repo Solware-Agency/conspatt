@@ -83,14 +83,11 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
 
   return (
-    <div>
-      <h4>Título de nivel 4</h4>
-      <h2 ref={containerRef} className={`scroll-float ${containerClassName}`}>
-        <span className={`scroll-float-text ${textClassName}`}>
-          {splitText}
-        </span>
-      </h2>
-    </div>
+    <h2 ref={containerRef} className={`scroll-float ${containerClassName}`}>
+      <span className={`scroll-float-text ${textClassName}`}>
+        {splitText}
+      </span>
+    </h2>
   );
 };
 
