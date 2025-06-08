@@ -21,6 +21,7 @@ import ScrollFloat from '../components/ScrollFloat';
 import RotatingText from '../components/RotatingText';
 import TiltedCard from "../components/TiltedCard";
 import FadeContent from '../components/FadeContent';
+import BlurText from '../components/BlurText';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -117,7 +118,7 @@ const Home = () => {
                 <span className="text-gray-900">Tu </span>
                 <RotatingText
                   texts={['salud', 'vida']}
-                  mainClassName="inline-flex items-center justify-center w-40 h-16 bg-cyan-300 text-black overflow-hidden rounded-lg"
+                  mainClassName="inline-flex items-center justify-center w-40 h-16 bg-[#cf1dc9] text-white overflow-hidden rounded-lg"
                   staggerFrom={"last"}
                   initial={{ y: "100%", opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -134,10 +135,10 @@ const Home = () => {
                 inspirados por el deseo de investigar y ayudar a la comunidad médica desde 2004.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-[#cf1dc9] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg">
+                <button className="bg-[#cf1dc9] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg" onClick={() => window.scrollTo({ top: document.getElementById('servicios').offsetTop, behavior: 'smooth' })}>
                   Conocer Servicios
                 </button>
-                <button className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-8 py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300">
+                <button className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-8 py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300" onClick={() => window.scrollTo({ top: document.getElementById('contactanos').offsetTop, behavior: 'smooth' })}>
                   Contactar Ahora
                 </button>
               </div>
@@ -247,20 +248,46 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Expertos en resultados patológicos
+                <BlurText
+                  text="Expertos en resultados patológicos"
+                  delay={150}
+                  animateBy="words"
+                  direction="top"
+                  animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
+                  animationTo={[
+                    { filter: 'blur(5px)', opacity: 0.5, y: 5 },
+                    { filter: 'blur(0px)', opacity: 1, y: 0 },
+                  ]}
+                  onAnimationComplete={() => console.log('Animation completed!')}
+                  className="text-2xl mb-8"
+                />
               </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                En Laboratorios Conspat, nos enorgullece ser un referente en patología en Caracas, Venezuela. 
-                Desde nuestra fundación en octubre de 2004, hemos estado dedicados a brindar diagnósticos 
-                precisos y oportunos, inspirados por el deseo de investigar y ayudar a la comunidad. 
-                Nuestra misión es proporcionar diagnósticos que marquen la diferencia en la vida de nuestros pacientes.
-              </p>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama 
-                de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada 
-                nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y 
-                confiables que son esenciales para la atención médica de nuestros pacientes.
-              </p>
+              <BlurText
+                text="En Laboratorios Conspat, nos enorgullece ser un referente en patología en Caracas, Venezuela. Desde nuestra fundación en octubre de 2004, hemos estado dedicados a brindar diagnósticos precisos y oportunos, inspirados por el deseo de investigar y ayudar a la comunidad. Nuestra misión es proporcionar diagnósticos que marquen la diferencia en la vida de nuestros pacientes."
+                delay={150}
+                animateBy="words"
+                direction="top"
+                animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
+                animationTo={[
+                  { filter: 'blur(5px)', opacity: 0.5, y: 5 },
+                  { filter: 'blur(0px)', opacity: 1, y: 0 },
+                ]}
+                onAnimationComplete={() => console.log('Animation completed!')}
+                className="text-gray-600 mb-6 leading-relaxed"
+              />
+              <BlurText
+                text="Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y confiables que son esenciales para la atención médica de nuestros pacientes."
+                delay={150}
+                animateBy="words"
+                direction="top"
+                animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
+                animationTo={[
+                  { filter: 'blur(5px)', opacity: 0.5, y: 5 },
+                  { filter: 'blur(0px)', opacity: 1, y: 0 },
+                ]}
+                onAnimationComplete={() => console.log('Animation completed!')}
+                className="text-gray-600 mb-8 leading-relaxed"
+              />
               
               <div className="grid grid-cols-2 gap-4">
                 {values.map((value, index) => (
@@ -323,24 +350,25 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <TiltedCard
-                key={index}
-                containerHeight="300px"
-                containerWidth="300px"
-                scaleOnHover={1.2}
-                rotateAmplitude={12}
-                showMobileWarning={false}
-                showTooltip={true}
-                displayOverlayContent={true}
-              >
-                <div className="text-center">
-                  <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
-                    {step.icon}
+              <div key={index} className="flex justify-center">
+                <TiltedCard
+                  containerHeight="300px"
+                  containerWidth="300px"
+                  scaleOnHover={1.2}
+                  rotateAmplitude={12}
+                  showMobileWarning={false}
+                  showTooltip={true}
+                  displayOverlayContent={true}
+                >
+                  <div className="bg-white rounded-2xl p-6 h-full flex flex-col justify-center text-center">
+                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+                      {step.icon}
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{step.description}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{step.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{step.description}</p>
-                </div>
-              </TiltedCard>
+                </TiltedCard>
+              </div>
             ))}
           </div>
         </div>
@@ -369,26 +397,20 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {services.map((service, index) => (
               <FadeContent key={index} blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-                <TiltedCard
-                  containerHeight="300px"
-                  containerWidth="300px"
-                  scaleOnHover={1.2}
-                  rotateAmplitude={12}
-                  showMobileWarning={false}
-                  showTooltip={true}
-                  displayOverlayContent={true}
-                >
-                  <div className="text-center">
-                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
-                  {service.icon}
+                <div className="w-full h-full">
+                  <div className="bg-white rounded-2xl p-6 h-80 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                    <div>
+                      <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </div>
-                </TiltedCard>
               </FadeContent>
             ))}
           </div>
