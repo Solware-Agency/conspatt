@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Clock, Mail, Navigation, Building2, Users, Car } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
@@ -98,7 +99,7 @@ const Ubicanos = () => {
         "Estudios intraoperatorios",
         "Protocolos oncológicos"
       ],
-      mapUrl: "https://maps.app.goo.gl/Qb2vjShttps://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31385.18895641457!2d-66.89271776117104!3d10.48894813616448!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5901c141bdd5%3A0x3d019a7b8e4f3ab6!2sCl%C3%ADnica%20Sanatrix!5e0!3m2!1ses-419!2sve!4v1749248552338!5m2!1ses-419!2sveaxy9YjMpP26",
+      mapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.0873288305843!2d-66.86244902496217!3d10.493781889638344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a5901c141bdd5%3A0x3d019a7b8e4f3ab6!2sCl%C3%ADnica%20Sanatrix!5e0!3m2!1ses-419!2sve!4v1749538992363!5m2!1ses-419!2sve",
       features: [
         { icon: <Car className="w-5 h-5" />, text: "Estacionamiento disponible" },
         { icon: <Users className="w-5 h-5" />, text: "Personal especializado" },
@@ -156,17 +157,17 @@ const Ubicanos = () => {
               <div key={location.id} className={`grid lg:grid-cols-2 gap-12 items-start ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Location Info */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                  <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-                    <div className="flex items-center mb-6">
-                      <div className="bg-[#cf1dc9] p-3 rounded-xl mr-4">
+                  <div className="bg-white rounded-3xl shadow-xl p-4 border border-gray-100 h-80">
+                    <div className="flex items-center mb-4">
+                      <div className="bg-[#cf1dc9] p-2 rounded-xl mr-4">
                         <MapPin className="w-6 h-6 text-white" />
                       </div>
                       <h2 className="text-2xl font-bold text-gray-900">{location.name}</h2>
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-4">
                       {/* Address */}
-                      <div className="flex items-start space-x-4">
+                      <div className="flex items-start space-x-2">
                         <Navigation className="w-5 h-5 text-[#cf1dc9] mt-1 flex-shrink-0" />
                         <div>
                           <p className="font-semibold text-gray-900">Dirección</p>
@@ -175,15 +176,15 @@ const Ubicanos = () => {
                       </div>
 
                       {/* Contact */}
-                      <div className="grid md:grid-cols-2 gap-4">
-                        <div className="flex items-center space-x-3">
+                      <div className="grid md:grid-cols-2 gap-2">
+                        <div className="flex items-center space-x-2">
                           <Phone className="w-5 h-5 text-[#cf1dc9]" />
                           <div>
                             <p className="font-semibold text-gray-900 text-sm">Teléfono</p>
                             <p className="text-gray-600 text-sm">{location.phone}</p>
                           </div>
                         </div>
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-2">
                           <Mail className="w-5 h-5 text-[#cf1dc9]" />
                           <div>
                             <p className="font-semibold text-gray-900 text-sm">Email</p>
@@ -192,42 +193,20 @@ const Ubicanos = () => {
                         </div>
                       </div>
 
-                      {/* Hours */}
-                      <div className="flex items-start space-x-4">
-                        <Clock className="w-5 h-5 text-[#cf1dc9] mt-1 flex-shrink-0" />
-                        <div>
-                          <p className="font-semibold text-gray-900 mb-2">Horarios de Atención</p>
-                          <div className="space-y-1 text-sm">
-                            <div className="flex justify-between">
-                              <span className="text-gray-600">Lunes a Viernes:</span>
-                              <span className="font-medium text-gray-900">{location.hours.weekdays}</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="text-gray-600">Sábados:</span>
-                              <span className="font-medium text-gray-900">{location.hours.saturday}</span>
-                            </div>
-                            <div className="flex justify-between">
-                              <span className="text-gray-600">Domingos:</span>
-                              <span className="font-medium text-gray-900">{location.hours.sunday}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
                       {/* Action Buttons */}
-                      <div className="flex flex-col sm:flex-row gap-3 pt-4">
+                      <div className="flex flex-col sm:flex-row gap-2 pt-2">
                         <a
                           href={`https://wa.me/58${location.whatsapp.replace(/^0/, '')}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 bg-[#26d466] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#1abf5a] transition-all duration-300 text-center"
+                          className="flex-1 bg-[#26d466] text-white px-4 py-2 rounded-xl font-semibold hover:bg-[#1abf5a] transition-all duration-300 text-center"
                         >
-                          WhatsApp
+                          <FaWhatsapp className="inline-block w-5 h-5 mr-2" /> WhatsApp
                         </a>
                       
                         <a
                           href={`tel:+58${location.phone.replace(/^0/, '')}`}
-                          className="flex-1 border-2 border-[#cf1dc9] text-[#cf1dc9] px-6 py-3 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300 text-center"
+                          className="flex-1 border-2 border-[#cf1dc9] text-[#cf1dc9] px-4 py-2 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300 text-center"
                         >
                           Llamar Ahora
                         </a>
@@ -238,8 +217,8 @@ const Ubicanos = () => {
 
                 {/* Map */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100">
-                    <div className="h-96 relative">
+                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 h-80">
+                    <div className="h-full relative">
                       <iframe
                         src={location.mapUrl}
                         width="100%"

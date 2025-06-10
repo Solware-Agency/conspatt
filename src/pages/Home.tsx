@@ -14,7 +14,12 @@ import {
   Heart,
   Target,
   Lightbulb,
-  UserCheck
+  UserCheck,
+  Play,
+  Scissors,
+  Eye,
+  Syringe,
+  User
 } from 'lucide-react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -24,6 +29,7 @@ import RotatingText from '../components/RotatingText';
 import TiltedCard from "../components/TiltedCard";
 import FadeContent from '../components/FadeContent';
 import BlurText from '../components/BlurText';
+import SpotlightCard from '../components/SpotlightCard';
 
 const Home = () => {
   const [formData, setFormData] = useState({
@@ -44,39 +50,39 @@ const Home = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    // Here you would typically send the data to your backend
+    // Aquí normalmente enviarías los datos a tu backend
   };
 
   const services = [
     {
-      icon: <Microscope className="w-8 h-8" />,
+      icon: <Scissors className="w-8 h-8" />,
       title: "Biopsias",
-      description: "Análisis microscópico exhaustivo para obtener muestras que ofrecen diagnósticos precisos como estudios intraoperatorios, biopsias convencionales, entre otros."
+      description: "Análisis microscópico para diagnósticos precisos."
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Eye className="w-8 h-8" />,
       title: "Citologías",
-      description: "Análisis citológico para detectar infecciones, inflamaciones y presencia de células. Cito-aspirar para evaluar la naturaleza de nódulos en diversas partes."
+      description: "Detección de infecciones y células anormales."
+    },
+    {
+      icon: <Syringe className="w-8 h-8" />,
+      title: "Punciones",
+      description: "Procedimientos de punción especializados."
+    },
+    {
+      icon: <Microscope className="w-8 h-8" />,
+      title: "Inmunohistoquímica",
+      description: "Detección histológica e inmunológica."
+    },
+    {
+      icon: <User className="w-8 h-8" />,
+      title: "Cono de Cuello Uterino",
+      description: "Biopsias ginecológicas precisas."
     },
     {
       icon: <Heart className="w-8 h-8" />,
-      title: "Punciones",
-      description: "Procedimientos especializados de punción de tiroides o tórax, lista cuando se trata de realizar una dicha lista."
-    },
-    {
-      icon: <Award className="w-8 h-8" />,
-      title: "Inmunohistoquímica",
-      description: "Técnica de laboratorio que utiliza una herramienta esencial que permite detectar histológico e inmunológico."
-    },
-    {
-      icon: <CheckCircle className="w-8 h-8" />,
-      title: "Cono de Cuello Uterino",
-      description: "Procedimiento ginecológico específico para biopsias complejas del cuello uterino con precisión y cuidado."
-    },
-    {
-      icon: <Star className="w-8 h-8" />,
       title: "Protocolos Oncológicos",
-      description: "Diagnósticos especializados para tratamientos personalizados entre pacientes oncológicos con ología clínica."
+      description: "Diagnósticos para tratamientos personalizados."
     }
   ];
 
@@ -91,19 +97,19 @@ const Home = () => {
 
   const processSteps = [
     {
-      icon: <Microscope className="w-6 h-6" />,
+      icon: <Microscope className="w-6 h-6" />, // Tamaño ajustado
       title: "Preparación de la muestra",
-      description: "La muestra del tejido se prepara para su análisis, mediante fijación, inclusión en parafina, corte y tinción."
+      description: "Preparación del tejido para análisis."
     },
     {
       icon: <Shield className="w-6 h-6" />,
       title: "Análisis patológico", 
-      description: "El patólogo examina la muestra bajo el microscopio, realiza análisis microscópicos y macroscópicos."
+      description: "Examen microscópico de la muestra."
     },
     {
       icon: <CheckCircle className="w-6 h-6" />,
       title: "Elaboración del informe",
-      description: "El patólogo recoge y analiza todos los resultados para emitir un informe final detallado."
+      description: "Análisis de resultados y emisión de informe."
     }
   ];
 
@@ -160,7 +166,7 @@ const Home = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                 <span className="text-gray-900">Tu </span>
                 <RotatingText
-                  texts={['salud', 'vida']}
+                  texts={['salud', 'vida', 'bien']}
                   mainClassName="inline-flex items-center justify-center w-40 h-16 bg-[#cf1dc9] text-white overflow-hidden rounded-lg"
                   staggerFrom={"last"}
                   initial={{ y: "100%", opacity: 0 }}
@@ -178,27 +184,35 @@ const Home = () => {
                 inspirados por el deseo de investigar y ayudar a la comunidad médica desde 2004.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-[#cf1dc9] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg" onClick={() => window.scrollTo({ top: document.getElementById('servicios').offsetTop, behavior: 'smooth' })}>
+                <button className="bg-[#cf1dc9] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg" onClick={() => {
+                  const section = document.getElementById('servicios');
+                  if (section) {
+                    window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+                  }
+                }}>
                   Conocer Servicios
                 </button>
-                <button className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-8 py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300" onClick={() => window.scrollTo({ top: document.getElementById('contactanos').offsetTop, behavior: 'smooth' })}>
+                <button className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-8 py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300" onClick={() => {
+                  const section = document.getElementById('contactanos');
+                  if (section) {
+                    window.scrollTo({ top: section.offsetTop, behavior: 'smooth' });
+                  }
+                }}>
                   Contactar Ahora
                 </button>
               </div>
             </div>
             <div className="relative">
-              <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] rounded-3xl p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                <div className="bg-white rounded-2xl p-6 -rotate-3">
-                  <div className="text-center">
-                    <div className="bg-[#cf1dc9] w-20 h-20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Microscope className="w-10 h-10 text-white" />
-                    </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">Resultados Rápidos y Precisos</h3>
-                    <p className="text-gray-600">
-                      En Conspat, priorizamos la urgencia de tus diagnósticos patológicos para brindarte los mejores resultados.
-                    </p>
-                  </div>
-                </div>
+              <div className="bg-white rounded-3xl p-8 transition-transform transform hover:scale-105 hover:shadow-2xl" style={{ width: '400px', height: 'auto' }}>
+                <a href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA==" target="_blank" rel="noopener noreferrer">
+                  <img
+                    src="/consig.png"
+                    alt="Perfil de Instagram"
+                    className="w-full h-auto object-contain rounded"
+                  />
+                </a>
+                <h3 className="text-lg font-bold text-center mt-4 text-black">Conoce Nuestros Laboratorios</h3>
+                <a href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA==" target="_blank" rel="noopener noreferrer" className="block text-left mt-2 text-[#c221c2] font-semibold">Ver en Instagram</a>
               </div>
             </div>
           </div>
@@ -470,7 +484,7 @@ const Home = () => {
                   showTooltip={true}
                   displayOverlayContent={true}
                 >
-                  <div className="bg-white rounded-2xl p-6 h-full flex flex-col justify-center text-center">
+                  <div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-center text-center">
                     <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
                       {step.icon}
                     </div>
@@ -511,7 +525,7 @@ const Home = () => {
             {services.map((service, index) => (
               <FadeContent key={index} blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div className="w-full h-full">
-                  <div className="bg-white rounded-2xl p-6 h-80 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
                     <div>
                       <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
                         {service.icon}
@@ -528,7 +542,7 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contactanos" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section id="contactanos" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <SplitText
@@ -553,7 +567,10 @@ const Home = () => {
 
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
-            <div className="bg-white rounded-3xl shadow-xl p-8">
+            <SpotlightCard 
+              className="spotlight-contact-form" 
+              spotlightColor="rgba(207, 29, 201, 0.15)"
+            >
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -643,11 +660,14 @@ const Home = () => {
                   Enviar
                 </button>
               </form>
-            </div>
+            </SpotlightCard>
 
             {/* Contact Info */}
             <div className="space-y-8">
-              <div className="bg-white rounded-3xl shadow-xl p-8">
+              <SpotlightCard 
+                className="spotlight-contact-info" 
+                spotlightColor="rgba(207, 29, 201, 0.15)"
+              >
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Información de Contacto</h3>
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
@@ -678,9 +698,12 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </SpotlightCard>
 
-              <div className="bg-white rounded-3xl shadow-xl p-8">
+              <SpotlightCard 
+                className="spotlight-hours" 
+                spotlightColor="rgba(207, 29, 201, 0.15)"
+              >
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">Horarios de Atención</h3>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
@@ -695,7 +718,7 @@ const Home = () => {
                     (Los horarios pueden variar dependiendo de la sede)
                   </p>
                 </div>
-              </div>
+              </SpotlightCard>
             </div>
           </div>
         </div>
