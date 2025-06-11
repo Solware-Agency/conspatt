@@ -1,11 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { MessageCircle, Instagram, Mail } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
+  const location = useLocation();
+  const isOnUbicanosPage = location.pathname === '/ubicanos';
+  const [activeQuestion, setActiveQuestion] = useState<number | null>(null);
+
   const scrollToSection = (sectionId: string) => {
-    window.location.href = `/#${sectionId}`;
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const toggleQuestion = (index: number) => {
+    setActiveQuestion(activeQuestion === index ? null : index);
   };
 
   return (
@@ -34,14 +45,32 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4">Acceso Rápido</h3>
-            <ul className="space-y-2">
-              <li><button onClick={() => scrollToSection('inicio')} className="text-white/90 hover:text-white transition-colors">Inicio</button></li>
-              <li><button onClick={() => scrollToSection('nosotros')} className="text-white/90 hover:text-white transition-colors">Nosotros</button></li>
-              <li><button onClick={() => scrollToSection('servicios')} className="text-white/90 hover:text-white transition-colors">Servicios</button></li>
-              <li><Link to="/ubicanos" className="text-white/90 hover:text-white transition-colors">Ubícanos</Link></li>
-              <li><button onClick={() => scrollToSection('contactanos')} className="text-white/90 hover:text-white transition-colors">Contáctanos</button></li>
-            </ul>
+            <h3 className="text-xl font-bold mb-4">Preguntas Frecuentes</h3>
+            <div className="faq">
+              <div onClick={() => toggleQuestion(1)} className="cursor-pointer">
+                <h4 className="text-md font-semibold">¿Tiempo de espera para los resultados?</h4>
+              </div>
+              {activeQuestion === 1 && (
+                <p className="text-sm">
+                  
+                  <ul className="list-disc list-inside">
+                    <li>Citologías: 3-5 días hábiles.</li>
+                    <li>Biopsias: 5-7 días hábiles.</li>
+                    <li>Biopsias óseas: 7-10 días hábiles.</li>
+                    <li>Inmunohistoquímica: 12-15 días hábiles.</li>
+                  </ul>
+                </p>
+              )}
+
+              <div onClick={() => toggleQuestion(2)} className="cursor-pointer">
+                <h4 className="text-md font-semibold">¿Cual es el costo de los exámenes?</h4>
+              </div>
+              {activeQuestion === 2 && (
+                <p className="text-sm">
+                  Los costos varían según el tipo de estudio. contactanos directamente con los datos del paciente y la orden médica para proporcionar costos exactos.
+                </p>
+              )}
+            </div>
           </div>
 
           <div>
@@ -69,11 +98,6 @@ const Footer = () => {
         <div className="mt-2 pt-0 text-left">
           <p className="text-white/90 font-bold">
             Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="hover:underline">Solware.agency</a>
-          </p>
-        </div>
-        <div className="mt-0 pt-0 text-left">
-          <p className="text-white/90">
-            {/* Aquí puedes agregar cualquier otro texto que desees */}
           </p>
         </div>
       </div>

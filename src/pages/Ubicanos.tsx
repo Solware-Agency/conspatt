@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import { MapPin, Phone, Clock, Mail, Navigation, Building2, Users, Car } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Header from '../components/Header';
@@ -131,7 +131,7 @@ const Ubicanos = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header activeSection="ubicanos" />
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-50 to-gray-100 py-20">
