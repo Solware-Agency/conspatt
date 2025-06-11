@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Microscope, 
   Shield, 
@@ -39,6 +39,8 @@ const Home = () => {
     howDidYouKnow: '',
     message: ''
   });
+
+  const [activeSection, setActiveSection] = useState('inicio');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -154,9 +156,26 @@ const Home = () => {
     }
   ];
 
+  const handleScroll = () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top >= 0 && rect.top < window.innerHeight) {
+        setActiveSection(section.id);
+      }
+    });
+  };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header activeSection={activeSection} />
 
       {/* Hero Section */}
       <section id="inicio" className="relative bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden py-20">
@@ -202,7 +221,7 @@ const Home = () => {
                 </button>
               </div>
             </div>
-            <div className="relative">
+            <div className="relative flex justify-center">
               <div className="bg-white rounded-3xl p-8 transition-transform transform hover:scale-105 hover:shadow-2xl" style={{ width: '400px', height: 'auto' }}>
                 <a href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA==" target="_blank" rel="noopener noreferrer">
                   <img
@@ -305,19 +324,8 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                <BlurText
-                  text="Expertos en resultados patológicos"
-                  delay={150}
-                  animateBy="words"
-                  direction="top"
-                  animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
-                  animationTo={[
-                    { filter: 'blur(5px)', opacity: 0.5, y: 5 },
-                    { filter: 'blur(0px)', opacity: 1, y: 0 },
-                  ]}
-                  onAnimationComplete={() => console.log('Animation completed!')}
-                  className="text-2xl mb-8"
-                />
+                {/* Aquí puedes dejar el título o eliminarlo si no es necesario */}
+                Expertos en resultados patológicos
               </h3>
               <BlurText
                 text="En Laboratorios Conspat, nos enorgullece ser un referente en patología en Caracas, Venezuela. Desde nuestra fundación en octubre de 2004, hemos estado dedicados a brindar diagnósticos precisos y oportunos, inspirados por el deseo de investigar y ayudar a la comunidad. Nuestra misión es proporcionar diagnósticos que marquen la diferencia en la vida de nuestros pacientes."
@@ -345,15 +353,6 @@ const Home = () => {
                 onAnimationComplete={() => console.log('Animation completed!')}
                 className="text-gray-600 mb-8 leading-relaxed"
               />
-              
-              <div className="grid grid-cols-2 gap-4">
-                {values.map((value, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <CheckCircle className="w-5 h-5 text-[#cf1dc9] flex-shrink-0" />
-                    <span className="text-gray-700 text-sm">{value}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Gallery Section */}
@@ -523,16 +522,14 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {services.map((service, index) => (
-              <FadeContent key={index} blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-                <div className="w-full h-full">
-                  <div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <div>
-                      <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
-                        {service.icon}
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+              <FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
+                <div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+                  <div>
+                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+                      {service.icon}
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
+                    <h3 className="text-xl font-bold text-gray-900 mb-5">{service.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm mb-4">{service.description}</p>
                   </div>
                 </div>
               </FadeContent>
