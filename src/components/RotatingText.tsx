@@ -62,15 +62,15 @@ const RotatingText = forwardRef<unknown, RotatingTextProps>((props, ref) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   const splitIntoCharacters = (text: string) => {
-    if (typeof Intl !== "undefined" && Intl.Segmenter) {
-      const segmenter = new Intl.Segmenter("en", { granularity: "grapheme" });
-      return Array.from(segmenter.segment(text), (segment) => segment.segment);
+    if (typeof Intl !== "undefined" && "Segmenter" in Intl) {
+      const segmenter = new (Intl as any).Segmenter("en", { granularity: "grapheme" });
+      return Array.from(segmenter.segment(text), (segment: any) => segment.segment);
     }
     return Array.from(text);
   };
 
   const elements = useMemo(() => {
-    const currentText = texts[currentTextIndex];
+    const currentText = texts[currentTextIndex] || "";
     if (splitBy === "characters") {
       const words = currentText.split(" ");
       return words.map((word, i) => ({

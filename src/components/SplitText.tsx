@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText as GSAPSplitText } from "gsap/SplitText";
@@ -36,10 +36,13 @@ const SplitText: React.FC<SplitTextProps> = ({
   onLetterAnimationComplete,
 }) => {
   const ref = useRef<HTMLParagraphElement | null>(null);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const timelineRef = useRef<gsap.core.Timeline | null>(null);
+  const splitterRef = useRef<GSAPSplitText | null>(null);
 
   useEffect(() => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || hasAnimated) return;
 
     const absoluteLines = splitType === "lines";
     if (absoluteLines) el.style.position = "relative";
@@ -49,6 +52,8 @@ const SplitText: React.FC<SplitTextProps> = ({
       absolute: absoluteLines,
       linesClass: "split-line",
     });
+
+    splitterRef.current = splitter;
 
     let targets;
     switch (splitType) {
@@ -69,23 +74,32 @@ const SplitText: React.FC<SplitTextProps> = ({
       (t as HTMLElement).style.willChange = "transform, opacity";
     });
 
-    const startPct = (1 - threshold) * 100; // e.g. 0.1 -> 90%
+    const startPct = (1 - threshold) * 100;
     const m = /^(-?\d+)px$/.exec(rootMargin);
     const raw = m ? parseInt(m[1], 10) : 0;
     const sign = raw < 0 ? `-=${Math.abs(raw)}px` : `+=${raw}px`;
     const start = `top ${startPct}%${sign}`;
 
-    // 5) Timeline with smoothChildTiming
+    // Timeline con ScrollTrigger
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: el,
         start,
         toggleActions: "play none none none",
-        once: true,
+        once: true, // Esto asegura que solo se ejecute una vez
+        onEnter: () => {
+          setHasAnimated(true); // Marcar como animado cuando entra
+        }
       },
       smoothChildTiming: true,
-      onComplete: onLetterAnimationComplete,
+      onComplete: () => {
+        if (onLetterAnimationComplete) {
+          onLetterAnimationComplete();
+        }
+      },
     });
+
+    timelineRef.current = tl;
 
     tl.set(targets, { ...from, immediateRender: false, force3D: true });
     tl.to(targets, {
@@ -97,23 +111,33 @@ const SplitText: React.FC<SplitTextProps> = ({
     });
 
     return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      // Cleanup mejorado
+      if (timelineRef.current) {
+        timelineRef.current.kill();
+        timelineRef.current = null;
+      }
+      
+      if (splitterRef.current) {
+        splitterRef.current.revert();
+        splitterRef.current = null;
+      }
+      
+      // Limpiar solo los ScrollTriggers relacionados con este elemento
+      ScrollTrigger.getAll().forEach((trigger) => {
+        if (trigger.trigger === el) {
+          trigger.kill();
+        }
+      });
+      
       gsap.killTweensOf(targets);
-      splitter.revert();
     };
-  }, [
-    text,
-    delay,
-    duration,
-    ease,
-    splitType,
-    from,
-    to,
-    threshold,
-    rootMargin,
-    onLetterAnimationComplete,
-  ]);
+  }, [text]); // Solo depende del texto, no de todas las otras props
+
+  // Efecto separado para manejar cambios en otras props (si es necesario)
+  useEffect(() => {
+    // Si ya se animó y cambian otras props, no hacer nada
+    if (hasAnimated) return;
+  }, [delay, duration, ease, splitType, from, to, threshold, rootMargin, onLetterAnimationComplete]);
 
   return (
     <p

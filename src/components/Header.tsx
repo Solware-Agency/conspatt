@@ -33,36 +33,36 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           </Link>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             {isOnUbicanosPage ? (
               <>
                 <Link 
                   to="/" 
-                  className={`transition-colors ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Inicio
                 </Link>
                 <Link 
                   to="/#nosotros" 
-                  className={`transition-colors ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Nosotros
                 </Link>
                 <Link 
                   to="/#servicios" 
-                  className={`transition-colors ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Servicios
                 </Link>
                 <Link 
                   to="/ubicanos" 
-                  className={`transition-colors ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
                 </Link>
                 <Link 
                   to="/#contactanos" 
-                  className={`transition-colors ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Contáctanos
                 </Link>
@@ -71,31 +71,31 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <>
                 <button 
                   onClick={() => scrollToSection('inicio')}
-                  className={`transition-colors ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Inicio
                 </button>
                 <button 
                   onClick={() => scrollToSection('nosotros')}
-                  className={`transition-colors ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Nosotros
                 </button>
                 <button 
                   onClick={() => scrollToSection('servicios')}
-                  className={`transition-colors ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Servicios
                 </button>
                 <Link 
                   to="/ubicanos"
-                  className={`transition-colors ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
                 </Link>
                 <button 
                   onClick={() => scrollToSection('contactanos')}
-                  className={`transition-colors ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Contáctanos
                 </button>
