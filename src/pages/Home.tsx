@@ -605,35 +605,35 @@ const Home = () => {
 							{/* Imágenes del carrusel */}
 							<div className="overflow-hidden rounded-lg shadow-lg">
 								<img
-									src="/public/client1.png"
+									src="/client1.png"
 									alt="Cliente 1"
 									className="w-full h-16 object-contain transition-transform duration-500"
 								/>
 							</div>
 							<div className="overflow-hidden rounded-lg shadow-lg">
 								<img
-									src="/public/client2.png"
+									src="/client2.png"
 									alt="Cliente 2"
 									className="w-full h-16 object-contain transition-transform duration-500"
 								/>
 							</div>
 							<div className="overflow-hidden rounded-lg shadow-lg">
 								<img
-									src="/public/client3.png"
+									src="/client3.png"
 									alt="Cliente 3"
 									className="w-full h-16 object-contain transition-transform duration-500"
 								/>
 							</div>
 							<div className="overflow-hidden rounded-lg shadow-lg">
 								<img
-									src="/public/client4.png"
+									src="/client4.png"
 									alt="Cliente 4"
 									className="w-full h-16 object-contain transition-transform duration-500"
 								/>
 							</div>
 							<div className="overflow-hidden rounded-lg shadow-lg">
 								<img
-									src="/public/client5.png"
+									src="/client5.png"
 									alt="Cliente 5"
 									className="w-full h-16 object-contain transition-transform duration-500"
 								/>
