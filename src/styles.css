@@ -1,0 +1,26 @@
+@keyframes heartbeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.heartbeat-background {
+  position: relative;
+  overflow: hidden;
+}
+
+.heartbeat-background::before {
+  content: none;
+}
+
+@keyframes vital-signs {
+  /* Eliminar la animación */
+}
+
+.logo-carousel {
+  position: relative;
+  z-index: 1;
+} 

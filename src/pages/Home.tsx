@@ -34,6 +34,8 @@ import SpotlightCard from '../components/SpotlightCard'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText as GsapSplitText } from 'gsap/SplitText'
+import HoverEffect from '../components/ui/card-hover-effect'
+import '../styles.css'
 
 // Asegúrate de registrar ScrollTrigger
 gsap.registerPlugin(ScrollTrigger)
@@ -108,8 +110,8 @@ const Home = () => {
 
 	const values = [
 		'Personal altamente calificado',
-		'Compromiso social',
-		'Innovación',
+		'Atención Personalizada',
+		'Tecnología Avanzada',
 		'Trabajo en equipo',
 		'Pasión por la salud',
 		'Confidencialidad',
@@ -252,12 +254,23 @@ const Home = () => {
 	}, [hasAnimated]) // Dependencia del estado hasAnimated
 
 	const images = [
-		'/public/client1.png',
-		'/public/client2.png',
-		'/public/client3.png',
-		'/public/client4.png',
-		'/public/client5.png',
+		'/client1.png',
+		'/client2.png',
+		'/client3.png',
+		'/client4.png',
+		'/client5.png',
 	]
+
+	const handleLogoClick = (direction: 'left' | 'right') => {
+		const container = document.querySelector('.logo-carousel .flex');
+		const currentX = gsap.getProperty(container, 'x') as number;
+		const offset = direction === 'left' ? -100 : 100;
+		gsap.to(container, {
+			x: currentX + offset,
+			duration: 0.5,
+			ease: 'power1.inOut',
+		});
+	};
 
 	return (
 		<div className="min-h-screen bg-white">
@@ -599,44 +612,19 @@ const Home = () => {
 					</div>
 				</section>
 				{/* Gallery Section */}
-				<section className="py-20 bg-[#cf1dc9]">
+				<section className="py-20 bg-[#cf1dc9] heartbeat-background">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="grid grid-cols-5 gap-4">
-							{/* Imágenes del carrusel */}
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								<img
-									src="/client1.png"
-									alt="Cliente 1"
-									className="w-full h-16 object-contain transition-transform duration-500"
-								/>
-							</div>
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								<img
-									src="/client2.png"
-									alt="Cliente 2"
-									className="w-full h-16 object-contain transition-transform duration-500"
-								/>
-							</div>
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								<img
-									src="/client3.png"
-									alt="Cliente 3"
-									className="w-full h-16 object-contain transition-transform duration-500"
-								/>
-							</div>
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								<img
-									src="/client4.png"
-									alt="Cliente 4"
-									className="w-full h-16 object-contain transition-transform duration-500"
-								/>
-							</div>
-							<div className="overflow-hidden rounded-lg shadow-lg">
-								<img
-									src="/client5.png"
-									alt="Cliente 5"
-									className="w-full h-16 object-contain transition-transform duration-500"
-								/>
+						<div className="overflow-hidden relative logo-carousel">
+							<div className="flex gap-12 justify-center">
+								{images.map((src, index) => (
+									<div key={`logo-${index}`} className="overflow-hidden rounded-lg shadow-lg logo-item transition-transform duration-300 hover:scale-110">
+										<img
+											src={src}
+											alt={`Cliente ${index + 1}`}
+											className="w-full h-20 object-contain"
+										/>
+									</div>
+								))}
 							</div>
 						</div>
 					</div>
@@ -669,15 +657,17 @@ const Home = () => {
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 						{services.map((service, index) => (
 							<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
-								<div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-									<div>
-										<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
-											{service.icon}
+								<HoverEffect>
+									<div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
+										<div>
+											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+												{service.icon}
+											</div>
+											<h3 className="text-xl font-bold text-gray-900 mb-5 pb-2">{service.title}</h3>
+											<p className="text-gray-600 leading-relaxed text-sm mb-4">{service.description}</p>
 										</div>
-										<h3 className="text-xl font-bold text-gray-900 mb-5 pb-2">{service.title}</h3>
-										<p className="text-gray-600 leading-relaxed text-sm mb-4">{service.description}</p>
 									</div>
-								</div>
+								</HoverEffect>
 							</FadeContent>
 						))}
 					</div>
