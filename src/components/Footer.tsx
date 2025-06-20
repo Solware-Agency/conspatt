@@ -20,8 +20,8 @@ const Footer = () => {
 
           {/* Iconos centrados */}
           <div className="flex flex-col items-center">
-            <h3 className="text-xl font-bold mb-3 text-center">Conéctate con nosotros</h3>
-            <div className="flex space-x-4">
+            <h3 className="text-xl font-bold mb-5 text-center">Conéctate con nosotros</h3>
+            <div className="flex space-x-6">
               <a href="https://wa.me/584242082491" target="_blank" rel="noopener noreferrer" className="bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-colors transform hover:scale-105 hover:shadow-lg">
                 <FaWhatsapp className="w-6 h-6 text-white" />
               </a>
