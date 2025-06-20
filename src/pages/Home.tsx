@@ -34,7 +34,7 @@ import SpotlightCard from '../components/SpotlightCard'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText as GsapSplitText } from 'gsap/SplitText'
-import HoverEffect from '../components/ui/card-hover-effect'
+import { HoverEffect } from '../components/ui/card-hover-effect'
 import '../styles.css'
 
 // Asegúrate de registrar ScrollTrigger
@@ -271,6 +271,27 @@ const Home = () => {
 			ease: 'power1.inOut',
 		});
 	};
+
+	useEffect(() => {
+		// Animación del carrusel con efecto de vaivén (ida y vuelta)
+		const carousel = document.querySelector('.carousel-container');
+		if (carousel) {
+			// Configuramos la posición inicial
+			gsap.set(carousel, { x: 0 });
+			
+			// Crear timeline con yoyo (ida y vuelta)
+			const tl = gsap.timeline({ 
+				repeat: -1, 
+				yoyo: true,
+				repeatDelay: 0.5 // Pequeña pausa en cada extremo
+			});
+			tl.to(carousel, {
+				x: '-50%', // Movemos hacia la izquierda
+				duration: 25, // Duración más larga para movimiento más suave
+				ease: 'sine.inOut' // Easing más suave
+			});
+		}
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-white">
@@ -615,13 +636,44 @@ const Home = () => {
 				<section className="py-20 bg-[#cf1dc9] heartbeat-background">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="overflow-hidden relative logo-carousel">
-							<div className="flex gap-12 justify-center">
+							<div className="flex gap-12 carousel-container">
+								{/* Primera serie de imágenes */}
 								{images.map((src, index) => (
-									<div key={`logo-${index}`} className="overflow-hidden rounded-lg shadow-lg logo-item transition-transform duration-300 hover:scale-110">
+									<div key={`logo-1-${index}`} className="flex-shrink-0 overflow-hidden rounded-lg shadow-lg logo-item">
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-full h-20 object-contain"
+											className="w-24 h-20 object-contain"
+										/>
+									</div>
+								))}
+								{/* Segunda serie de imágenes duplicadas */}
+								{images.map((src, index) => (
+									<div key={`logo-2-${index}`} className="flex-shrink-0 overflow-hidden rounded-lg shadow-lg logo-item">
+										<img
+											src={src}
+											alt={`Cliente ${index + 1}`}
+											className="w-24 h-20 object-contain"
+										/>
+									</div>
+								))}
+								{/* Tercera serie de imágenes duplicadas */}
+								{images.map((src, index) => (
+									<div key={`logo-3-${index}`} className="flex-shrink-0 overflow-hidden rounded-lg shadow-lg logo-item">
+										<img
+											src={src}
+											alt={`Cliente ${index + 1}`}
+											className="w-24 h-20 object-contain"
+										/>
+									</div>
+								))}
+								{/* Cuarta serie de imágenes duplicadas */}
+								{images.map((src, index) => (
+									<div key={`logo-4-${index}`} className="flex-shrink-0 overflow-hidden rounded-lg shadow-lg logo-item">
+										<img
+											src={src}
+											alt={`Cliente ${index + 1}`}
+											className="w-24 h-20 object-contain"
 										/>
 									</div>
 								))}
@@ -657,17 +709,18 @@ const Home = () => {
 					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
 						{services.map((service, index) => (
 							<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
-								<HoverEffect>
-									<div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-between text-center shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-										<div>
-											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+								<div className="relative group p-2">
+									<div className="absolute -inset-2 bg-[#cf1dc9]/15 rounded-2xl shadow-3xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
+									<div className="bg-white rounded-2xl p-6 h-72 w-full flex flex-col justify-between text-center shadow-3xl hover:shadow-3xl border border-gray-100 transition-all duration-300 hover:scale-[1.02] relative z-10">
+										<div className="flex flex-col items-center justify-center flex-1">
+											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mb-4 flex items-center justify-center text-white">
 												{service.icon}
 											</div>
-											<h3 className="text-xl font-bold text-gray-900 mb-5 pb-2">{service.title}</h3>
-											<p className="text-gray-600 leading-relaxed text-sm mb-4">{service.description}</p>
+											<h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
+											<p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
 										</div>
 									</div>
-								</HoverEffect>
+								</div>
 							</FadeContent>
 						))}
 					</div>
