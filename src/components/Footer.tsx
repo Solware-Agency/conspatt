@@ -14,12 +14,13 @@ const Footer = () => {
               <img src="/logo blanco.png" alt="Logo de Conspat" className="h-14" />
             </Link>
             <p className="text-white/90 mb-3 leading-relaxed">
-              Mantente al día con nuestras novedades y eventos especiales. ¡Síguenos!
+              Mantente informado sobre nuestras últimas novedades en diagnósticos y eventos especializados. ¡Síguenos!
             </p>
           </div>
 
           {/* Iconos centrados */}
-          <div className="flex justify-center items-center h-full">
+          <div className="flex flex-col items-center">
+            <h3 className="text-xl font-bold mb-3 text-center">Conéctate con nosotros</h3>
             <div className="flex space-x-4">
               <a href="https://wa.me/584242082491" target="_blank" rel="noopener noreferrer" className="bg-white/20 p-3 rounded-xl hover:bg-white/30 transition-colors transform hover:scale-105 hover:shadow-lg">
                 <FaWhatsapp className="w-6 h-6 text-white" />
