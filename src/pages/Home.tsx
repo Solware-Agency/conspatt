@@ -318,7 +318,7 @@ const Home = () => {
 								/>
 								<span className="text-gray-900"> es nuestra prioridad</span>
 							</h1>
-							<p className="text-xl text-gray-600 mb-8 leading-relaxed">
+							<p className="text-xl text-gray-600 mb-8 leading-relaxed text-justify">
 								En Conspat, proporcionamos diagnósticos patológicos precisos y oportunos, inspirados por el deseo de
 								investigar y ayudar a la comunidad médica desde 2004.
 							</p>
@@ -452,14 +452,14 @@ const Home = () => {
 							textAlign="center"
 						/>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Conoce más de nuestra historia y equipo técnico especializado.
 						</p>
 					</div>
 
 					<div className="grid lg:grid-cols-2 gap-16 items-center">
 						<div>
-							<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2">
+							<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2 text-center">
 								{/* Aquí puedes dejar el título o eliminarlo si no es necesario */}
 								Expertos en resultados patológicos
 							</h3>
@@ -474,7 +474,7 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => console.log('Animation completed!')}
-								className="text-gray-600 mb-6 leading-relaxed"
+								className="text-gray-600 mb-6 leading-relaxed text-justify"
 							/>
 							<BlurText
 								text="Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y confiables que son esenciales para la atención médica de nuestros pacientes."
@@ -487,7 +487,7 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => console.log('Animation completed!')}
-								className="text-gray-600 mb-8 leading-relaxed"
+								className="text-gray-600 mb-8 leading-relaxed text-justify"
 							/>
 						</div>
 
@@ -495,8 +495,8 @@ const Home = () => {
 						<div className="relative">
 							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 rounded-3xl p-8">
 								<div className="text-center mb-8">
-									<h4 className="text-2xl font-bold text-gray-900 mb-4 pb-2">Nuestras Instalaciones</h4>
-									<p className="text-gray-600">
+									<h4 className="text-2xl font-bold text-gray-900 mb-4 pb-2 text-center">Nuestras Instalaciones</h4>
+									<p className="text-gray-600 text-center">
 										Tecnología de vanguardia y personal especializado trabajando para tu salud
 									</p>
 								</div>
@@ -542,10 +542,10 @@ const Home = () => {
 								textAlign="center"
 							/>
 							<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-							<p className="text-xl text-gray-600 max-w-3xl mx-auto">
-								Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
-								comunidad.
-							</p>
+													<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
+							Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
+							comunidad.
+						</p>
 						</div>
 
 						<div className="grid md:grid-cols-3 gap-8">
@@ -567,8 +567,8 @@ const Home = () => {
 						{/* Core Values Grid */}
 						<div className="mt-16">
 							<div className="text-center mb-12">
-								<h3 className="text-2xl font-bold text-gray-900 mb-4 pb-2">Nuestros Valores Fundamentales</h3>
-								<p className="text-gray-600">Los pilares que sostienen nuestro compromiso con la excelencia</p>
+								<h3 className="text-2xl font-bold text-gray-900 mb-4 pb-2 text-center">Nuestros Valores Fundamentales</h3>
+								<p className="text-gray-600 text-center">Los pilares que sostienen nuestro compromiso con la excelencia</p>
 							</div>
 
 							<div className="grid grid-cols-2 md:grid-cols-3 gap-6">
@@ -701,7 +701,7 @@ const Home = () => {
 							textAlign="center"
 						/>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Te ofrecemos distintos tipos de servicios para mejorar tu salud.
 						</p>
 					</div>
@@ -745,7 +745,8 @@ const Home = () => {
 							rootMargin="-100px"
 							textAlign="center"
 						/>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto">
+						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
+						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Ponte en contacto con Laboratorios Conspat. Contamos con la mejor precisión y rapidez del mundo
 							patológico.
 						</p>
