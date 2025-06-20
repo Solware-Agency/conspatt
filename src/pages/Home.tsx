@@ -633,7 +633,7 @@ const Home = () => {
 					</div>
 				</section>
 				{/* Gallery Section */}
-				<section className="py-20 bg-[#cf1dc9] heartbeat-background">
+				<section className="py-12 bg-[#cf1dc9] heartbeat-background">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="overflow-hidden relative logo-carousel">
 							<div className="flex gap-12 carousel-container">
@@ -643,7 +643,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-24 h-20 object-contain"
+											className="w-32 h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -653,7 +653,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-24 h-20 object-contain"
+											className="w-32 h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -663,7 +663,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-24 h-20 object-contain"
+											className="w-32 h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -673,7 +673,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-24 h-20 object-contain"
+											className="w-32 h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -684,7 +684,7 @@ const Home = () => {
 			</section>
 
 			{/* Services Section */}
-			<section id="servicios" className="py-20 bg-gray-50">
+			<section id="servicios" className="py-12 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-16">
 						<SplitText
