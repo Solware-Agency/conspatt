@@ -29,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="Logo" className="w-24 h-auto" />
+            <img src="/logo.png" alt="Logo" className="w-20 sm:w-24 h-auto" />
           </Link>
           
           {/* Desktop Navigation */}
@@ -106,7 +106,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -114,36 +114,37 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t">
-            <nav className="flex flex-col space-y-2">
+          <div className="md:hidden py-4 border-t border-gray-200">
+            <nav className="flex flex-col space-y-1">
               <Link 
                 to="/" 
-                className="py-2 text-left text-gray-700 hover:text-[#cf1dc9] transition-colors"
+                className="py-3 px-4 text-left text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50 transition-colors rounded-lg"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Inicio
               </Link>
               <button 
                 onClick={() => scrollToSection('nosotros')}
-                className="py-2 text-left text-gray-700 hover:text-[#cf1dc9] transition-colors"
+                className="py-3 px-4 text-left text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50 transition-colors rounded-lg"
               >
                 Nosotros
               </button>
               <button 
                 onClick={() => scrollToSection('servicios')}
-                className="py-2 text-left text-gray-700 hover:text-[#cf1dc9] transition-colors"
+                className="py-3 px-4 text-left text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50 transition-colors rounded-lg"
               >
                 Servicios
               </button>
               <Link 
                 to="/ubicanos"
-                className={`py-2 transition-colors ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                className={`py-3 px-4 transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
                 onClick={() => setIsMenuOpen(false)}
               >
                 Ubícanos
               </Link>
               <button 
                 onClick={() => scrollToSection('contactanos')}
-                className="py-2 text-left text-gray-700 hover:text-[#cf1dc9] transition-colors"
+                className="py-3 px-4 text-left text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50 transition-colors rounded-lg"
               >
                 Contáctanos
               </button>

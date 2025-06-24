@@ -15,10 +15,10 @@ import "./RotatingText.css"; // Asegúrate de tener este archivo CSS
 // Define la interfaz para las propiedades
 interface RotatingTextProps {
   texts: string[];
-  transition?: { type: string; damping: number; stiffness: number };
-  initial?: { y: string; opacity: number };
-  animate?: { y: number; opacity: number };
-  exit?: { y: string; opacity: number };
+  transition?: { type: "spring"; damping: number; stiffness: number };
+  initial?: { y: string | number; opacity: number };
+  animate?: { y: string | number; opacity: number };
+  exit?: { y: string | number; opacity: number };
   animatePresenceMode?: "wait" | "sync";
   animatePresenceInitial?: boolean;
   rotationInterval?: number;
