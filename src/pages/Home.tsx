@@ -67,8 +67,8 @@ const Home = () => {
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
-		console.log('Form submitted:', formData)
 		// Aquí normalmente enviarías los datos a tu backend
+		// Puedes agregar lógica para enviar el formulario
 	}
 
 	const toggleQuestion = (index: number) => {
@@ -227,31 +227,44 @@ const Home = () => {
 
 	useEffect(() => {
 		// Configuración de ScrollTrigger
-		const trigger = ScrollTrigger.create({
-			trigger: '.hero-section', // Cambia esto por la clase o ID del elemento que deseas animar
-			start: 'top top',
-			end: 'bottom top',
-			onEnter: () => console.log('Entró en la vista'),
-			onLeave: () => console.log('Salió de la vista'),
-		})
+		const timer = setTimeout(() => {
+			const heroElement = document.querySelector('.hero-section');
+			if (heroElement) {
+				const trigger = ScrollTrigger.create({
+					trigger: '.hero-section',
+					start: 'top top',
+					end: 'bottom top',
+					onEnter: () => {}, // Entrada en la vista
+					onLeave: () => {}, // Salida de la vista
+				})
 
-		// Limpieza al desmontar el componente
-		return () => {
-			trigger.kill()
-		}
-	}, []) // El array vacío asegura que esto se ejecute solo una vez al montar
+				// Limpieza al desmontar el componente
+				return () => {
+					trigger.kill()
+				}
+			}
+		}, 100);
+
+		return () => clearTimeout(timer);
+	}, [])
 
 	useEffect(() => {
 		if (!hasAnimated) {
-			const split = new GsapSplitText('.split-text', { type: 'chars' }) // Cambia ".split-text" por la clase de tu texto
-			gsap.from(split.chars, {
-				opacity: 0,
-				y: 50,
-				stagger: 0.1,
-				onComplete: () => setHasAnimated(true), // Marca la animación como completada
-			})
+			const splitElements = document.querySelectorAll('.split-text')
+			if (splitElements.length > 0) {
+				const split = new GsapSplitText('.split-text', { type: 'chars' })
+				gsap.from(split.chars, {
+					opacity: 0,
+					y: 50,
+					stagger: 0.1,
+					onComplete: () => setHasAnimated(true),
+				})
+			} else {
+				// Si no hay elementos .split-text, marca como animado para evitar bucles
+				setHasAnimated(true)
+			}
 		}
-	}, [hasAnimated]) // Dependencia del estado hasAnimated
+	}, [hasAnimated])
 
 	const images = [
 		'/client1.png',
@@ -263,34 +276,40 @@ const Home = () => {
 
 	const handleLogoClick = (direction: 'left' | 'right') => {
 		const container = document.querySelector('.logo-carousel .flex');
-		const currentX = gsap.getProperty(container, 'x') as number;
-		const offset = direction === 'left' ? -100 : 100;
-		gsap.to(container, {
-			x: currentX + offset,
-			duration: 0.5,
-			ease: 'power1.inOut',
-		});
+		if (container) {
+			const currentX = gsap.getProperty(container, 'x') as number;
+			const offset = direction === 'left' ? -100 : 100;
+			gsap.to(container, {
+				x: currentX + offset,
+				duration: 0.5,
+				ease: 'power1.inOut',
+			});
+		}
 	};
 
 	useEffect(() => {
 		// Animación del carrusel con efecto de vaivén (ida y vuelta)
-		const carousel = document.querySelector('.carousel-container');
-		if (carousel) {
-			// Configuramos la posición inicial
-			gsap.set(carousel, { x: 0 });
-			
-			// Crear timeline con yoyo (ida y vuelta)
-			const tl = gsap.timeline({ 
-				repeat: -1, 
-				yoyo: true,
-				repeatDelay: 0.5 // Pequeña pausa en cada extremo
-			});
-			tl.to(carousel, {
-				x: '-50%', // Movemos hacia la izquierda
-				duration: 25, // Duración más larga para movimiento más suave
-				ease: 'sine.inOut' // Easing más suave
-			});
-		}
+		const timer = setTimeout(() => {
+			const carousel = document.querySelector('.carousel-container');
+			if (carousel) {
+				// Configuramos la posición inicial
+				gsap.set(carousel, { x: 0 });
+				
+				// Crear timeline con yoyo (ida y vuelta)
+				const tl = gsap.timeline({ 
+					repeat: -1, 
+					yoyo: true,
+					repeatDelay: 0.5 // Pequeña pausa en cada extremo
+				});
+				tl.to(carousel, {
+					x: '-50%', // Movemos hacia la izquierda
+					duration: 25, // Duración más larga para movimiento más suave
+					ease: 'sine.inOut' // Easing más suave
+				});
+			}
+		}, 100); // Pequeño delay para asegurar que el DOM esté listo
+
+		return () => clearTimeout(timer);
 	}, []);
 
 	return (
@@ -298,33 +317,33 @@ const Home = () => {
 			<Header activeSection={activeSection} />
 
 			{/* Hero Section */}
-			<section id="inicio" className="hero-section relative bg-white overflow-hidden py-20">
+			<section id="inicio" className="hero-section relative bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="grid lg:grid-cols-2 gap-12 items-center">
-						<div>
-							<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+					<div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+						<div className="text-center lg:text-left">
+							<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
 								<span className="text-gray-900">Tu </span>
 								<RotatingText
 									texts={['salud', 'vida', 'bien']}
-									mainClassName="inline-flex items-center justify-center w-40 h-16 bg-[#cf1dc9] text-white overflow-hidden rounded-lg"
+									mainClassName="inline-flex items-center justify-center w-32 sm:w-36 md:w-40 lg:w-44 h-12 sm:h-14 md:h-16 lg:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
 									staggerFrom={'last'}
-									initial={{ y: '100%', opacity: 0 }}
+									initial={{ y: 0, opacity: 1 }}
 									animate={{ y: 0, opacity: 1 }}
-									exit={{ y: '-120%', opacity: 0 }}
-									staggerDuration={0.025}
+									exit={{ y: 0, opacity: 0 }}
+									staggerDuration={0.05}
 									splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-									transition={{ type: 'spring', damping: 30, stiffness: 400 }}
-									rotationInterval={3000}
+									transition={{ type: 'spring', damping: 15, stiffness: 200 }}
+									rotationInterval={5000}
 								/>
 								<span className="text-gray-900"> es nuestra prioridad</span>
 							</h1>
-							<p className="text-xl text-gray-600 mb-8 leading-relaxed text-justify">
+							<p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed text-center lg:text-justify">
 								En Conspat, proporcionamos diagnósticos patológicos precisos y oportunos, inspirados por el deseo de
 								investigar y ayudar a la comunidad médica desde 2004.
 							</p>
-							<div className="flex flex-col sm:flex-row gap-4">
+							<div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
 								<button
-									className="bg-[#cf1dc9] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg"
+									className="bg-[#cf1dc9] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-[#ae29ba] transition-all duration-300 transform hover:scale-105 shadow-lg text-sm sm:text-base"
 									onClick={() => {
 										const section = document.getElementById('servicios')
 										if (section) {
@@ -335,7 +354,7 @@ const Home = () => {
 									Conocer Servicios
 								</button>
 								<button
-									className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-8 py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300"
+									className="border-2 border-[#cf1dc9] text-[#cf1dc9] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-[#cf1dc9] hover:text-white transition-all duration-300 text-sm sm:text-base"
 									onClick={() => {
 										const section = document.getElementById('contactanos')
 										if (section) {
@@ -347,11 +366,8 @@ const Home = () => {
 								</button>
 							</div>
 						</div>
-						<div className="relative flex justify-center">
-							<div
-								className="bg-white rounded-3xl p-8 transition-transform transform hover:scale-105 hover:shadow-2xl"
-								style={{ width: '400px', height: 'auto' }}
-							>
+						<div className="relative flex justify-center mt-8 lg:mt-0">
+							<div className="bg-white rounded-3xl p-4 sm:p-6 lg:p-8 transition-transform transform hover:scale-105 hover:shadow-2xl w-full max-w-sm lg:max-w-md">
 								<a
 									href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA=="
 									target="_blank"
@@ -359,12 +375,12 @@ const Home = () => {
 								>
 									<img src="/consig.png" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
 								</a>
-								<h3 className="text-lg font-bold text-center mt-4 text-black">Conoce Nuestros Laboratorios</h3>
+								<h3 className="text-base sm:text-lg font-bold text-center mt-4 text-black">Conoce Nuestros Laboratorios</h3>
 								<a
 									href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA=="
 									target="_blank"
 									rel="noopener noreferrer"
-									className="block text-left mt-2 text-[#c221c2] font-semibold"
+									className="block text-center lg:text-left mt-2 text-[#c221c2] font-semibold text-sm sm:text-base"
 								>
 									Ver en Instagram
 								</a>
@@ -374,9 +390,9 @@ const Home = () => {
 				</div>
 
 				{/* Stats Section */}
-				<div className="mt-20 bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] py-16">
+				<div className="mt-12 sm:mt-16 lg:mt-20 bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] py-12 sm:py-16">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+						<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center text-white">
 							<div className="transform hover:scale-105 transition-transform duration-300">
 								<CountUp
 									from={0}
@@ -384,11 +400,11 @@ const Home = () => {
 									separator=","
 									direction="up"
 									duration={1}
-									className="text-4xl font-bold mb-2"
-									onStart={() => console.log('CountUp started')}
-									onEnd={() => console.log('CountUp ended')}
+									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+									onStart={() => {}}
+									onEnd={() => {}}
 								/>
-								<div className="text-white/90">Clínicas trabajadas</div>
+								<div className="text-white/90 text-sm sm:text-base">Clínicas trabajadas</div>
 							</div>
 							<div className="transform hover:scale-105 transition-transform duration-300">
 								<CountUp
@@ -397,11 +413,11 @@ const Home = () => {
 									separator=","
 									direction="up"
 									duration={1}
-									className="text-4xl font-bold mb-2"
-									onStart={() => console.log('CountUp started')}
-									onEnd={() => console.log('CountUp ended')}
+									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+									onStart={() => {}}
+									onEnd={() => {}}
 								/>
-								<div className="text-white/90">Doctores satisfechos</div>
+								<div className="text-white/90 text-sm sm:text-base">Doctores satisfechos</div>
 							</div>
 							<div className="transform hover:scale-105 transition-transform duration-300">
 								<CountUp
@@ -410,11 +426,11 @@ const Home = () => {
 									separator=","
 									direction="up"
 									duration={1}
-									className="text-4xl font-bold mb-2"
-									onStart={() => console.log('CountUp started')}
-									onEnd={() => console.log('CountUp ended')}
+									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+									onStart={() => {}}
+									onEnd={() => {}}
 								/>
-								<div className="text-white/90">Clientes atendidos</div>
+								<div className="text-white/90 text-sm sm:text-base">Clientes atendidos</div>
 							</div>
 							<div className="transform hover:scale-105 transition-transform duration-300">
 								<CountUp
@@ -423,11 +439,11 @@ const Home = () => {
 									separator=","
 									direction="up"
 									duration={1}
-									className="text-4xl font-bold mb-2"
-									onStart={() => console.log('CountUp started')}
-									onEnd={() => console.log('CountUp ended')}
+									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
+									onStart={() => {}}
+									onEnd={() => {}}
 								/>
-								<div className="text-white/90">Años de experiencia</div>
+								<div className="text-white/90 text-sm sm:text-base">Años de experiencia</div>
 							</div>
 						</div>
 					</div>
@@ -435,12 +451,12 @@ const Home = () => {
 			</section>
 
 			{/* About Section */}
-			<section id="nosotros" className="py-20 bg-white">
+			<section id="nosotros" className="py-12 sm:py-16 lg:py-20 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center mb-16">
+					<div className="text-center mb-12 sm:mb-16">
 						<SplitText
 							text="Somos Laboratorio Conspat"
-							className="text-4xl font-bold text-gray-900 mb-4 pb-2"
+							className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2"
 							delay={100}
 							duration={0.6}
 							ease="power3.out"
@@ -452,15 +468,14 @@ const Home = () => {
 							textAlign="center"
 						/>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Conoce más de nuestra historia y equipo técnico especializado.
 						</p>
 					</div>
 
-					<div className="grid lg:grid-cols-2 gap-16 items-center">
+					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 						<div>
-							<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2 text-center">
-								{/* Aquí puedes dejar el título o eliminarlo si no es necesario */}
+							<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 pb-2 text-center lg:text-left">
 								Expertos en resultados patológicos
 							</h3>
 							<BlurText
@@ -473,7 +488,7 @@ const Home = () => {
 									{ filter: 'blur(5px)', opacity: 0.5, y: 5 },
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
-								onAnimationComplete={() => console.log('Animation completed!')}
+								onAnimationComplete={() => {}}
 								className="text-gray-600 mb-6 leading-relaxed text-justify"
 							/>
 							<BlurText
@@ -486,33 +501,33 @@ const Home = () => {
 									{ filter: 'blur(5px)', opacity: 0.5, y: 5 },
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
-								onAnimationComplete={() => console.log('Animation completed!')}
+								onAnimationComplete={() => {}}
 								className="text-gray-600 mb-8 leading-relaxed text-justify"
 							/>
 						</div>
 
 						{/* Gallery Section */}
-						<div className="relative">
-							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 rounded-3xl p-8">
-								<div className="text-center mb-8">
-									<h4 className="text-2xl font-bold text-gray-900 mb-4 pb-2 text-center">Nuestras Instalaciones</h4>
-									<p className="text-gray-600 text-center">
+						<div className="relative mt-8 lg:mt-0">
+							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 rounded-3xl p-6 sm:p-8">
+								<div className="text-center mb-6 sm:mb-8">
+									<h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 pb-2">Nuestras Instalaciones</h4>
+									<p className="text-gray-600 text-sm sm:text-base">
 										Tecnología de vanguardia y personal especializado trabajando para tu salud
 									</p>
 								</div>
 
-								<div className="grid grid-cols-2 gap-4">
+								<div className="grid grid-cols-2 gap-3 sm:gap-4">
 									{galleryImages.map((image, index) => (
 										<FadeContent key={index} blur={true} duration={800} delay={index * 200}>
 											<div className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
 												<img
 													src={image.src}
 													alt={image.alt}
-													className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+													className="w-full h-24 sm:h-32 object-cover transition-transform duration-500 group-hover:scale-110"
 												/>
 												<div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
 													<div className="absolute bottom-2 left-2 right-2">
-														<p className="text-white text-sm font-semibold">{image.title}</p>
+														<p className="text-white text-xs sm:text-sm font-semibold">{image.title}</p>
 													</div>
 												</div>
 											</div>
@@ -525,12 +540,12 @@ const Home = () => {
 				</div>
 
 				{/* Mission and Values Section */}
-				<section className="py-20 bg-gray-50">
+				<section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="text-center mb-16">
+						<div className="text-center mb-12 sm:mb-16">
 							<SplitText
 								text="Nuestra Misión y Valores"
-								className="text-4xl font-bold text-gray-900 mb-4 pb-2"
+								className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -542,22 +557,22 @@ const Home = () => {
 								textAlign="center"
 							/>
 							<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-													<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
-							Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
-							comunidad.
-						</p>
+							<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
+								Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
+								comunidad.
+							</p>
 						</div>
 
-						<div className="grid md:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{missionValues.map((item, index) => (
 								<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
-									<div className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full">
+									<div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full">
 										<div className="text-center">
-											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
 												{item.icon}
 											</div>
-											<h3 className="text-xl font-bold text-gray-900 mb-4 pb-2">{item.title}</h3>
-											<p className="text-gray-600 leading-relaxed">{item.description}</p>
+											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">{item.title}</h3>
+											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.description}</p>
 										</div>
 									</div>
 								</FadeContent>
@@ -565,19 +580,19 @@ const Home = () => {
 						</div>
 
 						{/* Core Values Grid */}
-						<div className="mt-16">
-							<div className="text-center mb-12">
-								<h3 className="text-2xl font-bold text-gray-900 mb-4 pb-2 text-center">Nuestros Valores Fundamentales</h3>
-								<p className="text-gray-600 text-center">Los pilares que sostienen nuestro compromiso con la excelencia</p>
+						<div className="mt-12 sm:mt-16">
+							<div className="text-center mb-8 sm:mb-12">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">Nuestros Valores Fundamentales</h3>
+								<p className="text-gray-600 text-sm sm:text-base">Los pilares que sostienen nuestro compromiso con la excelencia</p>
 							</div>
 
-							<div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 								{values.map((value, index) => (
 									<FadeContent key={index} duration={800} delay={index * 100}>
-										<div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#cf1dc9]">
+										<div className="bg-white rounded-xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#cf1dc9]">
 											<div className="flex items-center space-x-3">
-												<CheckCircle className="w-6 h-6 text-[#cf1dc9] flex-shrink-0" />
-												<span className="text-gray-800 font-medium">{value}</span>
+												<CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#cf1dc9] flex-shrink-0" />
+												<span className="text-gray-800 font-medium text-sm sm:text-base">{value}</span>
 											</div>
 										</div>
 									</FadeContent>
@@ -607,24 +622,24 @@ const Home = () => {
 							<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
 						</div>
 
-						<div className="grid md:grid-cols-3 gap-8">
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{processSteps.map((step: any, index: number) => (
 								<div key={index} className="flex justify-center">
 									<TiltedCard
-										containerHeight="300px"
-										containerWidth="300px"
-										scaleOnHover={1.2}
-										rotateAmplitude={12}
+										containerHeight="280px"
+										containerWidth="100%"
+										scaleOnHover={1.1}
+										rotateAmplitude={10}
 										showMobileWarning={false}
 										showTooltip={false}
 										displayOverlayContent={true}
 									>
-										<div className="bg-white rounded-2xl p-6 h-60 flex flex-col justify-center text-center">
-											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mx-auto mb-6 flex items-center justify-center text-white">
+										<div className="bg-white rounded-2xl p-4 sm:p-6 h-64 sm:h-60 flex flex-col justify-center text-center max-w-xs mx-auto">
+											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
 												{step.icon}
 											</div>
-											<h3 className="text-xl font-bold text-gray-900 mb-4 pb-2">{step.title}</h3>
-											<p className="text-gray-600 leading-relaxed">{step.description}</p>
+											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">{step.title}</h3>
+											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{step.description}</p>
 										</div>
 									</TiltedCard>
 								</div>
@@ -684,40 +699,30 @@ const Home = () => {
 			</section>
 
 			{/* Services Section */}
-			<section id="servicios" className="py-12 bg-white">
+			<section id="servicios" className="py-12 sm:py-16 lg:py-20 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center mb-16">
-						<SplitText
-							text="Nosotros Ofrecemos Distintos Tipos De Procesamientos"
-							className="text-4xl font-bold text-gray-900 mb-4 pb-2"
-							delay={100}
-							duration={0.6}
-							ease="power3.out"
-							splitType="chars"
-							from={{ opacity: 0, y: 40 }}
-							to={{ opacity: 1, y: 0 }}
-							threshold={0.1}
-							rootMargin="-100px"
-							textAlign="center"
-						/>
+					<div className="text-center mb-12 sm:mb-16">
+						<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-4">
+							Nosotros Ofrecemos Distintos Tipos De Procesamientos
+						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Te ofrecemos distintos tipos de servicios para mejorar tu salud.
 						</p>
 					</div>
 
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+					<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
 						{services.map((service, index) => (
 							<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
 								<div className="relative group p-2">
 									<div className="absolute -inset-2 bg-[#cf1dc9]/15 rounded-2xl shadow-3xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-									<div className="bg-white rounded-2xl p-6 h-72 w-full flex flex-col justify-between text-center shadow-3xl hover:shadow-3xl border border-gray-100 transition-all duration-300 hover:scale-[1.02] relative z-10">
+									<div className="bg-white rounded-2xl p-4 sm:p-6 h-64 sm:h-72 w-full flex flex-col justify-between text-center shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:scale-[1.02] relative z-10">
 										<div className="flex flex-col items-center justify-center flex-1">
-											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-16 h-16 rounded-full mb-4 flex items-center justify-center text-white">
+											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 sm:mb-4 flex items-center justify-center text-white">
 												{service.icon}
 											</div>
-											<h3 className="text-xl font-bold text-gray-900 mb-3">{service.title}</h3>
-											<p className="text-gray-600 leading-relaxed text-sm">{service.description}</p>
+											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{service.title}</h3>
+											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{service.description}</p>
 										</div>
 									</div>
 								</div>
@@ -728,31 +733,21 @@ const Home = () => {
 			</section>
 
 			{/* Contact Section */}
-			<section id="contactanos" className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
+			<section id="contactanos" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center mb-16">
-						<SplitText
-							text="Estamos Siempre Listos Para Ayudarte. 
-              Contactanos"
-							className="text-4xl font-bold text-gray-900 mb-4 pb-2"
-							delay={100}
-							duration={0.6}
-							ease="power3.out"
-							splitType="chars"
-							from={{ opacity: 0, y: 40 }}
-							to={{ opacity: 1, y: 0 }}
-							threshold={0.1}
-							rootMargin="-100px"
-							textAlign="center"
-						/>
+					<div className="text-center mb-12 sm:mb-16">
+						<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-4">
+							Estamos Siempre Listos Para Ayudarte.<br className="sm:hidden" />
+							<span className="block sm:inline"> Contáctanos</span>
+						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
 							Ponte en contacto con Laboratorios Conspat. Contamos con la mejor precisión y rapidez del mundo
 							patológico.
 						</p>
 					</div>
 
-					<div className="grid lg:grid-cols-2 gap-16">
+					<div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
 						{/* Contact Form */}
 						<div style={{ height: 'auto', maxHeight: '800px', overflowY: 'auto' }}>
 							<SpotlightCard

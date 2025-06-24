@@ -15,12 +15,22 @@
   text-align: center;
   font-size: 0.875rem;
   display: none;
+  color: #666;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 @media (max-width: 640px) {
-  .tilted-card-mobile-alert {
-    display: block;
+  .tilted-card-figure {
+    perspective: 600px;
   }
+  
+  .tilted-card-inner {
+    transform: none !important;
+  }
+  
   .tilted-card-caption {
     display: none;
   }
