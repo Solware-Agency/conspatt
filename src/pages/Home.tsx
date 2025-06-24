@@ -545,7 +545,7 @@ const Home = () => {
 						<div className="text-center mb-12 sm:mb-16">
 							<SplitText
 								text="Nuestra Misión y Valores"
-								className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2"
+								className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight px-2"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -557,7 +557,7 @@ const Home = () => {
 								textAlign="center"
 							/>
 							<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-							<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
+							<p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto text-center px-4">
 								Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
 								comunidad.
 							</p>
@@ -566,8 +566,8 @@ const Home = () => {
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{missionValues.map((item, index) => (
 								<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
-									<div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full">
-										<div className="text-center">
+									<div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full min-h-[300px] flex flex-col justify-between">
+										<div className="text-center flex-grow flex flex-col justify-center">
 											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
 												{item.icon}
 											</div>
@@ -608,7 +608,7 @@ const Home = () => {
 						<div className="text-center mb-16">
 							<SplitText
 								text="El Rol Del Patólogo En Tu Tratamiento"
-								className="text-4xl font-bold text-gray-900 mb-4 pb-2"
+								className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2 px-4"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -624,22 +624,24 @@ const Home = () => {
 
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{processSteps.map((step: any, index: number) => (
-								<div key={index} className="flex justify-center">
+								<div key={index} className="flex justify-center h-[320px]">
 									<TiltedCard
-										containerHeight="280px"
-										containerWidth="100%"
+										containerHeight="320px"
+										containerWidth="280px"
 										scaleOnHover={1.1}
 										rotateAmplitude={10}
 										showMobileWarning={false}
 										showTooltip={false}
 										displayOverlayContent={true}
 									>
-										<div className="bg-white rounded-2xl p-4 sm:p-6 h-64 sm:h-60 flex flex-col justify-center text-center max-w-xs mx-auto">
-											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
-												{step.icon}
+										<div className="bg-white rounded-2xl p-4 sm:p-6 h-[300px] w-[260px] flex flex-col justify-between text-center mx-auto">
+											<div className="flex flex-col items-center justify-center flex-grow">
+												<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white">
+													{step.icon}
+												</div>
+												<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 px-2 leading-tight">{step.title}</h3>
+												<p className="text-gray-600 leading-relaxed text-sm sm:text-base px-2 text-center">{step.description}</p>
 											</div>
-											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">{step.title}</h3>
-											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{step.description}</p>
 										</div>
 									</TiltedCard>
 								</div>
@@ -747,15 +749,15 @@ const Home = () => {
 						</p>
 					</div>
 
-					<div className="grid lg:grid-cols-2 gap-8 lg:gap-16">
+					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16">
 						{/* Contact Form */}
-						<div style={{ height: 'auto', maxHeight: '800px', overflowY: 'auto' }}>
+						<div className="w-full">
 							<SpotlightCard
-								className="spotlight-contact-form"
+								className="spotlight-contact-form w-full"
 								spotlightColor="rgba(207, 29, 201, 0.15)"
-								style={{ height: 'auto', overflowY: 'auto' }}
+								style={{ width: '100%' }}
 							>
-								<form onSubmit={handleSubmit} className="space-y-6" style={{ padding: '20px' }}>
+								<form onSubmit={handleSubmit} className="space-y-6 p-4 sm:p-6">
 									<div>
 										<label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
 											Nombre:
@@ -848,77 +850,77 @@ const Home = () => {
 						</div>
 
 						{/* Contact Info */}
-						<div className="space-y-8">
-							<SpotlightCard className="spotlight-contact-info" spotlightColor="rgba(207, 29, 201, 0.15)">
-								<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2">Información de Contacto</h3>
-								<div className="space-y-6">
-									<div className="flex items-center space-x-4">
-										<div className="bg-[#cf1dc9] p-3 rounded-xl">
-											<Phone className="w-6 h-6 text-white" />
+						<div className="space-y-6 sm:space-y-8 w-full">
+							<SpotlightCard className="spotlight-contact-info w-full" spotlightColor="rgba(207, 29, 201, 0.15)">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Información de Contacto</h3>
+								<div className="space-y-4 sm:space-y-6">
+									<div className="flex items-center space-x-3 sm:space-x-4">
+										<div className="bg-[#cf1dc9] p-2 sm:p-3 rounded-xl flex-shrink-0">
+											<Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
-										<div>
-											<p className="font-semibold text-gray-900">Teléfono</p>
-											<a href="tel:04242082491" className="text-gray-600">
+										<div className="min-w-0 flex-1">
+											<p className="font-semibold text-gray-900 text-sm sm:text-base">Teléfono</p>
+											<a href="tel:04242082491" className="text-gray-600 text-sm sm:text-base break-all">
 												0424-2082491
 											</a>
 										</div>
 									</div>
-									<div className="flex items-center space-x-4">
-										<div className="bg-[#cf1dc9] p-3 rounded-xl">
-											<Mail className="w-6 h-6 text-white" />
+									<div className="flex items-center space-x-3 sm:space-x-4">
+										<div className="bg-[#cf1dc9] p-2 sm:p-3 rounded-xl flex-shrink-0">
+											<Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
-										<div>
-											<p className="font-semibold text-gray-900">Email</p>
-											<a href="mailto:uhdconspat@gmail.com" className="text-gray-600">
+										<div className="min-w-0 flex-1">
+											<p className="font-semibold text-gray-900 text-sm sm:text-base">Email</p>
+											<a href="mailto:uhdconspat@gmail.com" className="text-gray-600 text-sm sm:text-base break-all">
 												uhdconspat@gmail.com
 											</a>
 										</div>
 									</div>
-									<div className="flex items-center space-x-4">
-										<div className="bg-[#cf1dc9] p-3 rounded-xl">
-											<MapPin className="w-6 h-6 text-white" />
+									<div className="flex items-center space-x-3 sm:space-x-4">
+										<div className="bg-[#cf1dc9] p-2 sm:p-3 rounded-xl flex-shrink-0">
+											<MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
-										<div>
-											<p className="font-semibold text-gray-900">Ubicación</p>
-											<p className="text-gray-600">Caracas, Venezuela</p>
+										<div className="min-w-0 flex-1">
+											<p className="font-semibold text-gray-900 text-sm sm:text-base">Ubicación</p>
+											<p className="text-gray-600 text-sm sm:text-base">Caracas, Venezuela</p>
 										</div>
 									</div>
 								</div>
 							</SpotlightCard>
 
-							<SpotlightCard className="spotlight-hours" spotlightColor="rgba(207, 29, 201, 0.15)">
-								<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2">Horarios de Atención</h3>
-								<div className="space-y-4">
+							<SpotlightCard className="spotlight-hours w-full" spotlightColor="rgba(207, 29, 201, 0.15)">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Horarios de Atención</h3>
+								<div className="space-y-3 sm:space-y-4">
 									<div className="flex justify-between items-center">
-										<span className="text-gray-600">Lunes a Viernes:</span>
-										<span className="font-semibold text-gray-900">8:00 AM - 5:00 PM</span>
+										<span className="text-gray-600 text-sm sm:text-base">Lunes a Viernes:</span>
+										<span className="font-semibold text-gray-900 text-sm sm:text-base">8:00 AM - 5:00 PM</span>
 									</div>
 									<div className="flex justify-between items-center">
-										<span className="text-gray-600">Sábados:</span>
-										<span className="font-semibold text-gray-900">8:00 AM - 1:00 PM</span>
+										<span className="text-gray-600 text-sm sm:text-base">Sábados:</span>
+										<span className="font-semibold text-gray-900 text-sm sm:text-base">8:00 AM - 1:00 PM</span>
 									</div>
-									<p className="text-sm text-gray-500 mt-4">(Los horarios pueden variar dependiendo de la sede)</p>
+									<p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">(Los horarios pueden variar dependiendo de la sede)</p>
 								</div>
 							</SpotlightCard>
 
 							<SpotlightCard
-								className="spotlight-faq"
+								className="spotlight-faq w-full"
 								spotlightColor="rgba(207, 29, 201, 0.15)"
-								style={{ height: 'auto', maxHeight: '400px', overflowY: 'auto' }}
+								style={{ maxHeight: '400px', overflowY: 'auto' }}
 							>
-								<h3 className="text-2xl font-bold text-gray-900 mb-6 pb-2">Preguntas Frecuentes</h3>
-								<div className="space-y-4">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Preguntas Frecuentes</h3>
+								<div className="space-y-3 sm:space-y-4">
 									<div>
 										<div
 											onClick={() => toggleQuestion(1)}
 											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
 										>
-											<h4 className="text-md font-semibold text-gray-900">¿Tiempo de espera para los resultados?</h4>
-											<HelpCircle className="w-5 h-5 text-[#cf1dc9]" />
+											<h4 className="text-sm sm:text-base font-semibold text-gray-900 pr-2">¿Tiempo de espera para los resultados?</h4>
+											<HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
 										</div>
 										{activeQuestion === 1 && (
 											<div className="mt-3 p-3 bg-white rounded-lg border-l-4 border-[#cf1dc9]">
-												<ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+												<ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 space-y-1">
 													<li>Citologías: 3-5 días hábiles.</li>
 													<li>Biopsias: 5-7 días hábiles.</li>
 													<li>Biopsias óseas: 7-10 días hábiles.</li>
@@ -933,12 +935,12 @@ const Home = () => {
 											onClick={() => toggleQuestion(2)}
 											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
 										>
-											<h4 className="text-md font-semibold text-gray-900">¿Cuál es el costo de los exámenes?</h4>
-											<HelpCircle className="w-5 h-5 text-[#cf1dc9]" />
+											<h4 className="text-sm sm:text-base font-semibold text-gray-900 pr-2">¿Cuál es el costo de los exámenes?</h4>
+											<HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
 										</div>
 										{activeQuestion === 2 && (
 											<div className="mt-3 p-3 bg-white rounded-lg border-l-4 border-[#cf1dc9]">
-												<p className="text-sm text-gray-600">
+												<p className="text-xs sm:text-sm text-gray-600">
 													Los costos varían según el tipo de estudio. Contáctanos directamente con los datos del
 													paciente y la orden médica para proporcionar costos exactos.
 												</p>
