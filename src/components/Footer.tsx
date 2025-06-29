@@ -51,7 +51,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-6 text-center">
-          <p className="text-white/90 font-bold">
+          <p className="text-white/90">
             Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="hover:underline">Solware.agency</a>
           </p>
         </div>
