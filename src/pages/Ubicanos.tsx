@@ -1,9 +1,10 @@
-// import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { MapPin, Phone, Clock, Mail, Navigation, Building2, Users, Car } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SpotlightCard from '../components/SpotlightCard';
+import MedicalParticles from '../components/MedicalParticles';
 
 const Ubicanos = () => {
   const locations = [
@@ -130,28 +131,49 @@ const Ubicanos = () => {
     }
   ];
 
+  // Scroll al tope cuando se monta el componente
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white relative">
+      {/* Partículas médicas flotantes */}
+      <MedicalParticles />
+      
       <Header activeSection="ubicanos" />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-50 to-gray-100 py-12 sm:py-16 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              Nuestras <span className="text-[#cf1dc9]">Ubicaciones</span>
-            </h1>
-            <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Encuentra la sede de Laboratorios Conspat más cercana a ti. 
-              Contamos con instalaciones modernas y personal especializado para brindarte el mejor servicio.
-            </p>
-          </div>
+      {/* Hero Section with Background Image - Reduced Height */}
+      <section className="relative overflow-hidden min-h-[350px] flex items-center justify-center pt-16">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: 'url(/mar.jpg)',
+            backgroundPosition: 'center center',
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat'
+          }}
+        ></div>
+        
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        
+        {/* Content - Centered */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 drop-shadow-2xl">
+            Nuestras <span className="text-white">Ubicaciones</span>
+          </h1>
+          <div className="w-24 h-1 bg-white mx-auto mb-4 shadow-lg"></div>
+          <p className="text-lg sm:text-xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg">
+            Encuentra la sede de Laboratorios Conspat más cercana a ti. 
+            Contamos con instalaciones modernas y personal especializado para brindarte el mejor servicio.
+          </p>
         </div>
       </section>
 
       {/* Locations Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12 lg:space-y-16">
             {locations.map((location, index) => (
@@ -254,7 +276,7 @@ const Ubicanos = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] rounded-3xl p-6 sm:p-8 lg:p-12 text-center text-white">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">

@@ -21,6 +21,10 @@ import {
 	Syringe,
 	User,
 	HelpCircle,
+	Building2,
+	Activity,
+	Stethoscope,
+	FlaskConical,
 } from 'lucide-react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -31,6 +35,8 @@ import TiltedCard from '../components/TiltedCard'
 import FadeContent from '../components/FadeContent'
 import BlurText from '../components/BlurText'
 import SpotlightCard from '../components/SpotlightCard'
+import MedicalParticles from '../components/MedicalParticles'
+import AnimatedStatCard from '../components/AnimatedStatCard'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText as GsapSplitText } from 'gsap/SplitText'
@@ -79,32 +85,32 @@ const Home = () => {
 		{
 			icon: <Scissors className="w-8 h-8" />,
 			title: 'Biopsias',
-			description: 'Análisis microscópico para diagnósticos precisos.',
+			description: 'Extraemos pequeñas muestras y utilizamos técnicas avanzadas para detectar enfermedades como el cáncer, infecciones y problemas inflamatorios.',
 		},
 		{
 			icon: <Eye className="w-8 h-8" />,
 			title: 'Citologías',
-			description: 'Detección de infecciones y células anormales.',
+			description: 'Analizamos tus células para detectar infecciones, inflamaciones y prevenir el cáncer. Cada análisis tiene como prioridad tu bienestar y salud.',
 		},
 		{
 			icon: <Syringe className="w-8 h-8" />,
 			title: 'Punciones',
-			description: 'Procedimientos de punción especializados.',
+			description: 'Realizamos extracciones mínimas de líquido o tejido con una aguja fina. Este sencillo procedimiento nos permite analizar muestras y detectar problemas de salud eficazmente.',
 		},
 		{
 			icon: <Microscope className="w-8 h-8" />,
 			title: 'Inmunohistoquímica',
-			description: 'Detección histológica e inmunológica.',
+			description: 'Utilizamos la inmunohistoquímica, una herramienta clave que combina histología e inmunología, para obtener información crucial sobre tu salud y darte diagnósticos precisos.',
 		},
 		{
 			icon: <User className="w-8 h-8" />,
 			title: 'Cono de Cuello Uterino',
-			description: 'Biopsias ginecológicas precisas.',
+			description: 'En este procedimiento, se extrae una pequeña muestra cónica del cuello uterino para analizarla y detectar células anormales, previniendo así el cáncer de cuello uterino.',
 		},
 		{
 			icon: <Heart className="w-8 h-8" />,
 			title: 'Protocolos Oncológicos',
-			description: 'Diagnósticos para tratamientos personalizados.',
+			description: 'Ofrecemos planes de tratamiento personalizados para el cáncer, como cirugías, radioterapias, quimioterapias y otros medicamentos, ajustados a las necesidades de cada paciente.',
 		},
 	]
 
@@ -177,6 +183,30 @@ const Home = () => {
 			description:
 				'Inspirados por el deseo de investigar y ayudar a la comunidad médica, siendo un referente en patología desde 2004.',
 		},
+	]
+
+	// Datos de estadísticas con iconos
+	const statsData = [
+		{
+			icon: <Building2 className="w-8 h-8" />,
+			value: 250,
+			label: 'Clínicas trabajadas'
+		},
+		{
+			icon: <Stethoscope className="w-8 h-8" />,
+			value: 768,
+			label: 'Doctores satisfechos'
+		},
+		{
+			icon: <Users className="w-8 h-8" />,
+			value: 62079,
+			label: 'Clientes atendidos'
+		},
+		{
+			icon: <Award className="w-8 h-8" />,
+			value: 24,
+			label: 'Años de experiencia'
+		}
 	]
 
 	const handleScroll = () => {
@@ -313,21 +343,24 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-white">
+		<div className="min-h-screen bg-white relative">
+			{/* Partículas médicas flotantes */}
+			<MedicalParticles />
+			
 			<Header activeSection={activeSection} />
 
 			{/* Hero Section */}
-			<section id="inicio" className="hero-section relative bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
+			<section id="inicio" className="hero-section relative bg-white overflow-hidden py-12 sm:py-16 lg:py-20 pt-20">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 						<div className="text-center lg:text-left">
 							<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
 								<span className="text-gray-900">Tu </span>
 								<RotatingText
-									texts={['salud', 'vida', 'bien']}
+									texts={['Salud', 'Vida', 'Bien']}
 									mainClassName="inline-flex items-center justify-center w-32 sm:w-36 md:w-40 lg:w-44 h-12 sm:h-14 md:h-16 lg:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
 									staggerFrom={'last'}
-									initial={{ y: 0, opacity: 1 }}
+									initial={{ y: 0, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
 									exit={{ y: 0, opacity: 0 }}
 									staggerDuration={0.05}
@@ -389,62 +422,33 @@ const Home = () => {
 					</div>
 				</div>
 
-				{/* Stats Section */}
-				<div className="mt-12 sm:mt-16 lg:mt-20 bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] py-12 sm:py-16">
-					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				{/* Stats Section with Background Image */}
+				<div className="mt-12 sm:mt-16 lg:mt-20 relative py-12 sm:py-16 overflow-hidden">
+					{/* Background Image */}
+					<div 
+						className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+						style={{
+							backgroundImage: 'url(/mano.jpg)',
+							backgroundPosition: 'center center',
+							backgroundSize: 'cover'
+						}}
+					></div>
+					
+					{/* Gradient Overlay */}
+					<div className="absolute inset-0 bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] opacity-90"></div>
+					
+					{/* Content */}
+					<div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 text-center text-white">
-							<div className="transform hover:scale-105 transition-transform duration-300">
-								<CountUp
-									from={0}
-									to={250}
-									separator=","
-									direction="up"
-									duration={1}
-									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
-									onStart={() => {}}
-									onEnd={() => {}}
+							{statsData.map((stat, index) => (
+								<AnimatedStatCard
+									key={index}
+									icon={stat.icon}
+									value={stat.value}
+									label={stat.label}
+									delay={index * 200}
 								/>
-								<div className="text-white/90 text-sm sm:text-base">Clínicas trabajadas</div>
-							</div>
-							<div className="transform hover:scale-105 transition-transform duration-300">
-								<CountUp
-									from={0}
-									to={768}
-									separator=","
-									direction="up"
-									duration={1}
-									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
-									onStart={() => {}}
-									onEnd={() => {}}
-								/>
-								<div className="text-white/90 text-sm sm:text-base">Doctores satisfechos</div>
-							</div>
-							<div className="transform hover:scale-105 transition-transform duration-300">
-								<CountUp
-									from={0}
-									to={62079}
-									separator=","
-									direction="up"
-									duration={1}
-									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
-									onStart={() => {}}
-									onEnd={() => {}}
-								/>
-								<div className="text-white/90 text-sm sm:text-base">Clientes atendidos</div>
-							</div>
-							<div className="transform hover:scale-105 transition-transform duration-300">
-								<CountUp
-									from={0}
-									to={24}
-									separator=","
-									direction="up"
-									duration={1}
-									className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-2"
-									onStart={() => {}}
-									onEnd={() => {}}
-								/>
-								<div className="text-white/90 text-sm sm:text-base">Años de experiencia</div>
-							</div>
+							))}
 						</div>
 					</div>
 				</div>
@@ -480,7 +484,7 @@ const Home = () => {
 							</h3>
 							<BlurText
 								text="En Laboratorios Conspat, nos enorgullece ser un referente en patología en Caracas, Venezuela. Desde nuestra fundación en octubre de 2004, hemos estado dedicados a brindar diagnósticos precisos y oportunos, inspirados por el deseo de investigar y ayudar a la comunidad. Nuestra misión es proporcionar diagnósticos que marquen la diferencia en la vida de nuestros pacientes."
-								delay={150}
+								delay={50}
 								animateBy="words"
 								direction="top"
 								animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
@@ -493,7 +497,7 @@ const Home = () => {
 							/>
 							<BlurText
 								text="Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y confiables que son esenciales para la atención médica de nuestros pacientes."
-								delay={150}
+								delay={50}
 								animateBy="words"
 								direction="top"
 								animationFrom={{ filter: 'blur(10px)', opacity: 0, y: -50 }}
@@ -624,7 +628,7 @@ const Home = () => {
 
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{processSteps.map((step: any, index: number) => (
-								<div key={index} className="flex justify-center h-[320px]">
+								<div key={index} className="flex justify-center h-[320px] w-full max-w-sm mx-auto">
 									<TiltedCard
 										containerHeight="320px"
 										containerWidth="280px"
@@ -634,13 +638,15 @@ const Home = () => {
 										showTooltip={false}
 										displayOverlayContent={true}
 									>
-										<div className="bg-white rounded-2xl p-4 sm:p-6 h-[300px] w-[260px] flex flex-col justify-between text-center mx-auto">
-											<div className="flex flex-col items-center justify-center flex-grow">
-												<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white">
+										<div className="bg-white rounded-2xl p-4 sm:p-6 h-[300px] w-[260px] flex flex-col text-center">
+											<div className="flex flex-col items-center justify-center h-full">
+												<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white flex-shrink-0">
 													{step.icon}
 												</div>
-												<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 px-2 leading-tight">{step.title}</h3>
-												<p className="text-gray-600 leading-relaxed text-sm sm:text-base px-2 text-center">{step.description}</p>
+												<div className="flex flex-col justify-center flex-grow">
+													<h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-3 px-2 leading-tight break-words">{step.title}</h3>
+													<p className="text-gray-600 leading-relaxed text-sm sm:text-base px-2 text-center break-words">{step.description}</p>
+												</div>
 											</div>
 										</div>
 									</TiltedCard>
@@ -650,17 +656,17 @@ const Home = () => {
 					</div>
 				</section>
 				{/* Gallery Section */}
-				<section className="py-12 bg-[#cf1dc9] heartbeat-background">
-					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-						<div className="overflow-hidden relative logo-carousel">
-							<div className="flex gap-12 carousel-container">
+				<section className="py-12 bg-[#cf1dc9] heartbeat-background overflow-hidden">
+					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden">
+						<div className="overflow-hidden relative logo-carousel w-full">
+							<div className="flex gap-6 sm:gap-8 lg:gap-12 carousel-container">
 								{/* Primera serie de imágenes */}
 								{images.map((src, index) => (
 									<div key={`logo-1-${index}`} className="flex-shrink-0 overflow-hidden rounded-lg shadow-lg logo-item">
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-32 h-24 object-contain"
+											className="w-20 h-16 sm:w-24 sm:h-18 lg:w-32 lg:h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -670,7 +676,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-32 h-24 object-contain"
+											className="w-20 h-16 sm:w-24 sm:h-18 lg:w-32 lg:h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -680,7 +686,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-32 h-24 object-contain"
+											className="w-20 h-16 sm:w-24 sm:h-18 lg:w-32 lg:h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -690,7 +696,7 @@ const Home = () => {
 										<img
 											src={src}
 											alt={`Cliente ${index + 1}`}
-											className="w-32 h-24 object-contain"
+											className="w-20 h-16 sm:w-24 sm:h-18 lg:w-32 lg:h-24 object-contain"
 										/>
 									</div>
 								))}
@@ -739,8 +745,7 @@ const Home = () => {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
 						<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-4">
-							Estamos Siempre Listos Para Ayudarte.<br className="sm:hidden" />
-							<span className="block sm:inline"> Contáctanos</span>
+							Ponte en Contacto con Nuestros Especialistas
 						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
 						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
