@@ -6,7 +6,7 @@ interface Particle {
   size: number;
   speed: number;
   opacity: number;
-  type: 'cross' | 'molecule' | 'dna' | 'heart';
+  type: 'cross' | 'dna' | 'heart';
   element?: HTMLElement;
   oscillationOffset: number;
 }
@@ -42,7 +42,7 @@ const MedicalParticles: React.FC = () => {
           size: Math.random() * 16 + 12,
           speed: Math.random() * 0.8 + 0.3,
           opacity: Math.random() * 0.25 + 0.1,
-          type: ['cross', 'molecule', 'dna', 'heart'][Math.floor(Math.random() * 4)] as Particle['type'],
+          type: ['cross', 'dna', 'heart'][Math.floor(Math.random() * 3)] as Particle['type'],
           oscillationOffset: Math.random() * Math.PI * 2
         };
 
@@ -67,9 +67,6 @@ const MedicalParticles: React.FC = () => {
         switch (particle.type) {
           case 'cross':
             element.innerHTML = '✚';
-            break;
-          case 'molecule':
-            element.innerHTML = '⚛';
             break;
           case 'dna':
             element.innerHTML = '🧬';

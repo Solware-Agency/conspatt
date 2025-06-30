@@ -354,11 +354,11 @@ const Home = () => {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 						<div className="text-center lg:text-left">
-							<h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+							<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6 break-words hyphens-auto">
 								<span className="text-gray-900">Tu </span>
 								<RotatingText
 									texts={['Salud', 'Vida', 'Bien']}
-									mainClassName="inline-flex items-center justify-center w-32 sm:w-36 md:w-40 lg:w-44 h-12 sm:h-14 md:h-16 lg:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold"
+									mainClassName="inline-flex items-center justify-center w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
 									staggerFrom={'last'}
 									initial={{ y: 0, opacity: 0 }}
 									animate={{ y: 0, opacity: 1 }}
@@ -460,7 +460,7 @@ const Home = () => {
 					<div className="text-center mb-12 sm:mb-16">
 						<SplitText
 							text="Somos Laboratorio Conspat"
-							className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2"
+							className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight break-words hyphens-auto"
 							delay={100}
 							duration={0.6}
 							ease="power3.out"
@@ -493,7 +493,7 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => {}}
-								className="text-gray-600 mb-6 leading-relaxed text-justify"
+								className="text-gray-600 mb-6 leading-relaxed text-justify hyphens-auto"
 							/>
 							<BlurText
 								text="Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y confiables que son esenciales para la atención médica de nuestros pacientes."
@@ -506,7 +506,7 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => {}}
-								className="text-gray-600 mb-8 leading-relaxed text-justify"
+								className="text-gray-600 mb-8 leading-relaxed text-justify hyphens-auto"
 							/>
 						</div>
 
@@ -549,7 +549,7 @@ const Home = () => {
 						<div className="text-center mb-12 sm:mb-16">
 							<SplitText
 								text="Nuestra Misión y Valores"
-								className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight px-2"
+								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight px-2 break-words hyphens-auto"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -612,7 +612,7 @@ const Home = () => {
 						<div className="text-center mb-16">
 							<SplitText
 								text="El Rol Del Patólogo En Tu Tratamiento"
-								className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 pb-2 px-4"
+								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 px-2 sm:px-4 leading-tight break-words hyphens-auto"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -710,7 +710,7 @@ const Home = () => {
 			<section id="servicios" className="py-12 sm:py-16 lg:py-20 bg-white">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
-						<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-4">
+						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto">
 							Nosotros Ofrecemos Distintos Tipos De Procesamientos
 						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
@@ -744,12 +744,12 @@ const Home = () => {
 			<section id="contactanos" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
-						<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-4">
+						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto">
 							Ponte en Contacto con Nuestros Especialistas
 						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
 						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
-							Ponte en contacto con Laboratorios Conspat. Contamos con la mejor precisión y rapidez del mundo
+							Contamos con la mejor precisión y rapidez del mundo
 							patológico.
 						</p>
 					</div>
