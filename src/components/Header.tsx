@@ -58,7 +58,20 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center">
-            <img src="/logo.png" alt="Logo" className="w-20 sm:w-24 h-auto" />
+            <img 
+              src="/logo.png" 
+              alt="Logo Laboratorios Conspat" 
+              className="w-20 sm:w-24 h-auto"
+              onError={(e) => {
+                console.error('Error loading logo:', e);
+                // Fallback: mostrar texto si la imagen no carga
+                e.currentTarget.style.display = 'none';
+                const textLogo = document.createElement('span');
+                textLogo.textContent = 'CONSPAT';
+                textLogo.className = 'text-xl font-bold text-[#cf1dc9]';
+                e.currentTarget.parentNode?.appendChild(textLogo);
+              }}
+            />
           </Link>
           
           {/* Desktop Navigation */}

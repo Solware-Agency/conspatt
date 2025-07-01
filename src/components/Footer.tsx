@@ -5,13 +5,26 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-        <footer className="bg-[#cf1dc9] text-white py-0 pb-4">
+    <footer className="bg-[#cf1dc9] text-white py-0 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <hr className="border-t-2 border-white mb-3" />
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="text-center md:text-left">
             <Link to="/" className="text-3xl font-bold mb-3 inline-block">
-              <img src="/logo-blanco.png" alt="Logo de Conspat" className="h-12 sm:h-14 mx-auto md:mx-0" />
+              <img 
+                src="/logo-blanco.png" 
+                alt="Logo de Conspat" 
+                className="h-12 sm:h-14 mx-auto md:mx-0"
+                onError={(e) => {
+                  console.error('Error loading footer logo:', e);
+                  // Fallback: mostrar texto si la imagen no carga
+                  e.currentTarget.style.display = 'none';
+                  const textLogo = document.createElement('span');
+                  textLogo.textContent = 'CONSPAT';
+                  textLogo.className = 'text-2xl font-bold text-white';
+                  e.currentTarget.parentNode?.appendChild(textLogo);
+                }}
+              />
             </Link>
             <p className="text-white/90 mb-3 leading-relaxed">
               Mantente informado sobre nuestras últimas novedades en diagnósticos y eventos especializados. ¡Síguenos!
