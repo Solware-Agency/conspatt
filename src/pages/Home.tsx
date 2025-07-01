@@ -511,8 +511,8 @@ const Home = () => {
 						</div>
 
 						{/* Gallery Section */}
-						<div className="relative mt-8 lg:mt-0">
-							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 dark:from-[#cf1dc9]/20 dark:to-[#ae29ba]/20 rounded-3xl p-6 sm:p-8 transition-colors duration-300">
+						<div className="relative mt-12 lg:mt-0">
+							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 dark:from-[#cf1dc9]/20 dark:to-[#ae29ba]/20 rounded-3xl p-6 sm:p-8 transition-colors duration-300 mt-8 sm:mt-12 lg:mt-16">
 								<div className="text-center mb-6 sm:mb-8">
 									<h4 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 transition-colors duration-300">Nuestras Instalaciones</h4>
 									<p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">
