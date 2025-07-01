@@ -12,43 +12,56 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   const navigate = useNavigate();
 
   const isActive = (section: string) => {
-    // Si estamos en la página de ubicanos, solo "ubicanos" debe estar activo
     if (isOnUbicanosPage) {
       return section === 'ubicanos';
     }
-    // Si estamos en la página principal, usar el activeSection del scroll
     return activeSection === section;
   };
 
   const scrollToSection = (sectionId: string) => {
-    // Si estamos en la página de ubicanos, navegar a la página principal primero
-    if (isOnUbicanosPage) {
-      navigate('/', { replace: true });
-      // Usar setTimeout para asegurar que la navegación se complete antes del scroll
-      setTimeout(() => {
+    try {
+      if (isOnUbicanosPage) {
+        navigate('/', { replace: true });
+        setTimeout(() => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const headerHeight = 80;
+            const elementPosition = element.offsetTop - headerHeight;
+            window.scrollTo({
+              top: elementPosition,
+              behavior: 'smooth'
+            });
+          }
+        }, 100);
+      } else {
         const element = document.getElementById(sectionId);
         if (element) {
           const headerHeight = 80;
           const elementPosition = element.offsetTop - headerHeight;
+          
           window.scrollTo({
             top: elementPosition,
             behavior: 'smooth'
           });
         }
-      }, 100);
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        const headerHeight = 80; // Altura del header fijo
-        const elementPosition = element.offsetTop - headerHeight;
-        
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        });
       }
+      setIsMenuOpen(false);
+    } catch (error) {
+      console.error('Error in scrollToSection:', error);
+      // Fallback: navigate to home
+      navigate('/');
     }
-    setIsMenuOpen(false);
+  };
+
+  const handleNavigation = (path: string) => {
+    try {
+      navigate(path);
+      setIsMenuOpen(false);
+    } catch (error) {
+      console.error('Navigation error:', error);
+      // Fallback: use window.location
+      window.location.href = path;
+    }
   };
 
   const isOnUbicanosPage = location.pathname === '/ubicanos';
@@ -57,14 +70,16 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
     <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center" onClick={(e) => {
+            e.preventDefault();
+            handleNavigation('/');
+          }}>
             <img 
               src="/logo.png" 
               alt="Logo Laboratorios Conspat" 
               className="w-20 sm:w-24 h-auto"
               onError={(e) => {
                 console.error('Error loading logo:', e);
-                // Fallback: mostrar texto si la imagen no carga
                 e.currentTarget.style.display = 'none';
                 const textLogo = document.createElement('span');
                 textLogo.textContent = 'CONSPAT';
@@ -78,36 +93,36 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
           <nav className="hidden md:flex space-x-8 items-center">
             {isOnUbicanosPage ? (
               <>
-                <Link 
-                  to="/" 
+                <button 
+                  onClick={() => handleNavigation('/')}
                   className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Inicio
-                </Link>
-                <Link 
-                  to="/#nosotros" 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('nosotros')}
                   className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Nosotros
-                </Link>
-                <Link 
-                  to="/#servicios" 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('servicios')}
                   className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Servicios
-                </Link>
-                <Link 
-                  to="/ubicanos" 
+                </button>
+                <button 
+                  onClick={() => handleNavigation('/ubicanos')}
                   className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
-                </Link>
-                <Link 
-                  to="/#contactanos" 
+                </button>
+                <button 
+                  onClick={() => scrollToSection('contactanos')}
                   className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Contáctanos
-                </Link>
+                </button>
               </>
             ) : (
               <>
@@ -129,12 +144,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                 >
                   Servicios
                 </button>
-                <Link 
-                  to="/ubicanos"
+                <button 
+                  onClick={() => handleNavigation('/ubicanos')}
                   className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
-                </Link>
+                </button>
                 <button 
                   onClick={() => scrollToSection('contactanos')}
                   className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
@@ -160,41 +175,36 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             <nav className="flex flex-col space-y-1">
               {isOnUbicanosPage ? (
                 <>
-                  <Link 
-                    to="/" 
+                  <button 
+                    onClick={() => handleNavigation('/')}
                     className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('inicio') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Inicio
-                  </Link>
-                  <Link 
-                    to="/#nosotros" 
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('nosotros')}
                     className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Nosotros
-                  </Link>
-                  <Link 
-                    to="/#servicios" 
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('servicios')}
                     className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('servicios') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Servicios
-                  </Link>
-                  <Link 
-                    to="/ubicanos" 
+                  </button>
+                  <button 
+                    onClick={() => handleNavigation('/ubicanos')}
                     className={`py-3 px-4 transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Ubícanos
-                  </Link>
-                  <Link 
-                    to="/#contactanos" 
+                  </button>
+                  <button 
+                    onClick={() => scrollToSection('contactanos')}
                     className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Contáctanos
-                  </Link>
+                  </button>
                 </>
               ) : (
                 <>
@@ -216,13 +226,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   >
                     Servicios
                   </button>
-                  <Link 
-                    to="/ubicanos"
+                  <button 
+                    onClick={() => handleNavigation('/ubicanos')}
                     className={`py-3 px-4 transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
-                    onClick={() => setIsMenuOpen(false)}
                   >
                     Ubícanos
-                  </Link>
+                  </button>
                   <button 
                     onClick={() => scrollToSection('contactanos')}
                     className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}

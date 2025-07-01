@@ -1,24 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Ubicanos from './pages/Ubicanos';
 import { Activity } from 'lucide-react';
-import './preloader.css'; // Asegúrate de que la ruta sea correcta
+import './preloader.css';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
   const [fadeOut, setFadeOut] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setFadeOut(true); // Iniciar el desvanecimiento
+      setFadeOut(true);
       setTimeout(() => {
-        setLoading(false); // Ocultar el preloader después del desvanecimiento
-      }, 1000); // Esperar 1 segundo para que se complete el desvanecimiento
-    }, 3000); // 3 segundos
+        setLoading(false);
+      }, 1000);
+    }, 3000);
 
-    return () => clearTimeout(timer); // Limpiar el temporizador al desmontar
+    return () => clearTimeout(timer);
   }, []);
+
+  // Handle navigation errors
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      if (event.message.includes('Cannot navigate to URL')) {
+        console.warn('Navigation error detected, reloading page...');
+        window.location.reload();
+      }
+    };
+
+    window.addEventListener('error', handleError);
+    return () => window.removeEventListener('error', handleError);
+  }, []);
+
+  // Handle route changes
+  useEffect(() => {
+    // Scroll to top on route change
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
@@ -34,8 +54,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/ubicanos" element={<Ubicanos />} />
+            <Route path="*" element={<Home />} />
           </Routes>
-          {/* Otros componentes */}
         </div>
       )}
     </>

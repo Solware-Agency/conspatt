@@ -7,7 +7,11 @@ export default defineConfig({
   base: '/',
   server: {
     port: 5173,
-    host: true
+    host: '0.0.0.0',
+    strictPort: false,
+    hmr: {
+      port: 5173
+    }
   },
   build: {
     assetsDir: 'assets',
@@ -21,4 +25,8 @@ export default defineConfig({
     exclude: ['lucide-react'],
   },
   publicDir: 'public',
+  preview: {
+    port: 4173,
+    host: '0.0.0.0'
+  }
 });
