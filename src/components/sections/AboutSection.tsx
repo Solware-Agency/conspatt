@@ -17,13 +17,13 @@ const AboutSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-2xl sm:text-3xl md:text-4xl"
+            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
           >
             Somos Laboratorio Conspat
           </ScrollFloat>
@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300">
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300 px-2 lg:px-0">
               Expertos en resultados patológicos
             </h3>
             <BlurText
@@ -48,6 +48,7 @@ const AboutSection: React.FC = () => {
                 { filter: 'blur(5px)', opacity: 0.5, y: 5 },
                 { filter: 'blur(0px)', opacity: 1, y: 0 },
               ]}
+              onAnimationComplete={() => {}}
               className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-justify hyphens-auto transition-colors duration-300"
             />
             <BlurText
@@ -60,6 +61,7 @@ const AboutSection: React.FC = () => {
                 { filter: 'blur(5px)', opacity: 0.5, y: 5 },
                 { filter: 'blur(0px)', opacity: 1, y: 0 },
               ]}
+              onAnimationComplete={() => {}}
               className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-justify hyphens-auto transition-colors duration-300"
             />
           </div>
@@ -68,7 +70,7 @@ const AboutSection: React.FC = () => {
           <div className="relative mt-12 lg:mt-0">
             <div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 dark:from-[#cf1dc9]/20 dark:to-[#ae29ba]/20 rounded-3xl p-6 sm:p-8 transition-colors duration-300 mt-8 sm:mt-12 lg:mt-16 mb-8 sm:mb-12 lg:mb-16">
               <div className="text-center mb-6 sm:mb-8">
-                <h4 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 transition-colors duration-300">
+                <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 pb-2 transition-colors duration-300 px-2 sm:px-0">
                   Nuestras Instalaciones
                 </h4>
                 <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">
@@ -105,13 +107,13 @@ const AboutSection: React.FC = () => {
           <div className="text-center mb-12 sm:mb-16">
             <ScrollFloat
               containerClassName="mb-4 pb-2"
-              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight px-2 break-words hyphens-auto transition-colors duration-300"
+              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight px-4 sm:px-6 lg:px-8 break-words hyphens-auto transition-colors duration-300"
               animationDuration={2}
               ease="back.inOut(2)"
               scrollStart="center bottom+=60%"
               scrollEnd="bottom bottom-=50%"
               stagger={0.10}
-              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
             >
               Nuestra Misión y Valores
             </ScrollFloat>
@@ -129,7 +131,7 @@ const AboutSection: React.FC = () => {
                     <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
                       {item.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300">
                       {item.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base transition-colors duration-300">
@@ -144,7 +146,7 @@ const AboutSection: React.FC = () => {
           {/* Core Values Grid */}
           <div className="mt-12 sm:mt-16">
             <div className="text-center mb-8 sm:mb-12">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300 px-2 sm:px-0">
                 Nuestros Valores Fundamentales
               </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">
@@ -176,15 +178,15 @@ const AboutSection: React.FC = () => {
           <div className="text-center mb-16">
             <ScrollFloat
               containerClassName="mb-4 pb-2"
-              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white px-2 sm:px-4 leading-tight break-words hyphens-auto transition-colors duration-300"
+              textClassName="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white px-4 sm:px-6 lg:px-8 leading-tight break-words hyphens-auto transition-colors duration-300"
               animationDuration={2}
               ease="back.inOut(2)"
               scrollStart="center bottom+=60%"
               scrollEnd="bottom bottom-=50%"
               stagger={0.10}
-              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+              fontSize="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl"
             >
-              El Rol Del Patólogo En Tu Tratamiento
+              Nuestros Patólogos En Tu Tratamiento
             </ScrollFloat>
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           </div>
@@ -207,7 +209,7 @@ const AboutSection: React.FC = () => {
                         {step.icon}
                       </div>
                       <div className="flex flex-col justify-center flex-grow">
-                        <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-3 px-2 leading-tight break-words transition-colors duration-300">
+                        <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-3 px-2 leading-tight break-words transition-colors duration-300">
                           {step.title}
                         </h3>
                         <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base px-2 text-center break-words transition-colors duration-300">

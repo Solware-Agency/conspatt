@@ -1,5 +1,5 @@
 import React from 'react';
-import RotatingText from '../RotatingText';
+import SimpleRotatingText from '../SimpleRotatingText';
 import AnimatedStatCard from '../AnimatedStatCard';
 import { STATS_DATA, CONTACT_INFO } from '../../constants';
 
@@ -16,20 +16,15 @@ const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-2 sm:px-0">
               <span className="text-gray-900 dark:text-white">Tu </span>
-              <RotatingText
-                texts={['Salud', 'Vida', 'Bien']}
-                mainClassName="inline-flex items-center justify-center w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
-                staggerFrom={'last'}
-                initial={{ y: 0, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: 0, opacity: 0 }}
-                staggerDuration={0.05}
-                splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
-                transition={{ type: 'spring', damping: 15, stiffness: 200 }}
-                rotationInterval={5000}
-              />
+              <span className="inline-flex items-center justify-center w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-18 bg-[#cf1dc9] text-white rounded-lg text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+                <SimpleRotatingText
+                  texts={['Salud', 'Vida', 'Bien']}
+                  rotationInterval={4000}
+                  className="text-white font-bold"
+                />
+              </span>
               <span className="text-gray-900 dark:text-white"> es nuestra prioridad</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-center lg:text-justify transition-colors duration-300">
@@ -61,7 +56,7 @@ const HeroSection: React.FC = () => {
               >
                 <img src="/consig.png" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
               </a>
-              <h3 className="text-base sm:text-lg font-bold text-center mt-4 text-black dark:text-white transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mt-4 text-black dark:text-white transition-colors duration-300">
                 Conoce Nuestros Laboratorios
               </h3>
               <a

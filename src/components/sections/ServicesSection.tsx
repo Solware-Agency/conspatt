@@ -10,13 +10,13 @@ const ServicesSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
           >
             Nosotros Ofrecemos Distintos Tipos De Procesamientos
           </ScrollFloat>
@@ -36,7 +36,7 @@ const ServicesSection: React.FC = () => {
                     <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 sm:mb-4 flex items-center justify-center text-white">
                       {service.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3 transition-colors duration-300">
+                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3 transition-colors duration-300">
                       {service.title}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base transition-colors duration-300">

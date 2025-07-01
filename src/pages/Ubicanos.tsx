@@ -34,7 +34,7 @@ const Ubicanos: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 drop-shadow-2xl leading-tight break-words hyphens-auto">
+          <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white mb-4 drop-shadow-2xl leading-tight break-words hyphens-auto px-4 sm:px-0">
             Nuestras <span className="text-white">Ubicaciones</span>
           </h1>
           <div className="w-24 h-1 bg-white mx-auto mb-4 shadow-lg" />
@@ -58,7 +58,7 @@ const Ubicanos: React.FC = () => {
                       <div className="bg-[#cf1dc9] p-2 rounded-xl mr-3 sm:mr-4 flex-shrink-0">
                         <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
+                      <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white transition-colors duration-300">
                         {location.name}
                       </h2>
                     </div>
@@ -164,7 +164,7 @@ const Ubicanos: React.FC = () => {
       <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] rounded-3xl p-6 sm:p-8 lg:p-12 text-center text-white">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight break-words hyphens-auto">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight break-words hyphens-auto px-4 sm:px-0">
               ¿No encuentras la ubicación que buscas?
             </h2>
             <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
