@@ -136,7 +136,7 @@ const Ubicanos = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white relative">
+    <div className="min-h-screen bg-white dark:bg-gray-900 relative transition-colors duration-300">
       <Header activeSection="ubicanos" />
 
       {/* Hero Section with Background Image - Reduced Height */}
@@ -169,19 +169,19 @@ const Ubicanos = () => {
       </section>
 
       {/* Locations Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-white relative z-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-12 lg:space-y-16">
             {locations.map((location, index) => (
               <div key={location.id} className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-start ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Location Info */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                  <SpotlightCard className="min-h-[320px] sm:h-80" spotlightColor="rgba(207, 29, 201, 0.15)">
+                  <SpotlightCard className="min-h-[320px] sm:h-80 dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
                     <div className="flex items-center mb-4">
                       <div className="bg-[#cf1dc9] p-2 rounded-xl mr-3 sm:mr-4 flex-shrink-0">
                         <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                       </div>
-                      <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{location.name}</h2>
+                      <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300">{location.name}</h2>
                     </div>
 
                     <div className="space-y-3 sm:space-y-4">
@@ -189,8 +189,8 @@ const Ubicanos = () => {
                       <div className="flex items-start space-x-2 sm:space-x-3">
                         <Navigation className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] mt-1 flex-shrink-0" />
                         <div>
-                          <p className="font-semibold text-gray-900 text-sm sm:text-base">Dirección</p>
-                          <p className="text-gray-600 text-sm sm:text-base">{location.address}</p>
+                          <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">Dirección</p>
+                          <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">{location.address}</p>
                         </div>
                       </div>
 
@@ -199,10 +199,10 @@ const Ubicanos = () => {
                         <div className="flex items-center space-x-2">
                           <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
                           <div>
-                            <p className="font-semibold text-gray-900 text-xs sm:text-sm">Teléfono</p>
+                            <p className="font-semibold text-gray-900 dark:text-white text-xs sm:text-sm transition-colors duration-300">Teléfono</p>
                             <a 
                               href={`tel:+58${location.phone.replace(/^0/, '')}`}
-                              className="text-gray-600 text-xs sm:text-sm hover:text-[#cf1dc9] transition-colors cursor-pointer"
+                              className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm hover:text-[#cf1dc9] transition-colors cursor-pointer"
                             >
                               {location.phone}
                             </a>
@@ -211,10 +211,10 @@ const Ubicanos = () => {
                         <div className="flex items-center space-x-2">
                           <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
                           <div>
-                            <p className="font-semibold text-gray-900 text-xs sm:text-sm">Email</p>
+                            <p className="font-semibold text-gray-900 dark:text-white text-xs sm:text-sm transition-colors duration-300">Email</p>
                             <a 
                               href={`mailto:${location.email}`}
-                              className="text-gray-600 text-xs sm:text-sm hover:text-[#cf1dc9] transition-colors cursor-pointer"
+                              className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm hover:text-[#cf1dc9] transition-colors cursor-pointer"
                             >
                               {location.email}
                             </a>
@@ -246,7 +246,7 @@ const Ubicanos = () => {
 
                 {/* Map */}
                 <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''} mt-6 lg:mt-0`}>
-                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-gray-100 h-64 sm:h-80">
+                  <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl overflow-hidden border border-gray-100 dark:border-gray-700 h-64 sm:h-80 transition-colors duration-300">
                     <div className="h-full relative">
                       <iframe
                         src={location.mapUrl}
@@ -259,8 +259,8 @@ const Ubicanos = () => {
                         className="rounded-3xl"
                         title={`Mapa de ${location.name}`}
                       ></iframe>
-                      <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-white/90 backdrop-blur-sm px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl">
-                        <p className="text-xs sm:text-sm font-semibold text-gray-900">{location.name}</p>
+                      <div className="absolute top-2 sm:top-4 left-2 sm:left-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm px-2 sm:px-4 py-1 sm:py-2 rounded-lg sm:rounded-xl transition-colors duration-300">
+                        <p className="text-xs sm:text-sm font-semibold text-gray-900 dark:text-white transition-colors duration-300">{location.name}</p>
                       </div>
                     </div>
                   </div>
@@ -272,7 +272,7 @@ const Ubicanos = () => {
       </section>
 
       {/* Contact CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative z-10 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] rounded-3xl p-6 sm:p-8 lg:p-12 text-center text-white">
             <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 leading-tight break-words hyphens-auto">

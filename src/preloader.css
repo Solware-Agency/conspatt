@@ -58,3 +58,16 @@ body {
     transform: rotate(360deg);
   }
 }
+
+/* Dark mode styles for preloader */
+.dark #preloader {
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+.dark #loader:before {
+  border-top-color: #cf1dc9;
+}
+
+.dark #loader:after {
+  border-top-color: #ae29ba;
+}

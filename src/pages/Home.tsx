@@ -343,19 +343,19 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="min-h-screen bg-white relative">
+		<div className="min-h-screen bg-white dark:bg-gray-900 relative transition-colors duration-300">
 			{/* Partículas médicas flotantes */}
 			<MedicalParticles />
 			
 			<Header activeSection={activeSection} />
 
 			{/* Hero Section */}
-			<section id="inicio" className="hero-section relative bg-white overflow-hidden py-12 sm:py-16 lg:py-20 pt-20">
+			<section id="inicio" className="hero-section relative bg-white dark:bg-gray-900 overflow-hidden py-12 sm:py-16 lg:py-20 pt-20 transition-colors duration-300">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 						<div className="text-center lg:text-left">
-							<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight mb-6 break-words hyphens-auto">
-								<span className="text-gray-900">Tu </span>
+							<h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300">
+								<span className="text-gray-900 dark:text-white">Tu </span>
 								<RotatingText
 									texts={['Salud', 'Vida', 'Bien']}
 									mainClassName="inline-flex items-center justify-center w-28 sm:w-32 md:w-36 lg:w-40 xl:w-44 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-20 bg-[#cf1dc9] text-white overflow-hidden rounded-lg text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold"
@@ -368,9 +368,9 @@ const Home = () => {
 									transition={{ type: 'spring', damping: 15, stiffness: 200 }}
 									rotationInterval={5000}
 								/>
-								<span className="text-gray-900"> es nuestra prioridad</span>
+								<span className="text-gray-900 dark:text-white"> es nuestra prioridad</span>
 							</h1>
-							<p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed text-center lg:text-justify">
+							<p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-center lg:text-justify transition-colors duration-300">
 								En Conspat, proporcionamos diagnósticos patológicos precisos y oportunos, inspirados por el deseo de
 								investigar y ayudar a la comunidad médica desde 2004.
 							</p>
@@ -400,7 +400,7 @@ const Home = () => {
 							</div>
 						</div>
 						<div className="relative flex justify-center mt-8 lg:mt-0">
-							<div className="bg-white rounded-3xl p-4 sm:p-6 lg:p-8 transition-transform transform hover:scale-105 hover:shadow-2xl w-full max-w-sm lg:max-w-md">
+							<div className="bg-white dark:bg-gray-800 rounded-3xl p-4 sm:p-6 lg:p-8 transition-all transform hover:scale-105 hover:shadow-2xl w-full max-w-sm lg:max-w-md border border-gray-200 dark:border-gray-700 duration-300">
 								<a
 									href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA=="
 									target="_blank"
@@ -408,7 +408,7 @@ const Home = () => {
 								>
 									<img src="/consig.png" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
 								</a>
-								<h3 className="text-base sm:text-lg font-bold text-center mt-4 text-black">Conoce Nuestros Laboratorios</h3>
+								<h3 className="text-base sm:text-lg font-bold text-center mt-4 text-black dark:text-white transition-colors duration-300">Conoce Nuestros Laboratorios</h3>
 								<a
 									href="https://www.instagram.com/uhdconspat?igsh=MW0wdGN4cDRuY2ZyeA=="
 									target="_blank"
@@ -455,12 +455,12 @@ const Home = () => {
 			</section>
 
 			{/* About Section */}
-			<section id="nosotros" className="py-12 sm:py-16 lg:py-20 bg-white">
+			<section id="nosotros" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
 						<SplitText
 							text="Somos Laboratorio Conspat"
-							className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight break-words hyphens-auto"
+							className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight break-words hyphens-auto transition-colors duration-300"
 							delay={100}
 							duration={0.6}
 							ease="power3.out"
@@ -472,14 +472,14 @@ const Home = () => {
 							textAlign="center"
 						/>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
 							Conoce más de nuestra historia y equipo técnico especializado.
 						</p>
 					</div>
 
 					<div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 						<div>
-							<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6 pb-2 text-center lg:text-left">
+							<h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300">
 								Expertos en resultados patológicos
 							</h3>
 							<BlurText
@@ -493,7 +493,7 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => {}}
-								className="text-gray-600 mb-6 leading-relaxed text-justify hyphens-auto"
+								className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed text-justify hyphens-auto transition-colors duration-300"
 							/>
 							<BlurText
 								text="Invertimos en la última tecnología y equipos de diagnóstico para ofrecer una amplia gama de estudios patológicos, incluyendo biopsias y citologías. Nuestra infraestructura avanzada nos permite realizar análisis con la mayor eficiencia, asegurando diagnósticos rápidos y confiables que son esenciales para la atención médica de nuestros pacientes."
@@ -506,16 +506,16 @@ const Home = () => {
 									{ filter: 'blur(0px)', opacity: 1, y: 0 },
 								]}
 								onAnimationComplete={() => {}}
-								className="text-gray-600 mb-8 leading-relaxed text-justify hyphens-auto"
+								className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-justify hyphens-auto transition-colors duration-300"
 							/>
 						</div>
 
 						{/* Gallery Section */}
 						<div className="relative mt-8 lg:mt-0">
-							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 rounded-3xl p-6 sm:p-8">
+							<div className="bg-gradient-to-br from-[#cf1dc9]/10 to-[#ae29ba]/10 dark:from-[#cf1dc9]/20 dark:to-[#ae29ba]/20 rounded-3xl p-6 sm:p-8 transition-colors duration-300">
 								<div className="text-center mb-6 sm:mb-8">
-									<h4 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 pb-2">Nuestras Instalaciones</h4>
-									<p className="text-gray-600 text-sm sm:text-base">
+									<h4 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 pb-2 transition-colors duration-300">Nuestras Instalaciones</h4>
+									<p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">
 										Tecnología de vanguardia y personal especializado trabajando para tu salud
 									</p>
 								</div>
@@ -544,12 +544,12 @@ const Home = () => {
 				</div>
 
 				{/* Mission and Values Section */}
-				<section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
+				<section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="text-center mb-12 sm:mb-16">
 							<SplitText
 								text="Nuestra Misión y Valores"
-								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 leading-tight px-2 break-words hyphens-auto"
+								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight px-2 break-words hyphens-auto transition-colors duration-300"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -561,7 +561,7 @@ const Home = () => {
 								textAlign="center"
 							/>
 							<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-							<p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto text-center px-4">
+							<p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center px-4 transition-colors duration-300">
 								Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la
 								comunidad.
 							</p>
@@ -570,13 +570,13 @@ const Home = () => {
 						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 							{missionValues.map((item, index) => (
 								<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
-									<div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full min-h-[300px] flex flex-col justify-between">
+									<div className="bg-white dark:bg-gray-700 rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 h-full min-h-[300px] flex flex-col justify-between border border-gray-200 dark:border-gray-600">
 										<div className="text-center flex-grow flex flex-col justify-center">
 											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 sm:mb-6 flex items-center justify-center text-white">
 												{item.icon}
 											</div>
-											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">{item.title}</h3>
-											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{item.description}</p>
+											<h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300">{item.title}</h3>
+											<p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base transition-colors duration-300">{item.description}</p>
 										</div>
 									</div>
 								</FadeContent>
@@ -586,17 +586,17 @@ const Home = () => {
 						{/* Core Values Grid */}
 						<div className="mt-12 sm:mt-16">
 							<div className="text-center mb-8 sm:mb-12">
-								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 pb-2">Nuestros Valores Fundamentales</h3>
-								<p className="text-gray-600 text-sm sm:text-base">Los pilares que sostienen nuestro compromiso con la excelencia</p>
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-3 sm:mb-4 pb-2 transition-colors duration-300">Nuestros Valores Fundamentales</h3>
+								<p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">Los pilares que sostienen nuestro compromiso con la excelencia</p>
 							</div>
 
 							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
 								{values.map((value, index) => (
 									<FadeContent key={index} duration={800} delay={index * 100}>
-										<div className="bg-white rounded-xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#cf1dc9]">
+										<div className="bg-white dark:bg-gray-700 rounded-xl p-4 sm:p-6 shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-[#cf1dc9]">
 											<div className="flex items-center space-x-3">
 												<CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[#cf1dc9] flex-shrink-0" />
-												<span className="text-gray-800 font-medium text-sm sm:text-base">{value}</span>
+												<span className="text-gray-800 dark:text-gray-200 font-medium text-sm sm:text-base transition-colors duration-300">{value}</span>
 											</div>
 										</div>
 									</FadeContent>
@@ -607,12 +607,12 @@ const Home = () => {
 				</section>
 
 				{/* Process Section */}
-				<section className="py-20 bg-white">
+				<section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
 					<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 						<div className="text-center mb-16">
 							<SplitText
 								text="El Rol Del Patólogo En Tu Tratamiento"
-								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pb-2 px-2 sm:px-4 leading-tight break-words hyphens-auto"
+								className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 px-2 sm:px-4 leading-tight break-words hyphens-auto transition-colors duration-300"
 								delay={100}
 								duration={0.6}
 								ease="power3.out"
@@ -638,14 +638,14 @@ const Home = () => {
 										showTooltip={false}
 										displayOverlayContent={true}
 									>
-										<div className="bg-white rounded-2xl p-4 sm:p-6 h-[300px] w-[260px] flex flex-col text-center">
+										<div className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 h-[300px] w-[260px] flex flex-col text-center border border-gray-200 dark:border-gray-600 transition-colors duration-300">
 											<div className="flex flex-col items-center justify-center h-full">
 												<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-white flex-shrink-0">
 													{step.icon}
 												</div>
 												<div className="flex flex-col justify-center flex-grow">
-													<h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-3 px-2 leading-tight break-words">{step.title}</h3>
-													<p className="text-gray-600 leading-relaxed text-sm sm:text-base px-2 text-center break-words">{step.description}</p>
+													<h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-3 px-2 leading-tight break-words transition-colors duration-300">{step.title}</h3>
+													<p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base px-2 text-center break-words transition-colors duration-300">{step.description}</p>
 												</div>
 											</div>
 										</div>
@@ -707,14 +707,14 @@ const Home = () => {
 			</section>
 
 			{/* Services Section */}
-			<section id="servicios" className="py-12 sm:py-16 lg:py-20 bg-white">
+			<section id="servicios" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
-						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto">
+						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto transition-colors duration-300">
 							Nosotros Ofrecemos Distintos Tipos De Procesamientos
 						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
 							Te ofrecemos distintos tipos de servicios para mejorar tu salud.
 						</p>
 					</div>
@@ -724,13 +724,13 @@ const Home = () => {
 							<FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
 								<div className="relative group p-2">
 									<div className="absolute -inset-2 bg-[#cf1dc9]/15 rounded-2xl shadow-3xl opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
-									<div className="bg-white rounded-2xl p-4 sm:p-6 h-64 sm:h-72 w-full flex flex-col justify-between text-center shadow-lg hover:shadow-xl border border-gray-100 transition-all duration-300 hover:scale-[1.02] relative z-10">
+									<div className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 h-64 sm:h-72 w-full flex flex-col justify-between text-center shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] relative z-10">
 										<div className="flex flex-col items-center justify-center flex-1">
 											<div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 sm:mb-4 flex items-center justify-center text-white">
 												{service.icon}
 											</div>
-											<h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{service.title}</h3>
-											<p className="text-gray-600 leading-relaxed text-sm sm:text-base">{service.description}</p>
+											<h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3 transition-colors duration-300">{service.title}</h3>
+											<p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base transition-colors duration-300">{service.description}</p>
 										</div>
 									</div>
 								</div>
@@ -741,14 +741,14 @@ const Home = () => {
 			</section>
 
 			{/* Contact Section */}
-			<section id="contactanos" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 relative z-10">
+			<section id="contactanos" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative z-10 transition-colors duration-300">
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="text-center mb-12 sm:mb-16">
-						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto">
+						<h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto transition-colors duration-300">
 							Ponte en Contacto con Nuestros Especialistas
 						</h2>
 						<div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6"></div>
-						<p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto text-center">
+						<p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
 							Contamos con la mejor precisión y rapidez del mundo
 							patológico.
 						</p>
@@ -758,13 +758,13 @@ const Home = () => {
 						{/* Contact Form */}
 						<div className="w-full">
 							<SpotlightCard
-								className="spotlight-contact-form w-full"
+								className="spotlight-contact-form w-full dark:bg-gray-800 dark:border-gray-700"
 								spotlightColor="rgba(207, 29, 201, 0.15)"
 								style={{ width: '100%' }}
 							>
 								<form onSubmit={handleSubmit} className="space-y-6 p-4 sm:p-6">
 									<div>
-										<label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+										<label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
 											Nombre:
 										</label>
 										<input
@@ -774,13 +774,13 @@ const Home = () => {
 											value={formData.name}
 											onChange={handleInputChange}
 											placeholder="Nombre Completo"
-											className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300"
+											className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 											required
 										/>
 									</div>
 
 									<div>
-										<label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+										<label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
 											Correo electrónico:
 										</label>
 										<input
@@ -790,13 +790,13 @@ const Home = () => {
 											value={formData.email}
 											onChange={handleInputChange}
 											placeholder="Correo electrónico"
-											className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300"
+											className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 											required
 										/>
 									</div>
 
 									<div>
-										<label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+										<label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
 											Teléfono:
 										</label>
 										<input
@@ -806,12 +806,12 @@ const Home = () => {
 											value={formData.phone}
 											onChange={handleInputChange}
 											placeholder="Teléfono"
-											className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300"
+											className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 										/>
 									</div>
 
 									<div>
-										<label htmlFor="howDidYouKnow" className="block text-sm font-medium text-gray-700 mb-2">
+										<label htmlFor="howDidYouKnow" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
 											¿Cómo nos conociste?
 										</label>
 										<select
@@ -819,7 +819,7 @@ const Home = () => {
 											name="howDidYouKnow"
 											value={formData.howDidYouKnow}
 											onChange={handleInputChange}
-											className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300"
+											className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 										>
 											<option value="">Seleccione una opción</option>
 											<option value="google">Google</option>
@@ -830,7 +830,7 @@ const Home = () => {
 									</div>
 
 									<div>
-										<label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+										<label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors duration-300">
 											Comentario:
 										</label>
 										<textarea
@@ -840,7 +840,7 @@ const Home = () => {
 											onChange={handleInputChange}
 											placeholder="Comentario"
 											rows={4}
-											className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 resize-none"
+											className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-[#cf1dc9] focus:border-transparent transition-all duration-300 resize-none bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
 										></textarea>
 									</div>
 
@@ -856,16 +856,16 @@ const Home = () => {
 
 						{/* Contact Info */}
 						<div className="space-y-6 sm:space-y-8 w-full">
-							<SpotlightCard className="spotlight-contact-info w-full" spotlightColor="rgba(207, 29, 201, 0.15)">
-								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Información de Contacto</h3>
+							<SpotlightCard className="spotlight-contact-info w-full dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">Información de Contacto</h3>
 								<div className="space-y-4 sm:space-y-6">
 									<div className="flex items-center space-x-3 sm:space-x-4">
 										<div className="bg-[#cf1dc9] p-2 sm:p-3 rounded-xl flex-shrink-0">
 											<Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
 										<div className="min-w-0 flex-1">
-											<p className="font-semibold text-gray-900 text-sm sm:text-base">Teléfono</p>
-											<a href="tel:04242082491" className="text-gray-600 text-sm sm:text-base break-all">
+											<p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">Teléfono</p>
+											<a href="tel:04242082491" className="text-gray-600 dark:text-gray-300 text-sm sm:text-base break-all transition-colors duration-300">
 												0424-2082491
 											</a>
 										</div>
@@ -875,8 +875,8 @@ const Home = () => {
 											<Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
 										<div className="min-w-0 flex-1">
-											<p className="font-semibold text-gray-900 text-sm sm:text-base">Email</p>
-											<a href="mailto:uhdconspat@gmail.com" className="text-gray-600 text-sm sm:text-base break-all">
+											<p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">Email</p>
+											<a href="mailto:uhdconspat@gmail.com" className="text-gray-600 dark:text-gray-300 text-sm sm:text-base break-all transition-colors duration-300">
 												uhdconspat@gmail.com
 											</a>
 										</div>
@@ -886,46 +886,46 @@ const Home = () => {
 											<MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
 										</div>
 										<div className="min-w-0 flex-1">
-											<p className="font-semibold text-gray-900 text-sm sm:text-base">Ubicación</p>
-											<p className="text-gray-600 text-sm sm:text-base">Caracas, Venezuela</p>
+											<p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">Ubicación</p>
+											<p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">Caracas, Venezuela</p>
 										</div>
 									</div>
 								</div>
 							</SpotlightCard>
 
-							<SpotlightCard className="spotlight-hours w-full" spotlightColor="rgba(207, 29, 201, 0.15)">
-								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Horarios de Atención</h3>
+							<SpotlightCard className="spotlight-hours w-full dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">Horarios de Atención</h3>
 								<div className="space-y-3 sm:space-y-4">
 									<div className="flex justify-between items-center">
-										<span className="text-gray-600 text-sm sm:text-base">Lunes a Viernes:</span>
-										<span className="font-semibold text-gray-900 text-sm sm:text-base">8:00 AM - 5:00 PM</span>
+										<span className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">Lunes a Viernes:</span>
+										<span className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">8:00 AM - 5:00 PM</span>
 									</div>
 									<div className="flex justify-between items-center">
-										<span className="text-gray-600 text-sm sm:text-base">Sábados:</span>
-										<span className="font-semibold text-gray-900 text-sm sm:text-base">8:00 AM - 1:00 PM</span>
+										<span className="text-gray-600 dark:text-gray-300 text-sm sm:text-base transition-colors duration-300">Sábados:</span>
+										<span className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base transition-colors duration-300">8:00 AM - 1:00 PM</span>
 									</div>
-									<p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4">(Los horarios pueden variar dependiendo de la sede)</p>
+									<p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-3 sm:mt-4 transition-colors duration-300">(Los horarios pueden variar dependiendo de la sede)</p>
 								</div>
 							</SpotlightCard>
 
 							<SpotlightCard
-								className="spotlight-faq w-full"
+								className="spotlight-faq w-full dark:bg-gray-800 dark:border-gray-700"
 								spotlightColor="rgba(207, 29, 201, 0.15)"
 								style={{ maxHeight: '400px', overflowY: 'auto' }}
 							>
-								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6 pb-2">Preguntas Frecuentes</h3>
+								<h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">Preguntas Frecuentes</h3>
 								<div className="space-y-3 sm:space-y-4">
 									<div>
 										<div
 											onClick={() => toggleQuestion(1)}
-											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
 										>
-											<h4 className="text-sm sm:text-base font-semibold text-gray-900 pr-2">¿Tiempo de espera para los resultados?</h4>
+											<h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white pr-2 transition-colors duration-300">¿Tiempo de espera para los resultados?</h4>
 											<HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
 										</div>
 										{activeQuestion === 1 && (
-											<div className="mt-3 p-3 bg-white rounded-lg border-l-4 border-[#cf1dc9]">
-												<ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 space-y-1">
+											<div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded-lg border-l-4 border-[#cf1dc9]">
+												<ul className="list-disc list-inside text-xs sm:text-sm text-gray-600 dark:text-gray-300 space-y-1 transition-colors duration-300">
 													<li>Citologías: 3-5 días hábiles.</li>
 													<li>Biopsias: 5-7 días hábiles.</li>
 													<li>Biopsias óseas: 7-10 días hábiles.</li>
@@ -938,14 +938,14 @@ const Home = () => {
 									<div>
 										<div
 											onClick={() => toggleQuestion(2)}
-											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+											className="cursor-pointer flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
 										>
-											<h4 className="text-sm sm:text-base font-semibold text-gray-900 pr-2">¿Cuál es el costo de los exámenes?</h4>
+											<h4 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white pr-2 transition-colors duration-300">¿Cuál es el costo de los exámenes?</h4>
 											<HelpCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#cf1dc9] flex-shrink-0" />
 										</div>
 										{activeQuestion === 2 && (
-											<div className="mt-3 p-3 bg-white rounded-lg border-l-4 border-[#cf1dc9]">
-												<p className="text-xs sm:text-sm text-gray-600">
+											<div className="mt-3 p-3 bg-white dark:bg-gray-600 rounded-lg border-l-4 border-[#cf1dc9]">
+												<p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300">
 													Los costos varían según el tipo de estudio. Contáctanos directamente con los datos del
 													paciente y la orden médica para proporcionar costos exactos.
 												</p>

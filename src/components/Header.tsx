@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
+import DarkModeToggle from './DarkModeToggle';
 
 interface HeaderProps {
   activeSection: string;
@@ -48,7 +49,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
       setIsMenuOpen(false);
     } catch (error) {
       console.error('Error in scrollToSection:', error);
-      // Fallback: navigate to home
       navigate('/');
     }
   };
@@ -59,7 +59,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
       setIsMenuOpen(false);
     } catch (error) {
       console.error('Navigation error:', error);
-      // Fallback: use window.location
       window.location.href = path;
     }
   };
@@ -67,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   const isOnUbicanosPage = location.pathname === '/ubicanos';
 
   return (
-    <header className="bg-white shadow-sm fixed top-0 left-0 right-0 z-50 w-full">
+    <header className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800 fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center" onClick={(e) => {
@@ -77,7 +76,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             <img 
               src="/logo.png" 
               alt="Logo Laboratorios Conspat" 
-              className="w-20 sm:w-24 h-auto"
+              className="w-20 sm:w-24 h-auto dark:brightness-0 dark:invert transition-all duration-300"
               onError={(e) => {
                 console.error('Error loading logo:', e);
                 e.currentTarget.style.display = 'none';
@@ -95,31 +94,31 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <>
                 <button 
                   onClick={() => handleNavigation('/')}
-                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Inicio
                 </button>
                 <button 
                   onClick={() => scrollToSection('nosotros')}
-                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Nosotros
                 </button>
                 <button 
                   onClick={() => scrollToSection('servicios')}
-                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Servicios
                 </button>
                 <button 
                   onClick={() => handleNavigation('/ubicanos')}
-                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
                 </button>
                 <button 
                   onClick={() => scrollToSection('contactanos')}
-                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Contáctanos
                 </button>
@@ -128,80 +127,86 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
               <>
                 <button 
                   onClick={() => scrollToSection('inicio')}
-                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('inicio') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Inicio
                 </button>
                 <button 
                   onClick={() => scrollToSection('nosotros')}
-                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Nosotros
                 </button>
                 <button 
                   onClick={() => scrollToSection('servicios')}
-                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('servicios') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Servicios
                 </button>
                 <button 
                   onClick={() => handleNavigation('/ubicanos')}
-                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Ubícanos
                 </button>
                 <button 
                   onClick={() => scrollToSection('contactanos')}
-                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 hover:text-[#cf1dc9]'}`}
+                  className={`transition-colors flex items-center h-full ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium border-b-2 border-[#cf1dc9] pb-1' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9]'}`}
                 >
                   Contáctanos
                 </button>
               </>
             )}
+            
+            {/* Dark Mode Toggle */}
+            <DarkModeToggle />
           </nav>
 
-          {/* Mobile menu button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile menu button and dark mode toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <DarkModeToggle />
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-md text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            >
+              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
             <nav className="flex flex-col space-y-1">
               {isOnUbicanosPage ? (
                 <>
                   <button 
                     onClick={() => handleNavigation('/')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('inicio') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('inicio') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Inicio
                   </button>
                   <button 
                     onClick={() => scrollToSection('nosotros')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Nosotros
                   </button>
                   <button 
                     onClick={() => scrollToSection('servicios')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('servicios') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('servicios') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Servicios
                   </button>
                   <button 
                     onClick={() => handleNavigation('/ubicanos')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Ubícanos
                   </button>
                   <button 
                     onClick={() => scrollToSection('contactanos')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Contáctanos
                   </button>
@@ -210,31 +215,31 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                 <>
                   <button 
                     onClick={() => scrollToSection('inicio')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('inicio') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('inicio') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Inicio
                   </button>
                   <button 
                     onClick={() => scrollToSection('nosotros')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('nosotros') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Nosotros
                   </button>
                   <button 
                     onClick={() => scrollToSection('servicios')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('servicios') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('servicios') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Servicios
                   </button>
                   <button 
                     onClick={() => handleNavigation('/ubicanos')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Ubícanos
                   </button>
                   <button 
                     onClick={() => scrollToSection('contactanos')}
-                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('contactanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 dark:text-gray-300 hover:text-[#cf1dc9] hover:bg-gray-50 dark:hover:bg-gray-800'}`}
                   >
                     Contáctanos
                   </button>

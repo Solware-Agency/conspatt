@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
 import Ubicanos from './pages/Ubicanos';
 import { Activity } from 'lucide-react';
+import { ThemeProvider } from './contexts/ThemeContext';
 import './preloader.css';
 
 const App = () => {
@@ -63,24 +64,26 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      {loading && (
-        <div id="preloader" className={fadeOut ? 'fade-out' : ''}>
-          <div id="loader">
-            <Activity size={50} color="#9370DB" />
+    <ThemeProvider>
+      <>
+        {loading && (
+          <div id="preloader" className={fadeOut ? 'fade-out' : ''}>
+            <div id="loader">
+              <Activity size={50} color="#9370DB" />
+            </div>
           </div>
-        </div>
-      )}
-      {!loading && (
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ubicanos" element={<Ubicanos />} />
-            <Route path="*" element={<Home />} />
-          </Routes>
-        </div>
-      )}
-    </>
+        )}
+        {!loading && (
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/ubicanos" element={<Ubicanos />} />
+              <Route path="*" element={<Home />} />
+            </Routes>
+          </div>
+        )}
+      </>
+    </ThemeProvider>
   );
 };
 
