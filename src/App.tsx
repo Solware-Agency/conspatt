@@ -21,24 +21,46 @@ const App = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle navigation errors
-  useEffect(() => {
-    const handleError = (event: ErrorEvent) => {
-      if (event.message.includes('Cannot navigate to URL')) {
-        console.warn('Navigation error detected, reloading page...');
-        window.location.reload();
-      }
-    };
-
-    window.addEventListener('error', handleError);
-    return () => window.removeEventListener('error', handleError);
-  }, []);
-
   // Handle route changes
   useEffect(() => {
     // Scroll to top on route change
     window.scrollTo(0, 0);
   }, [location.pathname]);
+
+  // Handle service worker errors
+  useEffect(() => {
+    const handleError = (event: ErrorEvent) => {
+      if (event.message && (
+        event.message.includes('Cannot navigate to URL') ||
+        event.message.includes('_refreshClients') ||
+        event.message.includes('service.worker')
+      )) {
+        console.warn('Service worker navigation error detected, ignoring...');
+        event.preventDefault();
+        return false;
+      }
+    };
+
+    const handleUnhandledRejection = (event: PromiseRejectionEvent) => {
+      if (event.reason && typeof event.reason === 'string' && (
+        event.reason.includes('Cannot navigate to URL') ||
+        event.reason.includes('_refreshClients') ||
+        event.reason.includes('service.worker')
+      )) {
+        console.warn('Service worker promise rejection detected, ignoring...');
+        event.preventDefault();
+        return false;
+      }
+    };
+
+    window.addEventListener('error', handleError);
+    window.addEventListener('unhandledrejection', handleUnhandledRejection);
+
+    return () => {
+      window.removeEventListener('error', handleError);
+      window.removeEventListener('unhandledrejection', handleUnhandledRejection);
+    };
+  }, []);
 
   return (
     <>

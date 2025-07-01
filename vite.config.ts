@@ -10,7 +10,8 @@ export default defineConfig({
     host: '0.0.0.0',
     strictPort: false,
     hmr: {
-      port: 5173
+      port: 5173,
+      clientPort: 5173
     }
   },
   build: {
@@ -28,5 +29,8 @@ export default defineConfig({
   preview: {
     port: 4173,
     host: '0.0.0.0'
+  },
+  define: {
+    'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
   }
 });
