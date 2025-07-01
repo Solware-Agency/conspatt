@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           <div className="text-center md:text-left">
             <Link to="/" className="text-3xl font-bold mb-3 inline-block">
-              <img src="/logo blanco.png" alt="Logo de Conspat" className="h-12 sm:h-14 mx-auto md:mx-0" />
+              <img src="/logo-blanco.png" alt="Logo de Conspat" className="h-12 sm:h-14 mx-auto md:mx-0" />
             </Link>
             <p className="text-white/90 mb-3 leading-relaxed">
               Mantente informado sobre nuestras últimas novedades en diagnósticos y eventos especializados. ¡Síguenos!
