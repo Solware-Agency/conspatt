@@ -3,6 +3,7 @@ import { MapPin, Phone, Clock, Mail, Navigation, Building2, Users, Car } from 'l
 import { FaWhatsapp } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import WhatsAppButton from '../components/WhatsAppButton';
 import SpotlightCard from '../components/SpotlightCard';
 
 const Ubicanos = () => {
@@ -137,6 +138,9 @@ const Ubicanos = () => {
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 relative transition-colors duration-300">
+      {/* WhatsApp Button */}
+      <WhatsAppButton />
+      
       <Header activeSection="ubicanos" />
 
       {/* Hero Section with Background Image - Reduced Height */}

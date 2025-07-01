@@ -28,6 +28,7 @@ import {
 } from 'lucide-react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import WhatsAppButton from '../components/WhatsAppButton'
 import CountUp from '../components/CountUp'
 import SplitText from '../components/SplitText'
 import RotatingText from '../components/RotatingText'
@@ -346,6 +347,9 @@ const Home = () => {
 		<div className="min-h-screen bg-white dark:bg-gray-900 relative transition-colors duration-300">
 			{/* Partículas médicas flotantes */}
 			<MedicalParticles />
+			
+			{/* WhatsApp Button */}
+			<WhatsAppButton />
 			
 			<Header activeSection={activeSection} />
 
