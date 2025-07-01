@@ -4,7 +4,6 @@ import { FaWhatsapp } from 'react-icons/fa';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import SpotlightCard from '../components/SpotlightCard';
-import MedicalParticles from '../components/MedicalParticles';
 
 const Ubicanos = () => {
   const locations = [
@@ -138,9 +137,6 @@ const Ubicanos = () => {
 
   return (
     <div className="min-h-screen bg-white relative">
-      {/* Partículas médicas flotantes */}
-      <MedicalParticles />
-      
       <Header activeSection="ubicanos" />
 
       {/* Hero Section with Background Image - Reduced Height */}
