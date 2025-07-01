@@ -19,15 +19,15 @@ const ContactSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            textClassName="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl"
           >
-            Ponte en Contacto con Nuestros Especialistas
+            Contacta Nuestros Especialistas
           </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
@@ -138,7 +138,7 @@ const ContactSection: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-6 sm:space-y-8 w-full">
             <SpotlightCard className="spotlight-contact-info w-full dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300 px-2 sm:px-0">
                 Información de Contacto
               </h3>
               <div className="space-y-4 sm:space-y-6">
@@ -185,7 +185,7 @@ const ContactSection: React.FC = () => {
             </SpotlightCard>
 
             <SpotlightCard className="spotlight-hours w-full dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300 px-2 sm:px-0">
                 Horarios de Atención
               </h3>
               <div className="space-y-3 sm:space-y-4">
@@ -216,7 +216,7 @@ const ContactSection: React.FC = () => {
               spotlightColor="rgba(207, 29, 201, 0.15)"
               style={{ maxHeight: '400px', overflowY: 'auto' }}
             >
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300 px-2 sm:px-0">
                 Preguntas Frecuentes
               </h3>
               <div className="space-y-3 sm:space-y-4">

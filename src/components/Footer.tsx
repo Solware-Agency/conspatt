@@ -5,9 +5,9 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#cf1dc9] text-white py-0 pb-4">
+    <footer className="bg-[#cf1dc9] text-white pt-12 sm:pt-16 lg:pt-20 xl:pt-24 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-16 sm:pt-16 lg:pt-20">
           <div className="text-center md:text-left">
             <Link to="/" className="text-3xl font-bold mb-3 inline-block">
               <img 
@@ -32,7 +32,7 @@ const Footer = () => {
 
           {/* Iconos centrados */}
           <div className="flex flex-col items-center">
-            <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-5 text-center">Conéctate con nosotros</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-4 sm:mb-5 text-center">Conéctate con nosotros</h3>
             <div className="flex space-x-4 sm:space-x-6">
               <a href="https://wa.me/584242082491" target="_blank" rel="noopener noreferrer" className="bg-white/20 p-2 sm:p-3 rounded-xl hover:bg-white/30 transition-colors transform hover:scale-105 hover:shadow-lg">
                 <FaWhatsapp className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -47,7 +47,7 @@ const Footer = () => {
           </div>
 
           <div className="text-center md:text-right">
-            <h3 className="text-lg sm:text-xl font-bold mb-3">Sedes</h3>
+            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-3">Sedes</h3>
             <div className="space-y-1">
               <div>
                 <p className="text-white text-sm sm:text-base">Centro Policlínico Caracas / Charallave</p>
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-6 text-center">
+        <div className="mt-4 text-center">
           <p className="text-white/90">
             Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="hover:underline">Solware.agency</a>
           </p>
