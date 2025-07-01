@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, HelpCircle } from 'lucide-react';
 import SpotlightCard from '../SpotlightCard';
+import ScrollFloat from '../ScrollFloat';
 import { useForm } from '../../hooks/useForm';
 import { CONTACT_INFO, BUSINESS_HOURS, FAQ_DATA } from '../../constants';
 
@@ -16,9 +17,18 @@ const ContactSection: React.FC = () => {
     <section id="contactanos" className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative z-10 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto transition-colors duration-300">
+          <ScrollFloat
+            containerClassName="mb-4 pb-2"
+            textClassName="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            animationDuration={2}
+            ease="back.inOut(2)"
+            scrollStart="center bottom+=60%"
+            scrollEnd="bottom bottom-=50%"
+            stagger={0.10}
+            fontSize="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+          >
             Ponte en Contacto con Nuestros Especialistas
-          </h2>
+          </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
             Contamos con la mejor precisión y rapidez del mundo patológico.

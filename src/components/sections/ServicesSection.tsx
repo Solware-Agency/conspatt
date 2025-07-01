@@ -1,5 +1,6 @@
 import React from 'react';
 import FadeContent from '../FadeContent';
+import ScrollFloat from '../ScrollFloat';
 import { SERVICES } from '../../constants';
 
 const ServicesSection: React.FC = () => {
@@ -7,9 +8,18 @@ const ServicesSection: React.FC = () => {
     <section id="servicios" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight text-center px-2 sm:px-4 break-words hyphens-auto transition-colors duration-300">
+          <ScrollFloat
+            containerClassName="mb-4 pb-2"
+            textClassName="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            animationDuration={2}
+            ease="back.inOut(2)"
+            scrollStart="center bottom+=60%"
+            scrollEnd="bottom bottom-=50%"
+            stagger={0.10}
+            fontSize="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
+          >
             Nosotros Ofrecemos Distintos Tipos De Procesamientos
-          </h2>
+          </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
             Te ofrecemos distintos tipos de servicios para mejorar tu salud.

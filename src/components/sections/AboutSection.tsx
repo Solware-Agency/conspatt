@@ -1,6 +1,7 @@
 import React from 'react';
 import { CheckCircle } from 'lucide-react';
 import SplitText from '../SplitText';
+import ScrollFloat from '../ScrollFloat';
 import BlurText from '../BlurText';
 import FadeContent from '../FadeContent';
 import { GALLERY_IMAGES, MISSION_VALUES, CORE_VALUES, PROCESS_STEPS, CLIENT_LOGOS } from '../../constants';
@@ -14,19 +15,18 @@ const AboutSection: React.FC = () => {
     <section id="nosotros" className="py-12 sm:py-16 lg:py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12 sm:mb-16">
-          <SplitText
-            text="Somos Laboratorio Conspat"
-            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight break-words hyphens-auto transition-colors duration-300"
-            delay={100}
-            duration={0.6}
-            ease="power3.out"
-            splitType="chars"
-            from={{ opacity: 0, y: 40 }}
-            to={{ opacity: 1, y: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-          />
+          <ScrollFloat
+            containerClassName="mb-4 pb-2"
+            textClassName="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300"
+            animationDuration={2}
+            ease="back.inOut(2)"
+            scrollStart="center bottom+=60%"
+            scrollEnd="bottom bottom-=50%"
+            stagger={0.10}
+            fontSize="text-2xl sm:text-3xl md:text-4xl"
+          >
+            Somos Laboratorio Conspat
+          </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
             Conoce más de nuestra historia y equipo técnico especializado.
@@ -103,19 +103,18 @@ const AboutSection: React.FC = () => {
       <section className="py-12 sm:py-16 lg:py-20 bg-gray-50 dark:bg-gray-800 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 sm:mb-16">
-            <SplitText
-              text="Nuestra Misión y Valores"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 leading-tight px-2 break-words hyphens-auto transition-colors duration-300"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
+            <ScrollFloat
+              containerClassName="mb-4 pb-2"
+              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white leading-tight px-2 break-words hyphens-auto transition-colors duration-300"
+              animationDuration={2}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=60%"
+              scrollEnd="bottom bottom-=50%"
+              stagger={0.10}
+              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            >
+              Nuestra Misión y Valores
+            </ScrollFloat>
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
             <p className="text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center px-4 transition-colors duration-300">
               Los principios que nos guían en nuestro compromiso con la excelencia médica y el servicio a la comunidad.
@@ -175,19 +174,18 @@ const AboutSection: React.FC = () => {
       <section className="py-20 bg-white dark:bg-gray-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <SplitText
-              text="El Rol Del Patólogo En Tu Tratamiento"
-              className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white mb-4 pb-2 px-2 sm:px-4 leading-tight break-words hyphens-auto transition-colors duration-300"
-              delay={100}
-              duration={0.6}
-              ease="power3.out"
-              splitType="chars"
-              from={{ opacity: 0, y: 40 }}
-              to={{ opacity: 1, y: 0 }}
-              threshold={0.1}
-              rootMargin="-100px"
-              textAlign="center"
-            />
+            <ScrollFloat
+              containerClassName="mb-4 pb-2"
+              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white px-2 sm:px-4 leading-tight break-words hyphens-auto transition-colors duration-300"
+              animationDuration={2}
+              ease="back.inOut(2)"
+              scrollStart="center bottom+=60%"
+              scrollEnd="bottom bottom-=50%"
+              stagger={0.10}
+              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+            >
+              El Rol Del Patólogo En Tu Tratamiento
+            </ScrollFloat>
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           </div>
 

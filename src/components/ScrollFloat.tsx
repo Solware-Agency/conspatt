@@ -2,13 +2,13 @@ import { useEffect, useMemo, useRef, ReactNode } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-import './ScrollFloat.css'; // Asegúrate de tener este archivo CSS
+import './ScrollFloat.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 interface ScrollFloatProps {
-  children: ReactNode; // Define el tipo de children
-  scrollContainerRef?: React.RefObject<HTMLElement>; // Define el tipo para scrollContainerRef
+  children: ReactNode;
+  scrollContainerRef?: React.RefObject<HTMLElement>;
   containerClassName?: string;
   textClassName?: string;
   animationDuration?: number;
@@ -16,7 +16,7 @@ interface ScrollFloatProps {
   scrollStart?: string;
   scrollEnd?: string;
   stagger?: number;
-  fontSize?: string; // Nueva propiedad para el tamaño de la fuente
+  fontSize?: string;
 }
 
 const ScrollFloat: React.FC<ScrollFloatProps> = ({
@@ -29,7 +29,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   scrollStart = 'center bottom+=60%',
   scrollEnd = 'bottom bottom-=50%',
   stagger = 0.10,
-  fontSize = 'text-base' // Valor por defecto
+  fontSize = 'text-base'
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
 
@@ -46,14 +46,27 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
-
+    const scroller = scrollContainerRef?.current || window;
     const charElements = el.querySelectorAll('.char');
 
-    gsap.fromTo(
+    if (charElements.length === 0) return;
+
+    // Clear any existing animations
+    gsap.killTweensOf(charElements);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        scroller,
+        start: scrollStart,
+        end: scrollEnd,
+        scrub: true,
+        refreshPriority: -1,
+        invalidateOnRefresh: true
+      }
+    });
+
+    tl.fromTo(
       charElements,
       {
         willChange: 'opacity, transform',
@@ -70,17 +83,15 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
         yPercent: 0,
         scaleY: 1,
         scaleX: 1,
-        stagger: stagger,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: scrollStart,
-          end: scrollEnd,
-          scrub: true
-        }
+        stagger: stagger
       }
     );
-  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger]);
+
+    return () => {
+      tl.kill();
+      gsap.killTweensOf(charElements);
+    };
+  }, [scrollContainerRef, animationDuration, ease, scrollStart, scrollEnd, stagger, children]);
 
   return (
     <h2 ref={containerRef} className={`scroll-float ${containerClassName}`}>
