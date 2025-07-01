@@ -42,9 +42,21 @@ header {
   left: 0 !important;
   right: 0 !important;
   z-index: 1000 !important;
-  background-color: white !important;
   width: 100% !important;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Dark mode header styles */
+.dark header {
+  background-color: rgb(17, 24, 39) !important;
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgb(55, 65, 81) !important;
+}
+
+/* Light mode header styles */
+header {
+  background-color: white !important;
+  border-bottom: 1px solid rgb(229, 231, 235) !important;
 }
 
 /* Evitar que las animaciones GSAP afecten el header */
@@ -74,4 +86,91 @@ html, body {
 .medical-particle {
   position: fixed !important;
   pointer-events: none !important;
+}
+
+/* Dark mode preloader styles */
+.dark #preloader {
+  background-color: rgba(17, 24, 39, 0.95);
+}
+
+.dark #loader:before {
+  border-top-color: #cf1dc9;
+}
+
+.dark #loader:after {
+  border-top-color: #ae29ba;
+}
+
+/* Ensure smooth transitions for all elements */
+* {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Dark mode card styles */
+.dark .card-spotlight {
+  background-color: rgb(31, 41, 55) !important;
+  border-color: rgb(55, 65, 81) !important;
+  color: white !important;
+}
+
+.dark .card-spotlight:hover {
+  border-color: rgba(207, 29, 201, 0.5) !important;
+}
+
+/* Ensure proper text contrast in dark mode */
+.dark .text-gray-900 {
+  color: rgb(243, 244, 246) !important;
+}
+
+.dark .text-gray-800 {
+  color: rgb(229, 231, 235) !important;
+}
+
+.dark .text-gray-700 {
+  color: rgb(209, 213, 219) !important;
+}
+
+.dark .text-gray-600 {
+  color: rgb(156, 163, 175) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgb(107, 114, 128) !important;
+}
+
+/* Dark mode form elements */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: rgb(55, 65, 81) !important;
+  border-color: rgb(75, 85, 99) !important;
+  color: white !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: rgb(156, 163, 175) !important;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+  border-color: #cf1dc9 !important;
+  ring-color: #cf1dc9 !important;
+}
+
+/* Dark mode background gradients */
+.dark .bg-gradient-to-br.from-gray-50.to-gray-100 {
+  background-image: linear-gradient(to bottom right, rgb(55, 65, 81), rgb(31, 41, 55)) !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: rgb(55, 65, 81) !important;
+}
+
+/* Ensure logo visibility in dark mode */
+.dark header img {
+  filter: brightness(0) invert(1) !important;
 }

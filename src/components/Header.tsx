@@ -66,7 +66,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
   const isOnUbicanosPage = location.pathname === '/ubicanos';
 
   return (
-    <header className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800 fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300">
+    <header className="bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800 fixed top-0 left-0 right-0 z-50 w-full transition-colors duration-300 border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="flex items-center" onClick={(e) => {
@@ -76,13 +76,16 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             <img 
               src="/logo.png" 
               alt="Logo Laboratorios Conspat" 
-              className="w-20 sm:w-24 h-auto dark:brightness-0 dark:invert transition-all duration-300"
+              className="w-20 sm:w-24 h-auto transition-all duration-300"
+              style={{
+                filter: document.documentElement.classList.contains('dark') ? 'brightness(0) invert(1)' : 'none'
+              }}
               onError={(e) => {
                 console.error('Error loading logo:', e);
                 e.currentTarget.style.display = 'none';
                 const textLogo = document.createElement('span');
                 textLogo.textContent = 'CONSPAT';
-                textLogo.className = 'text-xl font-bold text-[#cf1dc9]';
+                textLogo.className = 'text-xl font-bold text-[#cf1dc9] dark:text-white';
                 e.currentTarget.parentNode?.appendChild(textLogo);
               }}
             />
@@ -176,7 +179,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700">
+          <div className="md:hidden py-4 border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
             <nav className="flex flex-col space-y-1">
               {isOnUbicanosPage ? (
                 <>

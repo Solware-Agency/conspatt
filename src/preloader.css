@@ -71,3 +71,8 @@ body {
 .dark #loader:after {
   border-top-color: #ae29ba;
 }
+
+/* Dark mode body background */
+.dark body {
+  background-color: rgb(17, 24, 39);
+}
