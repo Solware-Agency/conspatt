@@ -195,7 +195,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   </button>
                   <button 
                     onClick={() => handleNavigation('/ubicanos')}
-                    className={`py-3 px-4 transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
                   >
                     Ubícanos
                   </button>
@@ -228,7 +228,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                   </button>
                   <button 
                     onClick={() => handleNavigation('/ubicanos')}
-                    className={`py-3 px-4 transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
+                    className={`py-3 px-4 text-left transition-colors rounded-lg ${isActive('ubicanos') ? 'text-[#cf1dc9] font-medium bg-[#cf1dc9]/10' : 'text-gray-700 hover:text-[#cf1dc9] hover:bg-gray-50'}`}
                   >
                     Ubícanos
                   </button>
