@@ -27,7 +27,7 @@ const ContactSection: React.FC = () => {
             stagger={0.10}
             fontSize="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl"
           >
-            Contacta Nuestros Especialistas
+            Contacta con Nuestros Especialistas
           </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">

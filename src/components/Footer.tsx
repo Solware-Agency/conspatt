@@ -5,13 +5,13 @@ import { FaWhatsapp } from 'react-icons/fa';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#cf1dc9] text-white pt-12 sm:pt-16 lg:pt-20 xl:pt-24 pb-4">
+    <footer className="bg-[#cf1dc9] text-white pt-1 sm:pt-2 lg:pt-4 pb-4">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-16 sm:pt-16 lg:pt-20">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start pt-2 sm:pt-4 lg:pt-6">
           <div className="text-center md:text-left">
             <Link to="/" className="text-3xl font-bold mb-3 inline-block">
               <img 
-                src="/logo-blanco.png" 
+                src="/logo-blanco.webp" 
                 alt="Logo de Conspat" 
                 className="h-12 sm:h-14 mx-auto md:mx-0"
                 onError={(e) => {
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-4 text-center">
+        <div className="mt-1 text-center">
           <p className="text-white/90">
             Desarrollado por <a href="https://www.solware.agency/" target="_blank" rel="noopener noreferrer" className="hover:underline">Solware.agency</a>
           </p>

@@ -98,7 +98,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
             handleNavigation('/');
           }}>
             <img 
-              src="/logo.png" 
+              src="/logo.webp" 
               alt="Logo Laboratorios Conspat" 
               className="w-20 sm:w-24 h-auto transition-all duration-300"
               style={{

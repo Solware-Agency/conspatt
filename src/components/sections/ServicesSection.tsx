@@ -10,15 +10,15 @@ const ServicesSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
+            textClassName="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-0"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
           >
-            Nosotros Ofrecemos Distintos Tipos De Procesamientos
+            Nuestros Tipos De Procesamientos
           </ScrollFloat>
           <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-center transition-colors duration-300">
@@ -31,15 +31,15 @@ const ServicesSection: React.FC = () => {
             <FadeContent key={index} blur={true} duration={1000} delay={index * 200}>
               <div className="relative group p-2">
                 <div className="absolute -inset-2 bg-[#cf1dc9]/15 rounded-2xl shadow-3xl opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                <div className="bg-white dark:bg-gray-800 rounded-2xl p-4 sm:p-6 h-64 sm:h-72 w-full flex flex-col justify-between text-center shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] relative z-10">
-                  <div className="flex flex-col items-center justify-center flex-1">
-                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-12 h-12 sm:w-16 sm:h-16 rounded-full mb-3 sm:mb-4 flex items-center justify-center text-white">
+                <div className="bg-white dark:bg-gray-800 rounded-2xl p-5 sm:p-7 min-h-[280px] sm:min-h-[320px] lg:min-h-[340px] w-full flex flex-col text-center shadow-lg hover:shadow-xl border border-gray-100 dark:border-gray-700 transition-all duration-300 hover:scale-[1.02] relative z-10">
+                  <div className="flex flex-col items-center justify-center flex-1 space-y-3 sm:space-y-4">
+                    <div className="bg-gradient-to-br from-[#cf1dc9] to-[#ae29ba] w-14 h-14 sm:w-16 sm:h-16 lg:w-18 lg:h-18 rounded-full flex items-center justify-center text-white flex-shrink-0">
                       {service.icon}
                     </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-2 sm:mb-3 transition-colors duration-300">
+                    <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300 leading-tight px-2">
                       {service.title}
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base transition-colors duration-300">
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm sm:text-base lg:text-base transition-colors duration-300 px-2">
                       {service.description}
                     </p>
                   </div>

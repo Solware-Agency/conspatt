@@ -54,7 +54,7 @@ const HeroSection: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="/consig.png" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
+                <img src="/consig.webp" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
               </a>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mt-4 text-black dark:text-white transition-colors duration-300">
                 Conoce Nuestros Laboratorios
@@ -77,7 +77,7 @@ const HeroSection: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/mano.jpg)',
+            backgroundImage: 'url(/mano.webp)',
             backgroundPosition: 'center center',
             backgroundSize: 'cover'
           }}
