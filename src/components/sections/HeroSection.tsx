@@ -16,9 +16,9 @@ const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-2 sm:px-0">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-2 sm:px-0">
               <span className="text-gray-900 dark:text-white">Tu </span>
-              <span className="inline-flex items-center justify-center w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 h-10 sm:h-12 md:h-14 lg:h-16 xl:h-18 bg-[#cf1dc9] text-white rounded-lg text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+              <span className="inline-flex items-center justify-center w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 bg-[#cf1dc9] text-white rounded-lg text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
                 <SimpleRotatingText
                   texts={['Salud', 'Vida', 'Bien']}
                   rotationInterval={4000}

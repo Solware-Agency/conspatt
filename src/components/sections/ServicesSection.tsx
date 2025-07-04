@@ -10,13 +10,13 @@ const ServicesSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-0"
+            textClassName="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-0"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl"
           >
             Nuestros Tipos De Procesamientos
           </ScrollFloat>

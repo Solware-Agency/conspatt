@@ -17,13 +17,13 @@ const AboutSection: React.FC = () => {
         <div className="text-center mb-12 sm:mb-16">
           <ScrollFloat
             containerClassName="mb-4 pb-2"
-            textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
+            textClassName="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white leading-tight break-words hyphens-auto transition-colors duration-300 px-4 sm:px-6 lg:px-8"
             animationDuration={2}
             ease="back.inOut(2)"
             scrollStart="center bottom+=60%"
             scrollEnd="bottom bottom-=50%"
             stagger={0.10}
-            fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+            fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
           >
             Somos Laboratorio Conspat
           </ScrollFloat>
@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300 px-2 lg:px-0">
+            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300 px-2 lg:px-0">
               Expertos en resultados patológicos
             </h3>
             <BlurText
@@ -107,13 +107,13 @@ const AboutSection: React.FC = () => {
           <div className="text-center mb-12 sm:mb-16">
             <ScrollFloat
               containerClassName="mb-4 pb-2"
-              textClassName="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white leading-tight px-4 sm:px-6 lg:px-8 break-words hyphens-auto transition-colors duration-300"
+              textClassName="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white leading-tight px-4 sm:px-6 lg:px-8 break-words hyphens-auto transition-colors duration-300"
               animationDuration={2}
               ease="back.inOut(2)"
               scrollStart="center bottom+=60%"
               scrollEnd="bottom bottom-=50%"
               stagger={0.10}
-              fontSize="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+              fontSize="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl"
             >
               Nuestra Misión y Valores
             </ScrollFloat>

@@ -29,7 +29,7 @@ const ScrollFloat: React.FC<ScrollFloatProps> = ({
   scrollStart = 'center bottom+=60%',
   scrollEnd = 'bottom bottom-=50%',
   stagger = 0.10,
-  fontSize = 'text-base'
+  fontSize = 'text-sm'
 }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
 

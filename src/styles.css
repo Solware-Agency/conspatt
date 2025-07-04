@@ -108,6 +108,46 @@ html, body {
   transition-duration: 300ms;
 }
 
+/* Responsive text improvements */
+@media (max-width: 640px) {
+  h1, h2, h3, h4, h5, h6 {
+    word-break: break-word;
+    hyphens: auto;
+    line-height: 1.2;
+  }
+  
+  .text-responsive {
+    font-size: clamp(0.875rem, 4vw, 1.125rem);
+  }
+  
+  .title-responsive {
+    font-size: clamp(1rem, 6vw, 1.5rem);
+  }
+  
+  .hero-title-responsive {
+    font-size: clamp(1.125rem, 7vw, 2rem);
+  }
+}
+
+/* Ensure text doesn't overflow containers */
+.break-words {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+
+/* Better text scaling for very small screens */
+@media (max-width: 375px) {
+  .text-xs { font-size: 0.7rem; }
+  .text-sm { font-size: 0.8rem; }
+  .text-base { font-size: 0.9rem; }
+  .text-lg { font-size: 1rem; }
+  .text-xl { font-size: 1.1rem; }
+  .text-2xl { font-size: 1.25rem; }
+  .text-3xl { font-size: 1.5rem; }
+}
+
 /* Dark mode card styles */
 .dark .card-spotlight {
   background-color: rgb(31, 41, 55) !important;
