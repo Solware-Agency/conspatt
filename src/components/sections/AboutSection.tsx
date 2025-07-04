@@ -86,6 +86,16 @@ const AboutSection: React.FC = () => {
                         src={image.src}
                         alt={image.alt}
                         className="w-full h-24 sm:h-32 object-cover transition-transform duration-500 group-hover:scale-110"
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          if (img.src.includes('.jpg')) {
+                            img.style.display = 'none';
+                            const placeholder = document.createElement('div');
+                            placeholder.className = 'w-full h-24 sm:h-32 bg-gray-200 dark:bg-gray-700 flex items-center justify-center';
+                            placeholder.innerHTML = '<span class="text-xs text-gray-500 dark:text-gray-400">Imagen no disponible</span>';
+                            img.parentNode?.appendChild(placeholder);
+                          }
+                        }}
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <div className="absolute bottom-2 left-2 right-2">
@@ -238,6 +248,10 @@ const AboutSection: React.FC = () => {
                       src={src}
                       alt={`Cliente ${index + 1}`}
                       className="w-20 h-16 sm:w-24 sm:h-18 lg:w-32 lg:h-24 object-contain"
+                      onError={(e) => {
+                        const img = e.currentTarget;
+                        img.style.display = 'none';
+                      }}
                     />
                   </div>
                 ))

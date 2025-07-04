@@ -15,13 +15,16 @@ const Footer = () => {
                 alt="Logo de Conspat" 
                 className="h-12 sm:h-14 mx-auto md:mx-0"
                 onError={(e) => {
-                  console.error('Error loading footer logo:', e);
-                  // Fallback: mostrar texto si la imagen no carga
-                  e.currentTarget.style.display = 'none';
-                  const textLogo = document.createElement('span');
-                  textLogo.textContent = 'CONSPAT';
-                  textLogo.className = 'text-2xl font-bold text-white';
-                  e.currentTarget.parentNode?.appendChild(textLogo);
+                  const img = e.currentTarget;
+                  if (img.src.includes('.webp')) {
+                    img.src = '/logo-blanco.png';
+                  } else if (img.src.includes('.png')) {
+                    img.style.display = 'none';
+                    const textLogo = document.createElement('span');
+                    textLogo.textContent = 'CONSPAT';
+                    textLogo.className = 'text-2xl font-bold text-white';
+                    img.parentNode?.appendChild(textLogo);
+                  }
                 }}
               />
             </Link>

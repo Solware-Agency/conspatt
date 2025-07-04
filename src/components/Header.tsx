@@ -105,12 +105,16 @@ const Header: React.FC<HeaderProps> = ({ activeSection }) => {
                 filter: document.documentElement.classList.contains('dark') ? 'brightness(0) invert(1)' : 'none'
               }}
               onError={(e) => {
-                console.error('Error loading logo:', e);
-                e.currentTarget.style.display = 'none';
-                const textLogo = document.createElement('span');
-                textLogo.textContent = 'CONSPAT';
-                textLogo.className = 'text-xl font-bold text-[#cf1dc9] dark:text-white';
-                e.currentTarget.parentNode?.appendChild(textLogo);
+                const img = e.currentTarget;
+                if (img.src.includes('.webp')) {
+                  img.src = '/logo.png';
+                } else if (img.src.includes('.png')) {
+                  img.style.display = 'none';
+                  const textLogo = document.createElement('span');
+                  textLogo.textContent = 'CONSPAT';
+                  textLogo.className = 'text-xl font-bold text-[#cf1dc9] dark:text-white';
+                  img.parentNode?.appendChild(textLogo);
+                }
               }}
             />
           </Link>

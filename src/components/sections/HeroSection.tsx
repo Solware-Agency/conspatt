@@ -54,7 +54,23 @@ const HeroSection: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img src="/consig.webp" alt="Perfil de Instagram" className="w-full h-auto object-contain rounded" />
+                <img 
+                  src="/consig.webp" 
+                  alt="Perfil de Instagram" 
+                  className="w-full h-auto object-contain rounded"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (img.src.includes('.webp')) {
+                      img.src = '/consig.png';
+                    } else {
+                      img.style.display = 'none';
+                      const placeholder = document.createElement('div');
+                      placeholder.className = 'w-full h-64 bg-gray-200 dark:bg-gray-700 rounded flex items-center justify-center';
+                      placeholder.innerHTML = '<span class="text-gray-500 dark:text-gray-400">Instagram Profile</span>';
+                      img.parentNode?.appendChild(placeholder);
+                    }
+                  }}
+                />
               </a>
               <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-center mt-4 text-black dark:text-white transition-colors duration-300">
                 Conoce Nuestros Laboratorios
@@ -77,7 +93,7 @@ const HeroSection: React.FC = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: 'url(/mano.webp)',
+            backgroundImage: 'url(/mano.jpg)',
             backgroundPosition: 'center center',
             backgroundSize: 'cover'
           }}

@@ -80,22 +80,22 @@ export const PROCESS_STEPS: ProcessStep[] = [
 
 export const GALLERY_IMAGES: GalleryImage[] = [
   {
-    src: '/Whisk_a1c12feb90.webp',
+    src: '/Whisk_a1c12feb90.jpg',
     alt: 'Laboratorio de patología - Análisis microscópico',
     title: 'Análisis Microscópico',
   },
   {
-    src: '/Whisk_3efea70758.webp',
+    src: '/Whisk_3efea70758.jpg',
     alt: 'Equipo de laboratorio especializado',
     title: 'Tecnología Avanzada',
   },
   {
-    src: '/Whisk_d6377a6764.webp',
+    src: '/Whisk_d6377a6764.jpg',
     alt: 'Profesionales trabajando en laboratorio',
     title: 'Equipo Especializado',
   },
   {
-    src: '/Whisk_7c8e7c40cd.webp',
+    src: '/Whisk_7c8e7c40cd.jpg',
     alt: 'Instalaciones modernas del laboratorio',
     title: 'Instalaciones Modernas',
   },
@@ -143,11 +143,11 @@ export const STATS_DATA: StatData[] = [
 ];
 
 export const CLIENT_LOGOS = [
-  '/client1.webp',
-  '/client2.webp',
-  '/client3.webp',
-  '/client4.webp',
-  '/client5.webp',
+  '/client1.png',
+  '/client2.png',
+  '/client3.png',
+  '/client4.png',
+  '/client5.png',
 ];
 
 export const LOCATIONS = [
