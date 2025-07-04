@@ -21,7 +21,7 @@ const HeroSection: React.FC = () => {
               <span className="inline-flex items-center justify-center bg-[#cf1dc9] text-white rounded-lg font-bold overflow-hidden" style={{ 
                 width: 'clamp(6rem, 18vw, 10rem)', 
                 height: 'clamp(2.5rem, 8vw, 4.5rem)', 
-                fontSize: 'clamp(0.875rem, 4.5vw, 1.75rem)',
+                fontSize: 'clamp(1.25rem, 6vw, 2.5rem)',
                 padding: '0.25rem 0.5rem'
               }}>
                 <SimpleRotatingText
