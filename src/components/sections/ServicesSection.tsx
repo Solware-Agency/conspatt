@@ -37,6 +37,7 @@ const ServicesSection: React.FC = () => {
                       {service.icon}
                     </div>
                     <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white transition-colors duration-300 leading-tight px-2">
+                    </h3>
                     <h3 className="font-bold text-gray-900 dark:text-white transition-colors duration-300 leading-tight px-3" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.25rem)' }}>
                       {service.title}
                     </h3>
