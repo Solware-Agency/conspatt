@@ -50,9 +50,6 @@ const ServicesSection: React.FC = () => {
             </FadeContent>
           ))}
         </div>
-          )
-          )
-          }
       </div>
     </section>
   );
