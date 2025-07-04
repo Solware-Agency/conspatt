@@ -34,11 +34,11 @@ const Ubicanos: React.FC = () => {
         <div className="absolute inset-0 bg-black bg-opacity-40" />
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-8">
-          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-4 drop-shadow-2xl leading-tight break-words hyphens-auto px-4 sm:px-0">
+          <h1 className="font-bold text-white mb-4 drop-shadow-2xl leading-tight break-words hyphens-auto px-6 sm:px-0" style={{ fontSize: 'clamp(1.25rem, 6vw, 2.5rem)' }}>
             Nuestras <span className="text-white">Ubicaciones</span>
           </h1>
           <div className="w-24 h-1 bg-white mx-auto mb-4 shadow-lg" />
-          <p className="text-base sm:text-lg text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg px-4">
+          <p className="text-white max-w-3xl mx-auto leading-relaxed drop-shadow-lg px-6" style={{ fontSize: 'clamp(0.875rem, 4vw, 1.125rem)' }}>
             Encuentra la sede de Laboratorios Conspat más cercana a ti. 
             Contamos con instalaciones modernas y personal especializado para brindarte el mejor servicio.
           </p>

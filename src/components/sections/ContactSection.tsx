@@ -138,7 +138,7 @@ const ContactSection: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-6 sm:space-y-8 w-full">
             <SpotlightCard className="spotlight-contact-info w-full dark:bg-gray-800 dark:border-gray-700" spotlightColor="rgba(207, 29, 201, 0.15)">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300 px-2 sm:px-0">
+              <h3 className="font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 pb-2 transition-colors duration-300 px-3 sm:px-0" style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)' }}>
                 Información de Contacto
               </h3>
               <div className="space-y-4 sm:space-y-6">

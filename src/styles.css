@@ -214,3 +214,56 @@ html, body {
 .dark header img {
   filter: brightness(0) invert(1) !important;
 }
+
+/* Improved responsive text handling */
+@media (max-width: 640px) {
+  /* Force better text wrapping and visibility */
+  * {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  /* Ensure minimum font sizes for readability */
+  h1 { font-size: clamp(1.25rem, 6vw, 2rem) !important; }
+  h2 { font-size: clamp(1.125rem, 5vw, 1.75rem) !important; }
+  h3 { font-size: clamp(1rem, 4vw, 1.5rem) !important; }
+  h4 { font-size: clamp(0.875rem, 3.5vw, 1.25rem) !important; }
+  h5 { font-size: clamp(0.875rem, 3vw, 1.125rem) !important; }
+  h6 { font-size: clamp(0.75rem, 2.5vw, 1rem) !important; }
+  
+  /* Fix container padding to prevent text cutoff */
+  .px-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+  .px-2 { padding-left: 1rem !important; padding-right: 1rem !important; }
+  
+  /* Ensure text containers have proper spacing */
+  .text-center, .text-left, .text-right {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Extra small screens (iPhone SE, etc.) */
+@media (max-width: 375px) {
+  h1 { font-size: clamp(1.125rem, 7vw, 1.75rem) !important; }
+  h2 { font-size: clamp(1rem, 6vw, 1.5rem) !important; }
+  h3 { font-size: clamp(0.875rem, 5vw, 1.25rem) !important; }
+  
+  /* Increase padding for very small screens */
+  .px-4 { padding-left: 2rem !important; padding-right: 2rem !important; }
+  .px-2 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+  
+  /* Ensure containers don't overflow */
+  .container, .max-w-7xl, .max-w-6xl, .max-w-3xl {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Fix for rotating text container */
+@media (max-width: 640px) {
+  .inline-flex {
+    min-width: fit-content !important;
+    white-space: nowrap !important;
+  }
+}

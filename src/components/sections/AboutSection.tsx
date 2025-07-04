@@ -35,7 +35,7 @@ const AboutSection: React.FC = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300 px-2 lg:px-0">
+            <h3 className="font-bold text-gray-900 dark:text-white mb-6 pb-2 text-center lg:text-left transition-colors duration-300 px-3 lg:px-0" style={{ fontSize: 'clamp(1rem, 4vw, 1.5rem)' }}>
               Expertos en resultados patológicos
             </h3>
             <BlurText

@@ -16,9 +16,13 @@ const HeroSection: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-2 sm:px-0">
+            <h1 className="font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-3 sm:px-0" style={{ fontSize: 'clamp(1.25rem, 6vw, 2.5rem)' }}>
               <span className="text-gray-900 dark:text-white">Tu </span>
-              <span className="inline-flex items-center justify-center w-20 sm:w-24 md:w-28 lg:w-32 xl:w-36 h-8 sm:h-10 md:h-12 lg:h-14 xl:h-16 bg-[#cf1dc9] text-white rounded-lg text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold">
+              <span className="inline-flex items-center justify-center bg-[#cf1dc9] text-white rounded-lg font-bold" style={{ 
+                width: 'clamp(5rem, 15vw, 9rem)', 
+                height: 'clamp(2rem, 8vw, 4rem)', 
+                fontSize: 'clamp(1rem, 5vw, 2rem)' 
+              }}>
                 <SimpleRotatingText
                   texts={['Salud', 'Vida', 'Bien']}
                   rotationInterval={4000}
@@ -27,7 +31,7 @@ const HeroSection: React.FC = () => {
               </span>
               <span className="text-gray-900 dark:text-white"> es nuestra prioridad</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-center lg:text-justify transition-colors duration-300">
+            <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-center lg:text-justify transition-colors duration-300 px-2" style={{ fontSize: 'clamp(1rem, 4vw, 1.25rem)' }}>
               En Conspat, proporcionamos diagnósticos patológicos precisos y oportunos, inspirados por el deseo de
               investigar y ayudar a la comunidad médica desde 2004.
             </p>
