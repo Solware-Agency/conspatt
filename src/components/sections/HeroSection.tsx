@@ -18,15 +18,16 @@ const HeroSection: React.FC = () => {
           <div className="text-center lg:text-left">
             <h1 className="font-bold text-gray-900 dark:text-white leading-tight mb-6 break-words hyphens-auto transition-colors duration-300 px-3 sm:px-0" style={{ fontSize: 'clamp(1.25rem, 6vw, 2.5rem)' }}>
               <span className="text-gray-900 dark:text-white">Tu </span>
-              <span className="inline-flex items-center justify-center bg-[#cf1dc9] text-white rounded-lg font-bold" style={{ 
-                width: 'clamp(5rem, 15vw, 9rem)', 
-                height: 'clamp(2rem, 8vw, 4rem)', 
-                fontSize: 'clamp(1rem, 5vw, 2rem)' 
+              <span className="inline-flex items-center justify-center bg-[#cf1dc9] text-white rounded-lg font-bold overflow-hidden" style={{ 
+                width: 'clamp(6rem, 18vw, 10rem)', 
+                height: 'clamp(2.5rem, 8vw, 4.5rem)', 
+                fontSize: 'clamp(0.875rem, 4.5vw, 1.75rem)',
+                padding: '0.25rem 0.5rem'
               }}>
                 <SimpleRotatingText
                   texts={['Salud', 'Vida', 'Bien']}
                   rotationInterval={4000}
-                  className="text-white font-bold"
+                  className="text-white font-bold text-center w-full"
                 />
               </span>
               <span className="text-gray-900 dark:text-white"> es nuestra prioridad</span>

@@ -33,11 +33,14 @@ const SimpleRotatingText: React.FC<SimpleRotatingTextProps> = ({
 
   return (
     <span
-      className={className}
+      className={`${className} block w-full text-center`}
       style={{
         opacity: isVisible ? 1 : 0,
         transition: 'opacity 0.3s ease-in-out',
-        display: 'inline-block'
+        display: 'block',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
       }}
     >
       {texts[currentIndex]}

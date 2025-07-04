@@ -262,8 +262,15 @@ html, body {
 
 /* Fix for rotating text container */
 @media (max-width: 640px) {
-  .inline-flex {
-    min-width: fit-content !important;
-    white-space: nowrap !important;
+  /* Ensure rotating text fits properly in container */
+  .inline-flex span {
+    font-size: clamp(0.75rem, 4vw, 1.25rem) !important;
+    line-height: 1.2 !important;
+  }
+  
+  /* Adjust container for very small screens */
+  .bg-\[#cf1dc9\] {
+    min-width: 4rem !important;
+    padding: 0.25rem 0.5rem !important;
   }
 }
