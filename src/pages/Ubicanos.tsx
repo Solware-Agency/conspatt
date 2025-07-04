@@ -25,7 +25,7 @@ const Ubicanos: React.FC = () => {
         <div 
           className="absolute inset-0 w-full h-full"
           style={{
-            backgroundImage: 'url(/mar.jpg)',
+            backgroundImage: 'url(/mar.webp)',
             backgroundPosition: 'center center',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat'

@@ -186,7 +186,7 @@ const AboutSection: React.FC = () => {
               stagger={0.10}
               fontSize="text-lg sm:text-xl md:text-2xl lg:text-4xl xl:text-5xl"
             >
-              Nuestros Patólogos En Tu Tratamiento
+              Nuestro Rol En Tu Tratamiento
             </ScrollFloat>
             <div className="w-24 h-1 bg-[#cf1dc9] mx-auto mb-6" />
           </div>
