@@ -47,7 +47,7 @@ export const SERVICES: Service[] = [
   {
     icon: <Heart className="w-8 h-8" />,
     title: 'Protocolos Oncológicos',
-    description: 'Ofrecemos planes de tratamiento personalizados para el cáncer, como cirugías, radioterapias, quimioterapias y otros medicamentos, ajustados a las necesidades de cada paciente.',
+    description: 'Ofrecemos planes de tratamiento personalizados para el cáncer, como cirugías, radioterapias, quimioterapias y otros, ajustados a las necesidades de cada paciente.',
   },
 ];
 
