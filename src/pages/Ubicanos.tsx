@@ -160,36 +160,7 @@ const Ubicanos: React.FC = () => {
         </div>
       </section>
 
-      {/* Contact CTA Section */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 relative z-10 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-[#cf1dc9] to-[#ae29ba] rounded-3xl p-6 sm:p-8 lg:p-12 text-center text-white">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 sm:mb-6 leading-tight break-words hyphens-auto px-4 sm:px-0">
-              ¿No encuentras la ubicación que buscas?
-            </h2>
-            <p className="text-lg sm:text-xl text-white/90 mb-6 sm:mb-8 max-w-2xl mx-auto">
-              Contáctanos directamente y te ayudaremos a encontrar la mejor opción para ti. 
-              Estamos comprometidos con brindarte el mejor servicio.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-              <a
-                href={createWhatsAppUrl('4242082491')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-white text-[#cf1dc9] px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-              >
-                WhatsApp
-              </a>
-              <a
-                href={createTelUrl('4242082491')}
-                className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-white hover:text-[#cf1dc9] transition-all duration-300 text-sm sm:text-base"
-              >
-                Llamar Ahora
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+
 
       <Footer />
     </div>

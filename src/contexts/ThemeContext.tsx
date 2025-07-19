@@ -30,8 +30,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       setIsDarkMode(true);
       document.documentElement.classList.add('dark');
     } else {
+      // Siempre iniciar en modo claro por defecto
       setIsDarkMode(false);
       document.documentElement.classList.remove('dark');
+      // Si no hay tema guardado, establecer explícitamente el modo claro
+      if (!savedTheme) {
+        localStorage.setItem('theme', 'light');
+      }
     }
   }, []);
 
