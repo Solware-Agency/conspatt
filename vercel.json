@@ -67,11 +67,6 @@
       ]
     }
   ],
-  "functions": {
-    "app/api/**/*.ts": {
-      "maxDuration": 30
-    }
-  },
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "installCommand": "npm install",
