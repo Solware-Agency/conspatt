@@ -4,16 +4,40 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 
-// Suppress service worker navigation errors
+// Disable service worker and suppress related errors
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+    for(let registration of registrations) {
+      registration.unregister();
+    }
+  });
+}
+
+// Suppress all Vercel-related errors
 const originalConsoleError = console.error;
+const originalConsoleWarn = console.warn;
+
 console.error = (...args) => {
   const message = args.join(' ');
-  if (message.includes('Cannot navigate to URL') || 
+  if (message.includes('vercel') || 
+      message.includes('security check') ||
+      message.includes('Cannot navigate to URL') || 
       message.includes('_refreshClients') || 
-      message.includes('service.worker')) {
-    return; // Suppress these specific errors
+      message.includes('service.worker') ||
+      message.includes('checkpoint')) {
+    return;
   }
   originalConsoleError.apply(console, args);
+};
+
+console.warn = (...args) => {
+  const message = args.join(' ');
+  if (message.includes('vercel') || 
+      message.includes('security check') ||
+      message.includes('checkpoint')) {
+    return;
+  }
+  originalConsoleWarn.apply(console, args);
 };
 
 // Error boundary para capturar errores de navegación

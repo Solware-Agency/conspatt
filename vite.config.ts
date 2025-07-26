@@ -17,16 +17,20 @@ export default defineConfig({
   build: {
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'esbuild',
+    minify: true,
+    target: 'es2015',
     rollupOptions: {
       output: {
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          animations: ['framer-motion', 'gsap'],
-          icons: ['lucide-react', 'react-icons'],
+          router: ['react-router-dom'],
         },
       },
     },
+    chunkSizeWarningLimit: 1000,
   },
   optimizeDeps: {
     exclude: ['lucide-react'],

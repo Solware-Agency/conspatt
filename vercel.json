@@ -10,24 +10,20 @@
       "source": "/(.*)",
       "headers": [
         {
-          "key": "X-Frame-Options",
-          "value": "SAMEORIGIN"
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
         },
         {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         },
         {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
         },
         {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
         }
       ]
     },
@@ -37,10 +33,6 @@
         {
           "key": "Content-Type",
           "value": "application/xml"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
         }
       ]
     },
@@ -50,19 +42,6 @@
         {
           "key": "Content-Type",
           "value": "text/plain"
-        },
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=86400"
-        }
-      ]
-    },
-    {
-      "source": "/assets/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
         }
       ]
     }
@@ -71,7 +50,6 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "vite",
-  "regions": ["iad1"],
   "cleanUrls": true,
   "trailingSlash": false
 }

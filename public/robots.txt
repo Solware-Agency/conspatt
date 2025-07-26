@@ -1,12 +1,4 @@
 User-agent: *
-Allow: /
-
-# Sitemap
-Sitemap: https://conspat.solware.agency/sitemap.xml
-
-# Disallow access to source files and maps
-Disallow: /*.map$
-Disallow: /src/
 Disallow: /*.ts$
 Disallow: /*.tsx$
 
