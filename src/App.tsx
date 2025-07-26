@@ -34,7 +34,9 @@ const App = () => {
       if (event.message && (
         event.message.includes('Cannot navigate to URL') ||
         event.message.includes('_refreshClients') ||
-        event.message.includes('service.worker')
+        event.message.includes('service.worker') ||
+        event.message.includes('security check') ||
+        event.message.includes('vercel')
       )) {
         console.warn('Service worker navigation error detected, ignoring...');
         event.preventDefault();
@@ -46,7 +48,9 @@ const App = () => {
       if (event.reason && typeof event.reason === 'string' && (
         event.reason.includes('Cannot navigate to URL') ||
         event.reason.includes('_refreshClients') ||
-        event.reason.includes('service.worker')
+        event.reason.includes('service.worker') ||
+        event.reason.includes('security check') ||
+        event.reason.includes('vercel')
       )) {
         console.warn('Service worker promise rejection detected, ignoring...');
         event.preventDefault();

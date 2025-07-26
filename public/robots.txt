@@ -10,5 +10,8 @@ Disallow: /src/
 Disallow: /*.ts$
 Disallow: /*.tsx$
 
+# Crawl-delay to prevent triggering security checks
+Crawl-delay: 1
+
 # Allow all other content
 Allow: / 
